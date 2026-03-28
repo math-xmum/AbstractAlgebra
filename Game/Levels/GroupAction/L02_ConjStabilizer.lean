@@ -1,5 +1,6 @@
 import Game.Metadata
 import Game.Generator.Basic
+import Mathlib.Algebra.Group.Subgroup.Pointwise
 -- import Mathlib
 
 World "GroupAction"
@@ -73,5 +74,5 @@ Statement (x y : X) (g:G) (hxy : y = g • x): (MulAut.conj g) • stabilizer G 
     · Hint "This follows from the group law. "
       group
 
-NewTheorem MulAction.mem_orbit MulAction.mem_stabilizer_iff mul_smul Equiv.ofBijective MulAction.stabilizer MulAction.orbit inv_smul_smul QuotientGroup.eq smul_eq_iff_eq_inv_smul Subgroup.mem_smul_pointwise_iff_exists MulAut.conj_apply MulAut.smul_def
+NewTheorem MulAction.mem_orbit MulAction.mem_stabilizer_iff SemigroupAction.mul_smul Equiv.ofBijective MulAction.stabilizer MulAction.orbit inv_smul_smul QuotientGroup.eq smul_eq_iff_eq_inv_smul Subgroup.mem_smul_pointwise_iff_exists MulAut.conj_apply MulAut.smul_def
 NewTactic apply_fun simp_rw

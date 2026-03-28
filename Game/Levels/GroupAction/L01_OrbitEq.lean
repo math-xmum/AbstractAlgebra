@@ -65,5 +65,5 @@ Statement (x y : X) :  MulAction.orbit G x = MulAction.orbit G y ↔ ∃ g:G , g
       rw [<-hg]
       rw [<-mul_smul]
 
-NewTheorem mul_smul MulAction.one_smul Set.range MulAction.orbit
+NewTheorem SemigroupAction.mul_smul MulAction.one_smul Set.range MulAction.orbit
 OnlyTactic intro constructor group rw beta_reduce nth_rw obtain ext

@@ -1,6 +1,7 @@
 import Game.Metadata
 
 import Game.Levels.Lemmas.Group
+import Mathlib.Data.Real.Basic
 
 World "Magma"
 

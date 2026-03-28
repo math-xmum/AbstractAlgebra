@@ -13,7 +13,7 @@ Introduction "The following statement claims that if $x = 2$ and $y = 4$, then $
 This is a simple arithmetic proof showing that the sum of $x$ with itself equals $y$ given the initial conditions."
 
 
-Statement (h : x = 2) (g: y = 4) : x + x = y := by
+Statement (x y : ℕ) (h : x = 2) (g: y = 4) : x + x = y := by
   Hint "You can use rw [h] to rewrite `x` by `2`."
   Hint "You can either start using `{h}` or `{g}`."
   Branch

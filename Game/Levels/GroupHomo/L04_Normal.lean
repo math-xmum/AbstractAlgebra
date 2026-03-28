@@ -105,18 +105,13 @@ Statement : N.Normal ↔ ∀ g h : G,  (g • (N :Set G)) * (h • N) = (g * h) 
     Hint "Now you can rewrite"
     rw [<-H]
     Hint "Now find (a,b)∈ g N × g⁻¹ N so that a*b = g * n * g⁻¹. "
-    use (g*n, g⁻¹)
-    Hint "Use constructor to split the goal."
+    rw [Set.mem_mul]
+    use g*n
     constructor
-    · Hint "This is nothing but g*n ∈ g • N and g⁻¹ * 1 ∈ g⁻¹ • N. You can use Set.mem_prod, or just `simp`.  "
-      rw [Set.mem_prod]
-      Hint "Break down the goal into two separate sub-goals using the `constructor` tactic."
-      constructor
-      · exact ⟨n,hn,rfl⟩
-      · Hint "You need to use `one_mem`."
-        exact ⟨1,by simp [Subgroup.one_mem],by simp⟩
-    · Hint "This is simple."
-      simp
+    · exact ⟨n,hn,rfl⟩
+    · use g⁻¹
+      Hint "You need to use `one_mem`."
+      exact ⟨⟨1,by simp [Subgroup.one_mem],by simp⟩, by simp⟩
 
 
 open scoped Pointwise

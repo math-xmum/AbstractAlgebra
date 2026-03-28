@@ -10,7 +10,7 @@ Level 15
 variable {α :Type*} [inst: Setoid α]
 
 
-Statement {c : Setoid.Equivclass α}  (H : x ∈ c) :  x ≈ y  ↔  y ∈ c  := by
+Statement {c : Setoid.Equivclass α} (x y : α) (H : x ∈ c) :  x ≈ y  ↔  y ∈ c  := by
   obtain ⟨z,hz⟩:= Setoid.exist_quot c
   rw [hz] at H
   rw [hz]

@@ -30,7 +30,7 @@ Suppose you want to proof proposition R using `mk'.
 So one have to prove proposition P and Q respectively.
 This magical lemma allows one assume P holds when proving Q.
 -/
-lemma mk.intro {h1 : P} {h2 : P→Q} (mk : P → Q → R) : R := mk h1 (h2 h1)
+def mk.intro {h1 : P} {h2 : P→Q} (mk : P → Q → R) : R := mk h1 (h2 h1)
 
 /--
 Instead of proving H satisfies the conditions to be a subgroup of G separately, this lemma allows one prove the conditions step by step such that using the result already proved before.

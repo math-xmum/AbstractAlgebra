@@ -16,7 +16,7 @@ In fact, ℕ → {subgroup of ℤ} given by k ↦ kℤ is a bijection.
 
 open Monoid
 
-lemma subgroup_make {G : Type*} [Group G] (P : G → Prop) (h1 : P 1) (h2 :∀ {a b:G}, P a → P b → P (a * b⁻¹)): Subgroup G where
+def subgroup_make {G : Type*} [Group G] (P : G → Prop) (h1 : P 1) (h2 :∀ {a b:G}, P a → P b → P (a * b⁻¹)): Subgroup G where
   carrier := {a | P a}
   mul_mem' := sorry
   one_mem' := h1
@@ -27,7 +27,7 @@ lemma subgroup_make {G : Type*} [Group G] (P : G → Prop) (h1 : P 1) (h2 :∀ {
     simp only [one_mul] at this
     exact this
 
-lemma addsubgroup_make {G : Type*} [AddGroup G] (P : G → Prop) (h1 : P 0) (h2 :∀ {a b:G}, P a → P b → P (a - b)): AddSubgroup G where
+def addsubgroup_make {G : Type*} [AddGroup G] (P : G → Prop) (h1 : P 0) (h2 :∀ {a b:G}, P a → P b → P (a - b)): AddSubgroup G where
   carrier := {a | P a}
   add_mem' := sorry
   zero_mem' := h1
@@ -81,7 +81,7 @@ lemma addsubgroupclass_make {G : Type*} [AddGroup G] (P : G → Prop) (h1 : P 0)
 
 #check Int.sub_emod
 
-Statement : AddSubgroupClass (SubSetP (· %k = 0)) ℤ :=
+Statement (k : ℤ) : AddSubgroupClass (SubSetP (· %k = 0)) ℤ :=
   by
     apply addsubgroupclass_make
     · simp

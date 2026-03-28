@@ -10,7 +10,7 @@ Level 14
 variable {α :Type*} [inst: Setoid α]
 
 
-Statement (x : α): y ∈ Setoid.quot x ↔ x ≈ y := by
+Statement (x : α) (y : α): y ∈ Setoid.quot x ↔ x ≈ y := by
   rfl
 
 OnlyTactic rewrite rfl

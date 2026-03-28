@@ -10,7 +10,7 @@ Level 5
 variable {S :Type*}
 
 
-Statement (preamble := constructor ) (f : S → β): Equivalence (α := S) (f · = f ·) := by
+Statement (preamble := constructor ) (β : Type*) (f : S → β): Equivalence (α := S) (f · = f ·) := by
   intro x
   rfl
   intro x y hxy

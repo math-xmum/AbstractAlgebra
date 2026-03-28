@@ -1,5 +1,6 @@
 import Game.Metadata
 import Game.Generator.Basic
+import Mathlib.Algebra.Ring.Divisibility.Basic
 -- import Mathlib
 
 World "EquivalenceRelation"
@@ -11,7 +12,7 @@ variable {S :Type*}
 
 
 
-Statement (preamble := constructor ): Equivalence (α := ℤ) (fun a b => n ∣ (a - b)) := by
+Statement (preamble := constructor ) (n : ℤ): Equivalence (α := ℤ) (fun a b => n ∣ (a - b)) := by
   intro x
   rw [sub_self]
   exact dvd_zero n

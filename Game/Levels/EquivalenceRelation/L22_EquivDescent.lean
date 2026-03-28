@@ -13,7 +13,7 @@ variable (c : Setoid.Equivclass α)
 
 --#check c.unquot
 
-Statement (f : α → β) (H: ∀ a b, a ≈ b → f a = f b):
+Statement (β : Type*) (f : α → β) (H: ∀ a b, a ≈ b → f a = f b):
   let fbar :Setoid.Equivclass α → β := fun c => f c.unquot
   ∀ x, f x = fbar (Setoid.quot x)
   := by

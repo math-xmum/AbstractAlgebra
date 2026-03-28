@@ -1,6 +1,7 @@
 
 import Game.Metadata
 import Game.Levels.Lemmas.Group
+import Mathlib.Analysis.SpecialFunctions.ExpDeriv
 
 World "Magma"
 

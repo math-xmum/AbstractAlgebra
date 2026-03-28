@@ -11,7 +11,7 @@ variable {α :Type*} [inst: Setoid α]
 
 variable (c : Setoid.Equivclass α)
 
-Statement : Setoid.quot x = c ↔ x ∈ c:= by
+Statement (x : α) : Setoid.quot x = c ↔ x ∈ c:= by
   obtain ⟨y, hy⟩ := Setoid.exist_quot c
   rw [hy]
   rw [Setoid.mem_quot_iff_equiv']

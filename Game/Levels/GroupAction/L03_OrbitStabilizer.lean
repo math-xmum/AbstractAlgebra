@@ -20,17 +20,13 @@ variable {G X:Type*} [Group G] [MulAction G X]
 #check  QuotientGroup.mk_out_eq_mul
 
 
+noncomputable section
+
 Statement (x : X) : G ⧸  stabilizer G x ≃ orbit G x  := by
   Hint "We construct the equivalence by `Equiv.ofBijective`."
   apply Equiv.ofBijective
-  Hint "Pick the 2nd goal to construct the map use `pick_goal 2`."
-  pick_goal 2
-  · Hint "Introduce the variable"
-    intro y
-    Hint "Use {y}.out to act on {x}. "
-    use y.out • x
-    Hint "Show that {y}.out • x is in the orbit by `MulAction.mem_orbit`."
-    apply MulAction.mem_orbit
+  Hint "We construct the function by sending y to y.out • x."
+  show Function.Bijective (fun y : G ⧸ stabilizer G x => ⟨y.out • x, MulAction.mem_orbit _ _⟩)
   Hint "Now prove the map is bijective. First split the goal using `constructor`."
   constructor
   · Hint "Introduce the variable"
@@ -74,5 +70,5 @@ Statement (x : X) : G ⧸  stabilizer G x ≃ orbit G x  := by
 
 
 
-NewTheorem QuotientGroup.mk_out_eq_mul Equiv.ofBijective MulAction.mem_orbit MulAction.mem_stabilizer_iff mul_smul Equiv.ofBijective MulAction.stabilizer MulAction.orbit inv_smul_smul QuotientGroup.eq
+NewTheorem QuotientGroup.mk_out_eq_mul Equiv.ofBijective MulAction.mem_orbit MulAction.mem_stabilizer_iff SemigroupAction.mul_smul Equiv.ofBijective MulAction.stabilizer MulAction.orbit inv_smul_smul QuotientGroup.eq
 NewTactic apply_fun

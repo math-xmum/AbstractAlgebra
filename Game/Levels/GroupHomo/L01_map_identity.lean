@@ -26,7 +26,7 @@ Statement (f : H →* G) : f 1  = 1  := by
   Hint "The idea is to use 1 * 1 = 1. (This can be done by invoking `mul_one (1:H)`).
   Here we should use `(1:H)` to indicate that `1` is the identity element in H.
   Use `have` to establish this claim."
-  have h1 : 1 * 1 = 1 := mul_one (1:H)
+  have h1 : (1:H) * 1 = 1 := mul_one (1:H)
   Hint "Now let us apply f on the both sides of {h1}. This can be done by `apply_fun f at {h1}` "
   apply_fun f at h1
   Hint "Let us use `map_mul` on {h1} to obtain f 1 * f 1  = f 1"

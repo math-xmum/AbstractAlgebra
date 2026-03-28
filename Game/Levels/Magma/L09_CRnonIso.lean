@@ -23,7 +23,7 @@ Statement: IsEmpty (ℂ ≃* ℝ) := by
   Use `have hx : f x = -1 := MulEquiv.apply_symm_apply _ _`
   "
   have hx : f x = -1 := MulEquiv.apply_symm_apply _ _
-  Hint "Now we'll use a property of complex numbers: for any complex number {x}, $(x^{1/2})^2 = x$. This is crucial for our contradiction. Please use `have H := Complex.cpow_nat_inv_pow x (by decide : 2 ≠ 0)` "
+  Hint "Now we'll use a property of complex numbers: for any complex number {x}, $(x^(1/2))^2 = x$. This is crucial for our contradiction. Please use `have H := Complex.cpow_nat_inv_pow x (by decide : 2 ≠ 0)` "
   have H := Complex.cpow_nat_inv_pow x (by decide : 2 ≠ 0)
   Hint "For technical reason, we should simplify the notation in {H} by normalizing the cast. Use `norm_cast at H`"
   norm_cast at H
@@ -35,7 +35,7 @@ Statement: IsEmpty (ℂ ≃* ℝ) := by
   rw [MulEquiv.map_mul] at H
   Hint "We can substitute {hx} into {H} to simplify the right side."
   rw [hx] at H
-  Hint "In $ℝ$, the square of any real number is non-negative. Let's establish this fact for $f(x^{1/2})$."
+  Hint "In $ℝ$, the square of any real number is non-negative. Let's establish this fact for $f(x^(1/2))$."
   have H2 := sq_nonneg (f (x ^ (2:ℂ)⁻¹))
   Hint "Now we can rewrite {H2} using our earlier equations, which will lead to the contradiction that $0 ≤ -1$."
   rw [pow_two,H] at H2

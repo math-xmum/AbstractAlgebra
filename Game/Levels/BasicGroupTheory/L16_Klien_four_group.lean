@@ -33,11 +33,11 @@ open scoped Pointwise
 theorem C2_prod_C2_not_cyclic {C : Type u_1} [Group C] [Fintype C]  (h : Nat.card C = 2) : ¬ IsCyclic (C × C) := by
   intro H
   Hint "First observe that |C × C| = 4. This is a consequence of `Nat.card_prod` and {h}."
-  have order4 : Nat.card (C × C) = 4 := by simp only [Nat.card_prod,h]
+  have order4 : Nat.card (C × C) = 4 := by rw [Nat.card_prod, h]
   Hint "If G is a finite cyclic group, then there is an element g ∈ G such that g^|G| = 1. This is the theorem `IsCyclic.exists_ofOrder_eq_natCard`. Establish this claim by using
   `replace H := IsCyclic.exists_ofOrder_eq_natCard (h:=H)`
   "
-  replace h1 := IsCyclic.exists_ofOrder_eq_natCard (h:=H)
+  have h1 := IsCyclic.exists_ofOrder_eq_natCard (h:=H)
   Hint "Rewrite the claim {H} using {order4}."
   rw [order4] at h1
   Hint "On the other hand, every element g in C × C satisfies
@@ -61,7 +61,7 @@ theorem C2_prod_C2_not_cyclic {C : Type u_1} [Group C] [Fintype C]  (h : Nat.car
     intro g
     apply orderOf_le_of_pow_eq_one
     Hint "Use `norm_num` or `linarith`"
-    linarith
+    omega
     Hint "Use {square_one} to clear up the goal."
     simp [square_one]
   Hint "{order4} and {orderle2} are contradictory.
@@ -70,4 +70,4 @@ theorem C2_prod_C2_not_cyclic {C : Type u_1} [Group C] [Fintype C]  (h : Nat.car
   Hint "Now `specialize` {orderle2} to g."
   specialize orderle2 g
   Hint "Clearly {hg} and {orderle2} are contradictory relations for natural numbers. These type of problem can be automaticaly proved by `linarith`."
-  linarith
+  omega

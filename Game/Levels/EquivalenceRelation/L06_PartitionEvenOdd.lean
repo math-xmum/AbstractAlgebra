@@ -26,11 +26,11 @@ Statement : IsPartition {{x : ℕ | Even x}, {x : ℕ | Odd x}} := by
   exact h
   intro ha
   exfalso
-  exact ha h
+  obtain ⟨r, hr⟩ := h; obtain ⟨k, hk⟩ := ha; omega
   use {x : ℕ | Odd x}
   simp
   constructor
-  exact h
+  exact (Nat.even_or_odd a).resolve_left h
   intro h'
   exfalso
   exact h h'
