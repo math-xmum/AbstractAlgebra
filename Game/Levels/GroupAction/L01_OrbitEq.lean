@@ -24,7 +24,7 @@ open MulAction
 
 variable {G X:Type*} [Group G] [MulAction G X]
 
-#check  QuotientGroup.mk_out'_eq_mul
+#check  QuotientGroup.mk_out_eq_mul
 
 
 Statement (x y : X) :  MulAction.orbit G x = MulAction.orbit G y ↔ ∃ g:G , g • x = y := by
@@ -48,13 +48,13 @@ Statement (x y : X) :  MulAction.orbit G x = MulAction.orbit G y ↔ ∃ g:G , g
     ext z
     Hint "Now use constructor to decompose the goal"
     constructor
-    · Hint "Introduce the hypothesis. Since `simp` is too powerful, try only use `obtain`, `use`, `rw` and `group` to finish the proof. You may need `MulAction.mul_smul` and apply `beta_redace at *` when necessary. "
+    · Hint "Introduce the hypothesis. Since `simp` is too powerful, try only use `obtain`, `use`, `rw` and `group` to finish the proof. You may need `mul_smul` and apply `beta_redace at *` when necessary. "
       intro hz
       obtain ⟨k,Hk⟩:= hz
       use k * g⁻¹
       beta_reduce at *
       rw [<-hg]
-      rw [<-MulAction.mul_smul]
+      rw [<-mul_smul]
       rw [<-Hk]
       group
     · intro hz
@@ -63,7 +63,7 @@ Statement (x y : X) :  MulAction.orbit G x = MulAction.orbit G y ↔ ∃ g:G , g
       beta_reduce at *
       rw [<-Hk]
       rw [<-hg]
-      rw [<-MulAction.mul_smul]
+      rw [<-mul_smul]
 
-NewTheorem MulAction.mul_smul MulAction.one_smul Set.range MulAction.orbit
+NewTheorem mul_smul MulAction.one_smul Set.range MulAction.orbit
 OnlyTactic intro constructor group rw beta_reduce nth_rw obtain ext

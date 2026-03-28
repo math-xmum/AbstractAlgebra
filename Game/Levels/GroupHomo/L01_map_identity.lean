@@ -36,5 +36,5 @@ Statement (f : H →* G) : f 1  = 1  := by
   Hint "Finally one can apply `mul_left_cancel` to obtain the goal."
   exact mul_left_cancel h1
 
-NewTheorem mul_left_cancel map_mul mul_one GroupHom.intro mul_right_eq_self Function.leftInverse_iff_comp Function.rightInverse_iff_comp MulEquiv.intro
+NewTheorem mul_left_cancel map_mul mul_one GroupHom.intro mul_eq_left Function.leftInverse_iff_comp Function.rightInverse_iff_comp MulEquiv.intro
 NewTactic apply_fun beta_reduce

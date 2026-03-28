@@ -1,5 +1,6 @@
 import Mathlib.Data.Set.Basic
 import Mathlib.Data.SetLike.Basic
+import Mathlib.Order.SetNotation
 
 
 /-- A collection `c : Set (Set α)` of sets is a partition of `α` into pairwise
@@ -41,10 +42,10 @@ lemma equivclass_eq_iff_equiv  {x y: α}: {z | x ≈ z} = {z | y ≈ z}  ↔ x �
   exact Setoid.trans H H1
 
 lemma equivclass_nonempty (x : α) : {y | x ≈ y} ≠ ∅ := by
-  rw [ne_eq]
   intro h
-  apply Set.not_mem_empty x
-  rw [<-h, Set.mem_setOf_eq]
+  have : x ∈ ({y | x ≈ y} : Set α) := Setoid.refl x
+  rw [h] at this
+  exact (Set.mem_empty_iff_false x).mp this
 
 
 

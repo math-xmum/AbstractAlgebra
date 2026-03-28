@@ -1,7 +1,7 @@
 import Mathlib.Tactic.Group
 import Mathlib.GroupTheory.GroupAction.Basic
-import Mathlib.GroupTheory.Subgroup.Basic
-import Mathlib.GroupTheory.Coset
+import Mathlib.Algebra.Group.Subgroup.Basic
+import Mathlib.GroupTheory.Coset.Basic
 
 section Subgroup
 variable {G : Type*} [Group G] {H : Subgroup G} {a b g: G}
@@ -147,11 +147,9 @@ abbrev GroupHom.intro  : G →* H where
   toFun := f
   map_mul' := hf
   map_one' := by
-    have h1 : 1 * 1 = 1 := mul_one (1:G)
-    apply_fun f at h1
-    rw [hf] at h1
-    nth_rw 3 [<-mul_one (f 1)] at h1
-    exact mul_left_cancel h1
+    have h1 := hf 1 1
+    simp [mul_one] at h1
+    exact h1
 
 @[simp]
 lemma GroupHom.coe_fun_eq : GroupHom.intro f hf = f := rfl
@@ -175,13 +173,6 @@ lemma MulEquiv.intro_invFun_apply : (MulEquiv.intro toFun invFun left_inv right_
 
 
 end MulEquiv_intro
-
-
-/--
-The composition of three functions is associative.
--/
-lemma Function.comp_assoc (f : φ → δ) (g : β → φ) (h : α → β) : (f ∘ g) ∘ h = f ∘ g ∘ h :=
-  rfl
 
 
 end GroupHom

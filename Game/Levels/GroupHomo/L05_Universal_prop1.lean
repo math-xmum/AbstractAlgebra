@@ -67,7 +67,7 @@ Statement [hN : N.Normal] :
       obtain ⟨n, hn1, hxyn2⟩ := hxy
       Hint "The proof can be finished by using {hf}"
       rw [<-hxyn2,map_mul,map_mul]
-      rw [mul_right_eq_self]
+      rw [mul_eq_left]
       exact hf n hn1
   · Hint "We only need to test the equality on each element g in G. Use `ext` tactic "
     ext g

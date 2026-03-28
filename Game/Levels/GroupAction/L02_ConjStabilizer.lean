@@ -27,7 +27,7 @@ open MulAction
 
 variable {G X:Type*} [Group G] [MulAction G X]
 
-#check  QuotientGroup.mk_out'_eq_mul
+#check  QuotientGroup.mk_out_eq_mul
 
 
 Statement (x y : X) (g:G) (hxy : y = g • x): (MulAut.conj g) • stabilizer G x = stabilizer G y  := by
@@ -51,7 +51,7 @@ Statement (x y : X) (g:G) (hxy : y = g • x): (MulAut.conj g) • stabilizer G 
     rw [<-Hk2]
     nth_rw 2 [<-Hk1]
     Hint "Use `MulAction.mul_suml` to translate the goal into the form (g * k * g⁻¹ * g) • x = (g * k) • x"
-    repeat rw [<-MulAction.mul_smul]
+    repeat rw [<-mul_smul]
     Hint "Now use `group` to close the goal."
     group
   · Hint "Introduce the hypothesis. "
@@ -64,14 +64,14 @@ Statement (x y : X) (g:G) (hxy : y = g • x): (MulAut.conj g) • stabilizer G 
       Before the rewrite {hxy} into `g • x = y`. You can use `replace hxy := hxy.symm`."
       replace hxy := hxy.symm
       rw [smul_eq_iff_eq_inv_smul] at hxy
-      Hint "Rewrite the goal using {hxy}, {H} and `MulAction.mul_smul`. You may use `nth_rw`."
+      Hint "Rewrite the goal using {hxy}, {H} and `mul_smul`. You may use `nth_rw`."
       rw [hxy]
       nth_rw 2 [<-H]
-      repeat rw [<-MulAction.mul_smul]
+      repeat rw [<-mul_smul]
       Hint "This follows from the group law. "
       group
     · Hint "This follows from the group law. "
       group
 
-NewTheorem MulAction.mem_orbit MulAction.mem_stabilizer_iff MulAction.mul_smul Equiv.ofBijective MulAction.stabilizer MulAction.orbit inv_smul_smul QuotientGroup.eq smul_eq_iff_eq_inv_smul Subgroup.mem_smul_pointwise_iff_exists MulAut.conj_apply MulAut.smul_def
+NewTheorem MulAction.mem_orbit MulAction.mem_stabilizer_iff mul_smul Equiv.ofBijective MulAction.stabilizer MulAction.orbit inv_smul_smul QuotientGroup.eq smul_eq_iff_eq_inv_smul Subgroup.mem_smul_pointwise_iff_exists MulAut.conj_apply MulAut.smul_def
 NewTactic apply_fun simp_rw

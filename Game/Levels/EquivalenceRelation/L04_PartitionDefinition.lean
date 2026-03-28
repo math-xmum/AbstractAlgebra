@@ -2,9 +2,8 @@ import Game.Metadata
 import Game.Generator.Basic
 -- import Mathlib
 
-#check Set.not_mem_empty
 theorem Set.ne_empty_of_mem {a : α} {s : Set α} (h : a ∈ s) : s ≠ ∅ := fun e =>
-   Set.not_mem_empty a $ e ▸ h
+  absurd (e ▸ h) (Set.mem_empty_iff_false a).mp
 
 
 World "EquivalenceRelation"

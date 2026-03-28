@@ -1,5 +1,4 @@
 import Game.Metadata
-import Mathlib.Deprecated.Subgroup
 
 World "BasicGroupTheory"
 
@@ -18,7 +17,11 @@ open Monoid Group
 
 variable {G :Type*} [Group G] {H: Set G}
 
-#print IsSubgroup
+/-- A predicate for a set to be a subgroup: it must be closed under multiplication
+and contain inverses. -/
+structure IsSubgroup (H : Set G) : Prop where
+  mul_mem_and_one_mem : 1 ∈ H ∧ ∀ {a b}, a ∈ H → b ∈ H → a * b ∈ H
+  inv_mem : ∀ {a}, a ∈ H → a⁻¹ ∈ H
 
 lemma And.intro' (h1 : P) (h2 : P→Q) : P ∧ Q := ⟨h1, h2 h1⟩
 
@@ -67,13 +70,6 @@ Statement (h1 : H.Nonempty) (h2 :∀ {a b:G}, (a∈H) → (b∈H) → ((a * b⁻
     Hint "Clean up the expression at {h2} by `simp'"
     simp at h2
     assumption
-
-
-
-
-
-
-
 
 
 

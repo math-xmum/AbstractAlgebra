@@ -24,7 +24,7 @@ lemma CommGroup_mk {G : Type*}
   one_mul := zero_add
   mul_one := add_zero
   inv := neg
-  mul_left_inv := add_left_inv
+  inv_mul_cancel := add_left_inv
   mul_comm := add_comm
 
 @[simp]
@@ -70,5 +70,5 @@ Statement {n : ℕ} {hn : n ≠ 0} {hn' : 0<n}:
       rw [add_comm]
 
 
-NewTheorem CommGroup_mk ext_lemma add_assoc add_comm Nat.mod_succ_eq_iff_lt Fin.is_lt Nat.mod_add_mod  Nat.add_mod_mod  Fin.mk.injEq Fin.is_le' Nat.sub_add_cancel Nat.mod_self Fin.zero_eta Nat.add_comm Nat.not_eq_zero_of_lt Nat.mod_eq_iff_lt
+NewTheorem CommGroup_mk ext_lemma add_assoc add_comm Nat.mod_succ_eq_iff_lt Fin.is_lt Nat.mod_add_mod  Nat.add_mod_mod  Fin.mk.injEq Fin.is_le' Nat.sub_add_cancel Nat.mod_self Fin.zero_eta Nat.add_comm Nat.ne_zero_of_lt Nat.mod_eq_iff_lt
 NewDefinition add neg zero

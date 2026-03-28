@@ -30,15 +30,15 @@ Statement (G : Type*) [Group G] (x : G) : ∀ y : G, y * x = 1 → y = x⁻¹ :=
   Try `rw [← one_mul x⁻¹]` to change `x⁻¹` into `1 * x⁻¹`."
   rw [← one_mul x⁻¹]
   Hint "Can you take it from here?"
-  Hint (hidden := true) "Try `rw [← h, mul_assoc, mul_right_inv, mul_one]`"
+  Hint (hidden := true) "Try `rw [← h, mul_assoc, mul_inv_cancel, mul_one]`"
   rw [← h]
   rw [mul_assoc]
-  rw [mul_right_inv]
+  rw [mul_inv_cancel]
   rw [mul_one]
 
 Conclusion "Level completed! Let's continue the journey."
 
 /- Use these commands to add items to the game's inventory. -/
 
-NewTheorem one_mul mul_assoc mul_right_inv mul_one
+NewTheorem one_mul mul_assoc mul_inv_cancel mul_one
 -- NewDefinition Nat Add Eq
