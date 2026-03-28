@@ -1,9 +1,5 @@
-import Mathlib.Order.SetNotation
-import Mathlib.Init.Logic
-import Mathlib.Init.Set
 import Mathlib.Data.Set.Basic
 import Mathlib.Data.SetLike.Basic
-import Mathlib.Tactic
 
 
 /-- A collection `c : Set (Set α)` of sets is a partition of `α` into pairwise

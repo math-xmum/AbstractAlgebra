@@ -1,5 +1,5 @@
 import Game.Metadata
--- import Mathlib
+import Mathlib.Deprecated.Subgroup
 
 World "BasicGroupTheory"
 

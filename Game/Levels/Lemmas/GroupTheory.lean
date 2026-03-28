@@ -1,8 +1,5 @@
-import Mathlib.Tactic
-
+import Mathlib.Tactic.Group
 import Mathlib.GroupTheory.GroupAction.Basic
-import Mathlib.GroupTheory.SpecificGroups.Cyclic
-import Mathlib.Deprecated.Subgroup
 import Mathlib.GroupTheory.Subgroup.Basic
 import Mathlib.GroupTheory.Coset
 

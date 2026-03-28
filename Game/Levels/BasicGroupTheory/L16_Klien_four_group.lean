@@ -1,4 +1,5 @@
 import Game.Metadata
+import Mathlib.GroupTheory.SpecificGroups.Cyclic
 
 World "BasicGroupTheory"
 
