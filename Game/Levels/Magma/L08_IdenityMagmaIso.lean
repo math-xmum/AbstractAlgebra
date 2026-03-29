@@ -21,20 +21,14 @@ Statement (e : α) (he: Mul.isIdentity e) (φ : α ≃* β): Mul.isIdentity (φ 
   let y := φ.symm x'
   Hint "Now we need to establish the relationship between $x'$ and $φ(y)$. By definition of the inverse of an equivalence, we have $x' = φ(y)$. One can use `have hx' : φ (y) = x' := MulEquiv.apply_symm_apply _ _`"
   have hx' : φ (y) = x' := MulEquiv.apply_symm_apply _ _
-  Hint "Let's substitute $x'$ with $φ(y)$ in our goal."
-  rw [<-hx']
-  Hint "Now we can use our hypothesis {he} with the specific element $y$ we defined."
+  Hint "Let's substitute $x'$ with $φ(y)$ in our goal. Then use `specialize he y` and `constructor` to split into two cases."
+  rw [←hx']
   specialize he y
-  Hint "We need to prove two properties: $φ(y) * φ(e) = φ(y)$ and $φ(e) * φ(y) = φ(y)$. Let's break this into two cases."
   constructor
-  Hint "For the first case, we can use the fact that $φ$ preserves multiplication, so $φ(y) * φ(e) = φ(y * e)$."
-  rw [<- MulEquiv.map_mul]
-  Hint "Now we can use the first part of {he}, which states that $y * e = y$."
-  rw [he.1]
-  Hint "For the second case, we again use the fact that $φ$ preserves multiplication."
-  rw [<- MulEquiv.map_mul]
-  Hint "Finally, we use the second part of {he}, which states that $e * y = y$."
-  rw [he.2]
+  Hint "Use `rw [← MulEquiv.map_mul]` to pull the multiplication inside {φ}, then rewrite with the identity law."
+  rw [← MulEquiv.map_mul, he.1]
+  Hint "Same idea for the right identity."
+  rw [← MulEquiv.map_mul, he.2]
 
 
 NewTactic apply_fun unfold rw sepcialize «let»

@@ -18,7 +18,12 @@ open Monoid
 
 def subgroup_make {G : Type*} [Group G] (P : G → Prop) (h1 : P 1) (h2 :∀ {a b:G}, P a → P b → P (a * b⁻¹)): Subgroup G where
   carrier := {a | P a}
-  mul_mem' := sorry
+  mul_mem' := by
+    simp only [Set.mem_setOf_eq]
+    intro ha hb
+    have hinv := h2 h1 hb; simp only [one_mul] at hinv
+    have := h2 ha hinv; simp only [inv_inv] at this
+    exact this
   one_mem' := h1
   inv_mem' := by
     simp only [Set.mem_setOf_eq]
@@ -29,7 +34,12 @@ def subgroup_make {G : Type*} [Group G] (P : G → Prop) (h1 : P 1) (h2 :∀ {a 
 
 def addsubgroup_make {G : Type*} [AddGroup G] (P : G → Prop) (h1 : P 0) (h2 :∀ {a b:G}, P a → P b → P (a - b)): AddSubgroup G where
   carrier := {a | P a}
-  add_mem' := sorry
+  add_mem' := by
+    simp only [Set.mem_setOf_eq]
+    intro ha hb
+    have hneg := h2 h1 hb; simp only [zero_sub] at hneg
+    have := h2 ha hneg; simp only [sub_neg_eq_add] at this
+    exact this
   zero_mem' := h1
   neg_mem' := by
     simp only [Set.mem_setOf_eq]

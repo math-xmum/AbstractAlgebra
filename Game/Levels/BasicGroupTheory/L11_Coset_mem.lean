@@ -25,25 +25,22 @@ variable {G : Type*} [Group G] {g x:G} {H : Set G}
 
 --instance : HSMul G (Set G) (Set G):=inferInstance
 
+private lemma coset_mem_forward (h1 : x ∈ g • H) : g⁻¹ * x ∈ H := by
+  obtain ⟨h, hh1, hh2⟩ := h1
+  simp at hh2; rw [← hh2]; simp; exact hh1
+
 Statement : x ∈ g • H ↔ g⁻¹ * x ∈ H := by
   constructor
-  · intro h1
-    Hint "Note that x ∈ g • H means ∃ h: G,  h ∈ H ∧  g * h = x. Use `obtain' to obtain the anxiety element h.
+  · Hint "Note that x ∈ g • H means ∃ h: G,  h ∈ H ∧  g * h = x. Use `obtain' to obtain the anxiety element h.
     For example, one can use
     `obtain ⟨h, hh1,hh2⟩ := h1'
     "
-    obtain ⟨h, hh1,hh2⟩ := h1
-    Hint "Use `simp' to clear up {hh2}"
-    simp at hh2
-    Hint "Rewrite using {hh2}"
-    rw [<-hh2]
     Hint "The goal can be cleared by `simp'/`group' and `assumption'"
-    simp
-    assumption
+    intro h1
+    exact coset_mem_forward h1
   · Hint "Intro the assumption."
     intro h1
     Hint " Use `g⁻¹ * x'"
     use g⁻¹*x
     Hint "The goal can be cleared by `simp'/`group' and `assumption'"
-    simp
-    assumption
+    exact ⟨h1, by simp⟩

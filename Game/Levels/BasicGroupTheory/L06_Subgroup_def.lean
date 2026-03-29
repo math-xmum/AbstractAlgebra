@@ -41,35 +41,34 @@ lemma IsSubgroup.stepmk (h1 : 1 ∈H) (h2 : (1∈H)→(∀ {a}, a∈H →  a⁻�
   · exact ⟨h1, h3 h1  (h2 h1)⟩
   exact h2 h1
 
+private lemma one_mem_of_nonempty (h1 : H.Nonempty) (h2 : ∀ {a b : G}, a ∈ H → b ∈ H → a * b⁻¹ ∈ H) :
+    1 ∈ H := by
+  obtain ⟨x, hx⟩ := h1
+  have h := h2 hx hx
+  group at h
+  exact h
+
+private lemma inv_mem_of_criterion (h2 : ∀ {a b : G}, a ∈ H → b ∈ H → a * b⁻¹ ∈ H)
+    (hone : 1 ∈ H) (ha : a ∈ H) : a⁻¹ ∈ H := by
+  have hbb := h2 hone ha; simp at hbb; exact hbb
+
+private lemma mul_mem_of_criterion (h2 : ∀ {a b : G}, a ∈ H → b ∈ H → a * b⁻¹ ∈ H)
+    (hinv : ∀ {a}, a ∈ H → a⁻¹ ∈ H) (ha : a ∈ H) (hb : b ∈ H) : a * b ∈ H := by
+  specialize h2 ha (hinv hb); simp at h2; exact h2
+
 Statement (h1 : H.Nonempty) (h2 :∀ {a b:G}, (a∈H) → (b∈H) → ((a * b⁻¹)∈H)) : IsSubgroup H := by
   Hint "Unfold the definition using `IsSubgroup.stepmk'."
   apply IsSubgroup.stepmk
   · Hint "Note that `H.Nonempty = ∃ x , x ∈ H'. One can use obtain ⟨x,hx⟩ := h1 to use the existance statement h1. Here `⟨' and `⟩' can be typed by `\\<' and `\\>' respectively.  "
-    obtain ⟨x,hx⟩ := h1
     Hint "Use `h2' "
-    have h := h2 hx hx
-    Hint "Apply `group' at {h}"
-    group at h
-    Hint "Not it is exactly the statement {h}. "
-    exact h
+    exact one_mem_of_nonempty h1 h2
   · intro hone a ha
     Hint "Prove `a⁻¹∈ H' using `h2' "
-    have hbb := h2 hone ha
-    Hint "simp at {hbb}"
-    simp at hbb
-    Hint "Except using `exact {hbb}' one also can use `assumption' to finish the goal.  "
-    assumption
+    exact inv_mem_of_criterion h2 hone ha
   · Hint "Intro all the hypothesis by `intro hone hinv a b ha hb'  "
     intro hone hinv a b ha hb
     Hint "Show that b⁻¹ ∈ H"
-    have hbb:= hinv hb
-    Hint "Use {hbb} and {h2}"
-    Hint " Instead of using `have' one also can use
-    `specialize {h2} {ha} {hbb}' to replace {h2} "
-    specialize h2 ha hbb
-    Hint "Clean up the expression at {h2} by `simp'"
-    simp at h2
-    assumption
+    exact mul_mem_of_criterion h2 hinv ha hb
 
 
 

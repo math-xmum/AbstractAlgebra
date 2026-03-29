@@ -10,8 +10,25 @@ Level 11
 variable {α :Type*} [inst: Setoid α]
 
 
+/-- Equivalence classes with nonempty intersection must be equal. -/
+private lemma equivclass_inter_eq {α : Type*} [Setoid α]
+    (a b : Set α) (ha : a ∈ Set.range fun (x : α) => {y | x ≈ y})
+    (hb : b ∈ Set.range fun (x : α) => {y | x ≈ y})
+    (hab : a ∩ b ≠ ∅) : a = b := by
+  simp_all
+  obtain ⟨x, hx⟩ := ha
+  obtain ⟨y, hy⟩ := hb
+  push_neg at hab
+  obtain ⟨z, haz, hbz⟩ := hab
+  rw [← hx] at *
+  rw [Setoid.mem_equivclass_iff_equiv] at haz
+  rw [← hy] at *
+  rw [Setoid.mem_equivclass_iff_equiv] at hbz
+  rw [hx, Setoid.equivclass_eq_iff_equiv]
+  exact Setoid.trans haz (Setoid.symm hbz)
+
 Statement (preamble := refine ⟨?nonempty , ?union_eq_univ , ?inter_implies_equal⟩ ): IsPartition' <| Set.range fun (x :α) => {y |x ≈ y} := by
-  rw [Set.mem_range,not_exists]
+  rw [Set.mem_range, not_exists]
   intro x
   simp [Setoid.equivclass_nonempty]
   rw [Set.eq_univ_iff_forall]
@@ -19,19 +36,7 @@ Statement (preamble := refine ⟨?nonempty , ?union_eq_univ , ?inter_implies_equ
   simp
   use x
   intro a ha b hb
-  simp_all
-  obtain ⟨x,hx⟩ := ha
-  obtain ⟨y,hy⟩ := hb
-  intro hab
-  push_neg at hab
-  obtain ⟨z,haz,hbz⟩ := hab
-  rw [<-hx] at *
-  rw [Setoid.mem_equivclass_iff_equiv] at haz
-  rw [<-hy] at *
-  rw [Setoid.mem_equivclass_iff_equiv] at hbz
-  rw [hx]
-  rw [Setoid.equivclass_eq_iff_equiv]
-  exact Setoid.trans haz (Setoid.symm hbz)
+  exact equivclass_inter_eq a b ha hb
 
 
 /-
