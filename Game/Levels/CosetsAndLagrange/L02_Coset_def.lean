@@ -1,9 +1,9 @@
 import Game.Metadata
 -- import Mathlib
 
-World "BasicGroupTheory"
+World "CosetsAndLagrange"
 
-Level 12
+Level 2
 
 Introduction "
 Let H be a subgroup of G.

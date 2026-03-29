@@ -1,6 +1,6 @@
 import Game.Metadata
 
-World "BasicGroupTheory"
+World "GroupBasics"
 Level 1
 
 Title "mul_assoc"

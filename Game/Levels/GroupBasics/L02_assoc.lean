@@ -1,7 +1,7 @@
 import Game.Metadata
 -- import Mathlib
 
-World "BasicGroupTheory"
+World "GroupBasics"
 
 Level 2
 

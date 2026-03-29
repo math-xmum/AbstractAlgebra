@@ -1,9 +1,9 @@
 import Game.Metadata
 import Mathlib.GroupTheory.SpecificGroups.Cyclic
 
-World "BasicGroupTheory"
+World "CosetsAndLagrange"
 
-Level 16
+Level 6
 
 Introduction "
 Let H be a subgroup of G.
