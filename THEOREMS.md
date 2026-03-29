@@ -1,181 +1,252 @@
 # Theorem List — All Levels
 
-每个关卡要证明的定理/命题。标注 ✓ 表示已完成，⚠ 表示需要修改，❌ 表示需要新建。
+设计原则：
+1. **具体例子先行** — 每个世界前几关在具体对象上操作，建立直觉
+2. **每关一个概念** — 不在一关里引入多个新东西
+3. **理解对象 > 证明技巧** — 学生要理解群/子群/陪集是什么，而不只是操作 tactic
+4. **循序渐进** — 从计算到定义到抽象证明
+5. **每个证明 ≤ 20 tactic**
+
+✓ = 已完成  ⚠ = 需修改  ❌ = 需新建  🔄 = 需重写
 
 ---
 
 ## World 1: BasicLean (10 levels) ✓
 
-| # | Title | Statement | Status |
-|---|-------|-----------|--------|
-| L01 | Rfl tactic | `2 + 2 = 4` | ✓ |
-| L02 | Rewrite | `x = 2 → y = 4 → x + x = y` | ✓ |
-| L03 | Subset definition | `s ⊆ t ↔ ∀ x, x ∈ s → x ∈ t` | ✓ |
-| L04 | Subset transitivity | `r ⊆ s → s ⊆ t → r ⊆ t` | ✓ |
-| L05 | Subset reflexivity | `s ⊆ s` | ✓ |
-| L06 | Intersection definition | `x ∈ s ∩ t ↔ x ∈ s ∧ x ∈ t` | ✓ |
-| L07 | Union definition | `x ∈ s ∪ t ↔ x ∈ s ∨ x ∈ t` | ✓ |
-| L08 | Intersection commutativity | `s ∩ t = t ∩ s` | ✓ |
-| L09 | Union associativity | `(s ∪ t) ∪ r = s ∪ (t ∪ r)` | ✓ |
-| L10 | Intersection subset | `s ⊆ t → s ∩ t = s` | ✓ |
+教学目标：熟悉 Lean 和 game 界面，学会基本 tactic。
+
+| # | 教学目标 | Statement | tactic 引入 |
+|---|---------|-----------|------------|
+| L01 | 熟悉界面 | `2 + 2 = 4` | rfl, norm_num |
+| L02 | 等式改写 | `x = 2 → y = 4 → x + x = y` | rw |
+| L03 | 定义展开 | `s ⊆ t ↔ ∀ x, x ∈ s → x ∈ t` | rfl (定义) |
+| L04 | 链式推理 | `r ⊆ s → s ⊆ t → r ⊆ t` | intro |
+| L05 | 简单证明 | `s ⊆ s` | exact |
+| L06 | 认识 ∧ | `x ∈ s ∩ t ↔ x ∈ s ∧ x ∈ t` | rfl |
+| L07 | 认识 ∨ | `x ∈ s ∪ t ↔ x ∈ s ∨ x ∈ t` | rfl |
+| L08 | 集合相等 | `s ∩ t = t ∩ s` | ext, constructor |
+| L09 | 综合练习 | `(s ∪ t) ∪ r = s ∪ (t ∪ r)` | left, right |
+| L10 | 综合练习 | `s ⊆ t → s ∩ t = s` | simp |
 
 ---
 
 ## World 2: BasicFunctions (6 levels) ✓
 
-| # | Title | Statement | Status |
-|---|-------|-----------|--------|
-| L01 | Injective definition | `Injective f ↔ ∀ x y, f x = f y → x = y` | ✓ |
-| L02 | Injective composition | `Injective f → Injective g → Injective (g ∘ f)` | ✓ |
-| L03 | Surjective definition | `Surjective f ↔ ∀ y, ∃ x, f x = y` | ✓ ⚠ needs intro |
-| L04 | Surjective composition | `Surjective f → Surjective g → Surjective (g ∘ f)` | ✓ |
-| L05 | Bijective definition | `Bijective f ↔ Injective f ∧ Surjective f` | ✓ |
-| L06 | Bijective composition | `Bijective f → Bijective g → Bijective (g ∘ f)` | ✓ |
+教学目标：理解映射的单射/满射/双射概念。
+
+| # | 教学目标 | Statement | 新概念 |
+|---|---------|-----------|-------|
+| L01 | 认识单射定义 | `Injective f ↔ ∀ x y, f x = f y → x = y` | 单射 |
+| L02 | 单射的复合 | `Injective f → Injective g → Injective (g ∘ f)` | unfold, apply |
+| L03 | 认识满射定义 | `Surjective f ↔ ∀ y, ∃ x, f x = y` | 满射 |
+| L04 | 满射的复合 | `Surjective f → Surjective g → Surjective (g ∘ f)` | obtain, use |
+| L05 | 认识双射定义 | `Bijective f ↔ Injective f ∧ Surjective f` | 双射 |
+| L06 | 双射的复合 | `Bijective f → Bijective g → Bijective (g ∘ f)` | constructor |
 
 ---
 
-## World 3: EquivalenceRelation (22 → ~12 levels) ⚠
+## World 3: EquivalenceRelation (~12 levels) 🔄
 
-### Keep (with documentation fixes):
+教学目标：理解等价关系如何把集合分成等价类，为商群做准备。
 
-| # | Title | Statement | Status |
-|---|-------|-----------|--------|
-| L01 | Equality is equivalence (concrete) | `Equivalence (· = · : S → S → Prop)` | ✓ ⚠ doc |
-| L02 | Equality is equivalence (general) | `Equivalence (· = · : α → α → Prop)` | ✓ ⚠ doc |
-| L03 | Congruence mod n is equivalence | `Equivalence (fun a b => n ∣ (a - b))` | ⚠ needs doc |
-| L04 | IsPartition ↔ IsPartition' | `IsPartition C ↔ IsPartition' C` | ✓ |
-| L05 | Fiber equivalence | `Equivalence (f · = f ·)` | ⚠ needs doc |
-| L06 | Even/Odd is a partition | `IsPartition {{Even}, {Odd}}` | ⚠ needs doc |
+### Part A: 等价关系是什么（具体例子）
 
-### Merge L07-L22 into ~6 levels:
+| # | 教学目标 | Statement | 新概念 |
+|---|---------|-----------|-------|
+| L01 | 等号是等价关系 | `Equivalence (· = · : S → S → Prop)` | 等价关系三条件 |
+| L02 | 等号是等价关系（一般） | `Equivalence (· = · : α → α → Prop)` | 类型变量 |
+| L03 | 模 n 同余是等价关系 | `Equivalence (fun a b => n ∣ (a-b))` | 整除, 同余 |
+| L04 | 纤维等价关系 | `Equivalence (f · = f ·)` | 纤维 |
 
-| New # | Title | Merged from | Statement |
-|-------|-------|------------|-----------|
-| L07 | Symmetry of ≈ | L07 | `x ≈ y ↔ y ≈ x` |
-| L08 | Transitivity of ≈ | L08 | `x ≈ y → (x ≈ z ↔ y ≈ z)` |
-| L09 | Equivalence class is nonempty | L09+L10 | `x ∈ {y \| x ≈ y}` and `{y \| x ≈ y} ≠ ∅` |
-| L10 | Equiv classes form a partition | L11 | `IsPartition' (Set.range (fun x => {y \| x ≈ y}))` |
-| L11 | Quotient properties | L12-L17 merged | `quot x = quot y ↔ x ≈ y` |
-| L12 | Descent lemma | L22 | `(∀ a b, a ≈ b → f a = f b) → ∀ x, f x = fbar (quot x)` |
+### Part B: 等价关系与分划
 
-### Drop:
-- L13 (EquivClass_eq_quote) — technical, not pedagogically essential
-- L14 (memEquivClass) — trivial rfl
-- L15 (equiv_iff_memsameEquivClass) — subsumed by L11
-- L16 (EquivClasseq_of_mem) — subsumed by L11
-- L18 (EquivClassNonempty) — subsumed by L09
-- L19 (EquivQuot) — subsumed by L11
-- L20 (EquivUnquot) — technical
-- L21 (unquot_quot_equiv) — technical
+| # | 教学目标 | Statement | 新概念 |
+|---|---------|-----------|-------|
+| L05 | 偶数/奇数是一个分划 | `IsPartition {{Even}, {Odd}}` | 分划 |
+| L06 | 分划两种定义等价 | `IsPartition C ↔ IsPartition' C` | push_neg |
+
+### Part C: 等价类与商集
+
+| # | 教学目标 | Statement | 新概念 |
+|---|---------|-----------|-------|
+| L07 | 对称性 | `x ≈ y ↔ y ≈ x` | Setoid |
+| L08 | 传递性改写 | `x ≈ y → (x ≈ z ↔ y ≈ z)` | replace |
+| L09 | 等价类非空 | `x ∈ {y \| x ≈ y}` 和 `{y \| x ≈ y} ≠ ∅` | 等价类 |
+| L10 | 等价类构成分划 | `IsPartition' (Set.range (fun x => {y \| x ≈ y}))` | 等价类=分划 |
+| L11 | 商等于等价类 | `quot x = quot y ↔ x ≈ y` | 商集 |
+| L12 | 下降引理 | `(∀ a b, a ≈ b → f a = f b) → f = fbar ∘ quot` | 商映射 |
 
 ---
 
 ## World 4: Magma (9 levels) ✓
 
-| # | Title | Statement | Status |
-|---|-------|-----------|--------|
-| L01 | ℝ₊ is a magma | `Set.isMagma {x : ℝ \| x > 0}` | ✓ |
-| L02 | Odd integers not a magma | `¬ Set.isAddMagma {x : ℤ \| Odd x}` | ✓ |
-| L03 | Composition is associative | `(f ∘ g) ∘ h = f ∘ (g ∘ h)` | ✓ |
-| L04 | Squaring preserves multiplication | `isMulMap (fun x => x * x)` | ✓ |
-| L05 | Exp is additive-to-multiplicative | `isAddMulMap Real.exp` | ✓ ⚠ hints |
-| L06 | Subtraction is not associative | `∃ a b c, (a-b)-c ≠ a-(b-c)` | ✓ ⚠ hints |
-| L07 | Identity is unique | `isIdentity e → isIdentity e' → e = e'` | ✓ |
-| L08 | Isomorphism preserves identity | `isIdentity e → isIdentity (φ e)` | ✓ |
-| L09 | ℂ ≄* ℝ | `IsEmpty (ℂ ≃* ℝ)` | ✓ |
+教学目标：从最简单的代数结构开始，理解"运算+性质"的思想。
+
+| # | 教学目标 | Statement | 新概念 |
+|---|---------|-----------|-------|
+| L01 | 正实数对乘法封闭 | `Set.isMagma {x : ℝ \| x > 0}` | 原群(magma) |
+| L02 | 奇数对加法不封闭 | `¬ Set.isAddMagma {x : ℤ \| Odd x}` | 反例 |
+| L03 | 函数复合的结合律 | `(f ∘ g) ∘ h = f ∘ (g ∘ h)` | 结合律 |
+| L04 | 平方映射保持乘法 | `isMulMap (fun x => x * x)` | 同态映射 |
+| L05 | exp 是加法到乘法的同态 | `isAddMulMap Real.exp` | 经典例子 |
+| L06 | 减法不满足结合律 | `∃ a b c, (a-b)-c ≠ a-(b-c)` | 反例构造 |
+| L07 | 单位元的唯一性 | `isIdentity e → isIdentity e' → e = e'` | 单位元 |
+| L08 | 同构保持单位元 | `isIdentity e → isIdentity (φ e)` | 同构 |
+| L09 | ℂ 和 ℝ 乘法不同构 | `IsEmpty (ℂ ≃* ℝ)` | 非同构证明 |
 
 ---
 
-## World 5: GroupBasics (~10 levels) — refactor from BasicGroupTheory L01-L10
+## World 5: GroupBasics (~12 levels) 🔄
 
-| # | Title | Statement | Fraleigh | Status |
-|---|-------|-----------|----------|--------|
-| L01 | Rewriting with mul_assoc | `h : a*b = b*a → a*b*c = b*(a*c)` | §2 | ✓ |
-| L02 | Associativity via `group` | `(a*b)*c = a*(b*c)` | §2 | ✓ |
-| L03 | Left inverse is the inverse | `y*x = 1 → y = x⁻¹` | §4 | ✓ |
-| L04 | Inverse exists | `∃ b, a*b = 1 ∧ b*a = 1` | §4 | ✓ |
-| L05 | Inverse is unique | `a*b=1 → b*a=1 → a*c=1 → c*a=1 → b=c` | §4 | ✓ |
-| L06 | Subgroup criterion | `H.Nonempty → (∀ a b ∈ H, a*b⁻¹ ∈ H) → IsSubgroup H` | §5 | ✓ |
-| L07 | kℤ is a subgroup | `AddSubgroupClass (SubSetP (· % k = 0)) ℤ` | §6 | ✓ |
-| L08 | ℤ/nℤ is a commutative group | `CommGroup (Fin n)` (with explicit add/neg) | §6 | ✓ |
-| L09 | Commutator criterion | `a*b = b*a ↔ a*b*a⁻¹*b⁻¹ = 1` | §15 | ✓ |
-| L10 | Elementary 2-group is abelian | `(∀ a, a*a=1) → ∀ a b, a*b = b*a` | §4 | ✓ |
+教学目标：理解群是什么——从具体群出发，然后学习抽象群的性质。
+
+### Part A: 认识群（具体例子）
+
+| # | 教学目标 | Statement | 新概念 | Status |
+|---|---------|-----------|-------|--------|
+| L01 | 在具体群上计算 | `(a*b)*c = a*(b*c)` 用 `group` | 群公理 | ✓ |
+| L02 | ℤ/nℤ 是交换群 | `CommGroup (Fin n)` | 具体群构造 | ✓ |
+| L03 | 逆元存在 | `∃ b, a*b = 1 ∧ b*a = 1` | 逆元 | ✓ |
+
+### Part B: 群的基本性质
+
+| # | 教学目标 | Statement | 新概念 | Status |
+|---|---------|-----------|-------|--------|
+| L04 | 左逆 = 逆 | `y*x = 1 → y = x⁻¹` | 逆元唯一性 | ✓ |
+| L05 | 逆元唯一 | `a*b=1 → b*a=1 → a*c=1 → c=a=1 → b=c` | mul_left_cancel | ✓ |
+| L06 | 交换子判据 | `a*b = b*a ↔ a*b*a⁻¹*b⁻¹ = 1` | 交换子 | ✓ |
+| L07 | 2-阶元群是交换群 | `(∀ a, a*a=1) → ∀ a b, a*b = b*a` | 阶 | ✓ |
+
+### Part C: 子群
+
+| # | 教学目标 | Statement | 新概念 | Status |
+|---|---------|-----------|-------|--------|
+| L08 | 子群判据 | `H.Nonempty → (∀ a b ∈ H, a*b⁻¹ ∈ H) → IsSubgroup H` | 子群 | ✓ |
+| L09 | kℤ 是 ℤ 的子群 | `AddSubgroupClass (SubSetP (· % k = 0)) ℤ` | 具体子群 | ✓ |
+| L10 | Klein 四元群不是循环群 | `\|C\|=2 → ¬ IsCyclic (C×C)` | 循环群 | ✓ |
 
 ---
 
-## World 6: CosetsAndLagrange (~8 levels) — refactor from BasicGroupTheory L11-L18
+## World 6: CosetsAndLagrange (~8 levels) 🔄
 
-| # | Title | Statement | Fraleigh | Status |
-|---|-------|-----------|----------|--------|
-| L01 | Coset membership | `x ∈ g•H ↔ g⁻¹*x ∈ H` | §10 | ✓ |
-| L02 | Cosets are equinumerous | `Equiv (g•H) (k•H)` | §10 | ✓ |
-| L03 | Coset equality criterion | `g•H = k•H → k⁻¹*g ∈ H` | §10 | ✓ |
-| L04 | Coset transitivity | `x ∈ g•H → (y ∈ g•H ↔ x⁻¹*y ∈ H)` | §10 | ✓ |
-| L05 | Cosets are disjoint or equal | `(g•H) ∩ (k•H) = ∅ ∨ g•H = k•H` | §10 | ✓ |
-| L06 | Klein 4-group not cyclic | `|C|=2 → ¬ IsCyclic (C×C)` | §11 | ✓ |
-| L07 | Coset partition (= L05 repeat?) | same as L05 | §10 | ⚠ duplicate |
-| L08 | Index and Lagrange | same as L05 | §10 | ⚠ duplicate |
+教学目标：理解陪集把群"切割"成等大的块，从而得到 Lagrange 定理。
 
-**Note**: L17 and L18 have identical Statements to L15. Need to fix — L17 should be about `|g•H| = |H|` (coset order), L18 about `|G| = [G:H] * |H|` (Lagrange).
+### Part A: 认识陪集（具体例子）
+
+| # | 教学目标 | Statement | 新概念 | Status |
+|---|---------|-----------|-------|--------|
+| L01 | 陪集成员判据 | `x ∈ g•H ↔ g⁻¹*x ∈ H` | 左陪集 | ✓ |
+| L02 | 陪集等势 | `Equiv (g•H) (k•H)` | 陪集大小 | ✓ |
+
+### Part B: 陪集的性质
+
+| # | 教学目标 | Statement | 新概念 | Status |
+|---|---------|-----------|-------|--------|
+| L03 | 陪集相等判据 | `g•H = k•H → k⁻¹*g ∈ H` | 陪集相等 | ✓ |
+| L04 | 陪集是轨道 | `x ∈ g•H → (y ∈ g•H ↔ x⁻¹*y ∈ H)` | 传递性 | ✓ |
+| L05 | 陪集不交或相等 | `(g•H) ∩ (k•H) = ∅ ∨ g•H = k•H` | 分划 | ✓ |
+
+### Part C: Lagrange 定理
+
+| # | 教学目标 | Statement | 新概念 | Status |
+|---|---------|-----------|-------|--------|
+| L06 | 陪集大小 = 子群阶 | `Nat.card (g•H) = Nat.card H` | \|gH\|=\|H\| | ⚠ fix |
+| L07 | Lagrange 定理 | `\|G\| = [G:H] * \|H\|` | Lagrange | ⚠ fix |
+| L08 | 阶整除群阶 | `orderOf a ∣ Nat.card G` | 推论 | ❌ new |
 
 ---
 
 ## World 7: GroupHomo (6 levels) ✓
 
-| # | Title | Statement | Fraleigh | Status |
-|---|-------|-----------|----------|--------|
-| L01 | f(1) = 1 | `f 1 = 1` | §13 | ✓ |
-| L02 | f(a⁻¹) = f(a)⁻¹ | `∀ h, f h⁻¹ = (f h)⁻¹` | §13 | ✓ |
-| L03 | Kernel is normal | `x ∈ ker f → g*x*g⁻¹ ∈ ker f` | §14 | ✓ |
-| L04 | Normal ↔ coset multiplication | `N.Normal ↔ ∀ g h, (g•N)*(h•N) = (g*h)•N` | §14 | ✓ |
-| L05 | Universal property (existence) | `∃! f' : G/N →* H, f' ∘ π = f` | §14 | ✓ |
-| L06 | Universal property (uniqueness) | `∃! ψ : P ≃* Q, ψ ∘ πP = πQ` | §14 | ✓ |
+教学目标：理解同态是"保持结构的映射"，核和商群的概念。
+
+| # | 教学目标 | Statement | 新概念 | Status |
+|---|---------|-----------|-------|--------|
+| L01 | 同态保持单位元 | `f 1 = 1` | 同态 | ✓ |
+| L02 | 同态保持逆元 | `∀ h, f h⁻¹ = (f h)⁻¹` | | ✓ |
+| L03 | 核是正规子群 | `x ∈ ker f → g*x*g⁻¹ ∈ ker f` | 核, 正规 | ✓ |
+| L04 | 正规 ↔ 陪集可乘 | `N.Normal ↔ ∀ g h, (g•N)*(h•N) = (g*h)•N` | 商群运算 | ✓ |
+| L05 | 商群的万有性质 | `∃! f' : G/N →* H, f' ∘ π = f` | 万有性质 | ✓ |
+| L06 | 万有性质的唯一性 | `∃! ψ : P ≃* Q, ψ ∘ πP = πQ` | | ✓ |
 
 ---
 
-## World 8: GroupAction (~10 levels) — EXPAND
+## World 8: GroupAction (~10 levels) 🔄
 
-| # | Title | Statement | Fraleigh | Status |
-|---|-------|-----------|----------|--------|
-| L01 | Orbit equality | `orbit G x = orbit G y ↔ ∃ g, g•x = y` | §16 | ✓ |
-| L02 | Conjugation stabilizer | `conj(g) • stab(x) = stab(g•x)` | §16 | ✓ |
-| L03 | Orbit-Stabilizer theorem | `G/stab(x) ≃ orbit(x)` | §16.16 | ✓ |
-| L04 | Action on cosets | G acts on G/H | §16 | ❌ new |
-| L05 | Conjugation action, center | conjugacy classes, Z(G) | §16 | ❌ new |
-| L06 | Fixed point counting | `|X| ≡ |X^G| (mod p)` for p-groups | §36.1 | ❌ new |
-| L07 | Cauchy's theorem | `p ∣ |G| → ∃ a, orderOf a = p` | §36.3 | ❌ new |
-| L08 | Normalizer definition | `N[H] = {g | gHg⁻¹ = H}` | §36.5 | ❌ new |
-| L09 | Normalizer lemma | `(N[H]:H) ≡ (G:H) (mod p)` | §36.6 | ❌ new |
-| L10 | Class equation | `|G| = |Z(G)| + Σ [G:C_G(gi)]` | §37.2 | ❌ new |
+教学目标：群作用是理解群结构的核心工具。从具体例子到抽象定理，最终为 Sylow 做准备。
+
+### Part A: 认识群作用（具体例子）
+
+| # | 教学目标 | Statement | 新概念 | Status |
+|---|---------|-----------|-------|--------|
+| L01 | 轨道相等判据 | `orbit G x = orbit G y ↔ ∃ g, g•x = y` | 轨道 | ✓ |
+| L02 | 共轭作用与稳定子 | `conj(g)•stab(x) = stab(g•x)` | 共轭, 稳定子 | ✓ |
+| L03 | 轨道-稳定子定理 | `G/stab(x) ≃ orbit(x)` | 核心定理 | ✓ |
+
+### Part B: 群作用在陪集上
+
+| # | 教学目标 | Statement | 新概念 | Status |
+|---|---------|-----------|-------|--------|
+| L04 | 群作用在陪集上 | G 左乘作用在 G/H 上是传递的 | 陪集作用 | ❌ |
+| L05 | 共轭类与中心 | `Z(G) = {g \| 共轭类为 {g}}` | 中心 | ❌ |
+
+### Part C: p-群的不动点定理（Sylow 的关键工具）
+
+| # | 教学目标 | Statement | 新概念 | Status |
+|---|---------|-----------|-------|--------|
+| L06 | p-群的不动点计数 | `\|X\| ≡ \|X^G\| (mod p)` | 不动点 | ❌ |
+| L07 | Cauchy 定理 | `p ∣ \|G\| → ∃ a, orderOf a = p` | Cauchy | ❌ |
+
+### Part D: 正规化子
+
+| # | 教学目标 | Statement | 新概念 | Status |
+|---|---------|-----------|-------|--------|
+| L08 | 正规化子定义 | `N[H] = {g \| gHg⁻¹ = H}` | 正规化子 | ❌ |
+| L09 | 正规化子引理 | `(N[H]:H) ≡ (G:H) (mod p)` | 关键引理 | ❌ |
+| L10 | 类方程 | `\|G\| = \|Z(G)\| + Σ [G:C_G(gi)]` | 类方程 | ❌ |
 
 ---
 
-## World 9: Sylow (~8 levels) — NEW
+## World 9: Sylow (~8 levels) ❌
 
-| # | Title | Statement | Fraleigh | Status |
-|---|-------|-----------|----------|--------|
-| L01 | p-subgroup definition | `IsPGroup p H ↔ ∀ h ∈ H, orderOf h is power of p` | §36.4 | ❌ new |
-| L02 | First Sylow Theorem | `p^n ∣ |G| → ∃ H ≤ G, |H| = p^n` | §36.8 | ❌ new |
-| L03 | Second Sylow Theorem | `IsSylow p P → IsSylow p Q → ∃ g, gPg⁻¹ = Q` | §36.10 | ❌ new |
-| L04 | Third Sylow Theorem | `#{Sylow p-subgroups} ≡ 1 (mod p)` and divides `|G|` | §36.11 | ❌ new |
-| L05 | Center of p-group nontrivial | `IsPGroup p G → Z(G) ≠ {1}` | §37.4 | ❌ new |
-| L06 | Groups of order p² abelian | `|G| = p² → IsCommutative G` | §37.6 | ❌ new |
-| L07 | No simple group of order 12 | application | §37 | ❌ new |
-| L08 | Classify groups of small order | application | §37 | ❌ new |
+教学目标：Sylow 定理是有限群论的核心工具，所有证明都通过群作用完成。
+
+### Part A: 定义与 Sylow 第一定理
+
+| # | 教学目标 | Statement | 新概念 | Status |
+|---|---------|-----------|-------|--------|
+| L01 | Sylow p-子群定义 | p-子群, Sylow p-子群的定义 | 定义 | ❌ |
+| L02 | Sylow I: 存在性 | `p^n ∣ \|G\| → ∃ H ≤ G, \|H\| = p^n` | 存在 | ❌ |
+
+### Part B: Sylow 第二、第三定理
+
+| # | 教学目标 | Statement | 新概念 | Status |
+|---|---------|-----------|-------|--------|
+| L03 | Sylow II: 共轭性 | 所有 Sylow p-子群共轭 | 共轭 | ❌ |
+| L04 | Sylow III: 计数 | `n_p ≡ 1 (mod p)` 且 `n_p ∣ \|G\|` | 计数 | ❌ |
+
+### Part C: 应用
+
+| # | 教学目标 | Statement | 新概念 | Status |
+|---|---------|-----------|-------|--------|
+| L05 | p-群的中心非平凡 | `IsPGroup p G → Z(G) ≠ {1}` | 推论 | ❌ |
+| L06 | p² 阶群是交换群 | `\|G\| = p² → IsCommutative G` | 推论 | ❌ |
+| L07 | 不存在 12 阶单群 | 用 Sylow III 排除 | 应用 | ❌ |
+| L08 | 小阶群分类 | 分类 15 阶以下的群 | 综合 | ❌ |
 
 ---
 
-## Summary
+## 总结
 
-| World | Levels | Status |
-|-------|--------|--------|
-| BasicLean | 10 | ✓ done |
-| BasicFunctions | 6 | ✓ mostly done |
-| EquivalenceRelation | 22→12 | ⚠ needs merge+doc |
-| Magma | 9 | ✓ mostly done |
-| GroupBasics | 10 | ⚠ refactor from BGT |
-| CosetsAndLagrange | 8 | ⚠ fix duplicates L17/L18 |
-| GroupHomo | 6 | ✓ done |
-| GroupAction | 3→10 | ❌ 7 new levels |
-| Sylow | 0→8 | ❌ all new |
-| **Total** | **~79** | |
+| World | levels | 新概念 | 教学重点 |
+|-------|--------|-------|---------|
+| BasicLean | 10 | Lean tactic | 工具 |
+| BasicFunctions | 6 | 单射/满射/双射 | 映射 |
+| EquivalenceRelation | 12 | 等价关系/商集 | 等价 |
+| Magma | 9 | 运算/封闭/结合律 | 代数结构 |
+| GroupBasics | 12 | 群/逆元/子群 | **理解群** |
+| CosetsAndLagrange | 8 | 陪集/Lagrange | **理解商** |
+| GroupHomo | 6 | 同态/核/商群 | **结构保持** |
+| GroupAction | 10 | 群作用/轨道/不动点 | **核心工具** |
+| Sylow | 8 | Sylow 定理 | **最终目标** |
+| **Total** | **~81** | | |
