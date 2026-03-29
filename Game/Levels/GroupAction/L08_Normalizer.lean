@@ -66,4 +66,3 @@ for studying normality: H is normal in G precisely when H.normalizer = ⊤.
 "
 
 NewTheorem Subgroup.mem_normalizer_iff Subgroup.normalizer Subgroup.le_normalizer Subgroup.mul_mem Subgroup.inv_mem
-NewTactic intro constructor group rw exact

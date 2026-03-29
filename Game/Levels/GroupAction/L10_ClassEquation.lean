@@ -58,4 +58,3 @@ applied to the conjugation action via `ConjAct`.
 "
 
 NewTheorem IsPGroup.center_nontrivial IsPGroup.card_modEq_card_fixedPoints ConjAct.fixedPoints_eq_center Subgroup.center IsPGroup
-NewTactic exact

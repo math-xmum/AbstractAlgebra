@@ -6,6 +6,9 @@ import Game.Levels.GroupAction.L04_ActionOnCosets
 import Game.Levels.GroupAction.L05_CenterConjugacy
 import Game.Levels.GroupAction.L06_FixedPointCounting
 import Game.Levels.GroupAction.L07_CauchyTheorem
+import Game.Levels.GroupAction.L08_Normalizer
+import Game.Levels.GroupAction.L09_NormalizerLemma
+import Game.Levels.GroupAction.L10_ClassEquation
 
 
 World "GroupAction"

@@ -71,4 +71,3 @@ in which H sits normally.
 "
 
 NewTheorem Subgroup.normalizer_eq_top Subgroup.normalizer_eq_top_iff Subgroup.Normal.conj_mem Subgroup.mem_top
-NewTactic ext simp group rw constructor intro exact
