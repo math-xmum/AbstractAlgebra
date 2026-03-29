@@ -42,7 +42,7 @@ private lemma coset_mul_sup {g h x : G}
     (hx : x ∈ (g * h) • (N : Set G)) : x ∈ (g • (N : Set G)) * (h • N) := by
   obtain ⟨n, hn, rfl⟩ := hx
   rw [Set.mem_mul_set_iff]
-  exact ⟨g, h * n, ⟨1, Subgroup.one_mem N, by simp⟩, ⟨n, hn, rfl⟩, by group⟩
+  exact ⟨g * 1, h * n, ⟨1, Subgroup.one_mem N, by simp⟩, ⟨n, hn, rfl⟩, by simp [mul_assoc]⟩
 
 private lemma coset_mul_imp_normal
     (H : ∀ g h : G, (g • (N : Set G)) * (h • N) = (g * h) • N) : N.Normal := by

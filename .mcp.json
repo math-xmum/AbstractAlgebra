@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "playwright": {
+      "command": "/opt/local/bin/npx",
+      "args": ["@playwright/mcp@latest"],
+      "env": {
+        "PATH": "/opt/local/bin:/usr/local/bin:/usr/bin:/bin"
+      }
+    }
+  }
+}

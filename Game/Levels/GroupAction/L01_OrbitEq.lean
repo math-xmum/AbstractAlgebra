@@ -27,7 +27,7 @@ variable {G X:Type*} [Group G] [MulAction G X]
 #check  QuotientGroup.mk_out_eq_mul
 
 /-- The identity element witnesses membership in an orbit. -/
-private lemma mem_orbit_self (x : X) : x ∈ orbit G x := by
+private lemma mem_orbit_self' (x : X) : x ∈ orbit G x := by
   use 1; apply MulAction.one_smul
 
 /-- If z ∈ orbit G x and y = g • x, then z ∈ orbit G y. -/
@@ -53,7 +53,7 @@ Statement (x y : X) :  MulAction.orbit G x = MulAction.orbit G y ↔ ∃ g:G , g
   · Hint "Introduce the hypothesis."
     intro H
     Hint "Observe that y ∈ Gy. Use `have h1: y ∈ orbit G y` to get the claim and then prove it. You may use `MulAction.one_smul` "
-    have h1: y ∈ orbit G y := mem_orbit_self y
+    have h1: y ∈ orbit G y := MulAction.mem_orbit_self y
     Hint "Rewrite the goal using {H}. "
     rw [←H] at h1
     Hint "Now this is exactly {h1}."

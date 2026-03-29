@@ -34,10 +34,9 @@ variable {G X:Type*} [Group G] [MulAction G X]
 private lemma conj_stab_fwd {x y : X} {g h : G} (hxy : y = g • x)
     (H : ∃ k, k • x = x ∧ g * k * g⁻¹ = h) : h • y = y := by
   obtain ⟨k, Hk1, Hk2⟩ := H
-  rw [hxy, ←Hk2]
-  simp_rw [MulAut.smul_def, MulAut.conj_apply]
-  repeat rw [←mul_smul]
-  rw [←Hk1]; group
+  subst hxy; subst Hk2
+  show (g * k * g⁻¹) • (g • x) = g • x
+  rw [mul_smul, mul_smul, inv_smul_smul, Hk1]
 
 /-- Backward direction: if h stabilizes y = g • x, then g⁻¹ * h * g stabilizes x. -/
 private lemma conj_stab_bwd {x y : X} {g h : G} (hxy : y = g • x)

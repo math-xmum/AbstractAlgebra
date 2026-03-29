@@ -25,4 +25,4 @@ Statement  {α : Type*} (s t : Set α) : s ⊆ t → s ∩ t =  s  := by
 Conclusion "Level Completed!"
 
 NewTactic pick_goal «have» «repeat» replace aesop simp_all specialize trivial «let» norm_cast unfold decide native_decide
-simp simp_rw linarith assumption push_neg rewrite
+simp simp_rw linarith assumption push_neg rewrite use by_cases
