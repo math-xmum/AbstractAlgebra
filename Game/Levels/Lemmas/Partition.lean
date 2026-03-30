@@ -1,11 +1,7 @@
 import Mathlib.Data.Set.Basic
 import Mathlib.Data.SetLike.Basic
 import Mathlib.Order.SetNotation
-
-
-/-- A collection `c : Set (Set α)` of sets is a partition of `α` into pairwise
-disjoint sets if `∅ ∉ c` and each element `a : α` belongs to a unique set `b ∈ c`. -/
-def IsPartition (c : Set (Set α)) := ∅ ∉ c ∧ ∀ a, ∃! b, b ∈ c ∧ a ∈ b
+import Mathlib.Data.Setoid.Partition
 
 def IsPartition' (c : Set (Set α)) := ∅ ∉ c ∧ ( ⋃₀ c = Set.univ) ∧ ( ∀ a ∈ c,  ∀ b ∈ c, a ∩ b ≠ ∅ → a = b)
 

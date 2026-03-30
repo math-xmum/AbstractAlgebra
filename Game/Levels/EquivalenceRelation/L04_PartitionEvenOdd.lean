@@ -6,6 +6,8 @@ Level 4
 
 Title "Even and Odd Numbers Form a Partition"
 
+open Setoid
+
 Introduction "A partition of a set X is a collection of nonempty, pairwise disjoint subsets that cover X. The simplest example: every natural number is either even or odd, so {Even} and {Odd} partition the natural numbers. We formalize this using the IsPartition predicate, which requires that the empty set is not in the collection and every element belongs to exactly one member."
 
 private lemma even_odd_no_empty :

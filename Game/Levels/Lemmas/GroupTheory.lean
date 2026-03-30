@@ -141,19 +141,6 @@ end MonoidSet
 
 section GroupHom
 
-variable {G H: Type*} [Group G] [Group H] (f: G → H) (hf : ∀ x y :G, f (x * y) = f x * f y )
-
-abbrev GroupHom.intro  : G →* H where
-  toFun := f
-  map_mul' := hf
-  map_one' := by
-    have h1 := hf 1 1
-    simp [mul_one] at h1
-    exact h1
-
-@[simp]
-lemma GroupHom.coe_fun_eq : GroupHom.intro f hf = f := rfl
-
 section MulEquiv_intro
 variable {G H : Type*} [Monoid G] [Monoid H] (toFun : G →H) (invFun : H → G) (left_inv : Function.LeftInverse invFun toFun)
 (right_inv: Function.RightInverse invFun toFun) (toFun_mul : ∀ x y, toFun (x * y) = toFun x * toFun y)

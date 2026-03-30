@@ -6,6 +6,8 @@ Level 5
 
 Title "Two Definitions of Partition"
 
+open Setoid
+
 variable {α : Type*} (C : Set (Set α))
 
 theorem Set.ne_empty_of_mem {a : α} {s : Set α} (h : a ∈ s) : s ≠ ∅ := fun e =>

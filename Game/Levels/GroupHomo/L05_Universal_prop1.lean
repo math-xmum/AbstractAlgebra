@@ -42,7 +42,7 @@ Statement [hN : N.Normal] :
   refine ExistsUnique.intro ?_ ?_ ?_
   Hint "We first construct the map f'. "
   pick_goal 1
-  · Hint "We should first construct a map  G/N → H and then show that it is multiplicative. Use `GroupHom.intro` to split the goal"
+  · Hint "We should first construct a map  G/N → H and then show that it is multiplicative. Use `MonoidHom.mk'` to split the goal"
     refine MonoidHom.mk' (fun s => f (s.out)) ?_
     Hint "Introduce all varaibles."
     intro x y

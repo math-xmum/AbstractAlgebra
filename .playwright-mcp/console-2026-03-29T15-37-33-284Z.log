@@ -1,1 +1,3 @@
 [    5121ms] [WARNING] [LeanMonaco]: There can only be one active LeanMonaco instance at a time. Disposing previous instance. @ http://localhost:3000/node_modules/.vite/deps/lean4monaco.js?v=76aec93e:25134
+[  157034ms] [ERROR] WebSocket connection to 'ws://localhost:3000/?token=XRdYOW34ppRu' failed:  @ http://localhost:3000/@vite/client:744
+[  165261ms] [WARNING] [LeanMonaco]: There can only be one active LeanMonaco instance at a time. Disposing previous instance. @ http://localhost:3000/node_modules/.vite/deps/lean4monaco.js?v=76aec93e:25134

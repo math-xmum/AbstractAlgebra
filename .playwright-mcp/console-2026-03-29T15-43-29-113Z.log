@@ -1,0 +1,81 @@
+[       1ms] [ERROR] Cannot process request to closed file 'file:///Users/hoxide/mycodes/AbstractAlgebra/Game/Metadata.lean' @ http://localhost:3000/node_modules/.vite/deps/chunk-S5QSDBI7.js?v=76aec93e:62640
+[       2ms] [WARNING] _ResponseError: Cannot process request to closed file 'file:///Users/hoxide/mycodes/AbstractAlgebra/Game/Metadata.lean'
+    at handleResponse (http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:2069:40)
+    at handleMessage (http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:1879:11)
+    at Object.handleMessage (http://localhost:3000/node_modules/.vite/deps/chunk-52RNCBML.js?v=76aec93e:51734:19)
+    at processMessageQueue (http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:1892:29)
+    at http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:1870:11 @ http://localhost:3000/src/components/infoview/goals.tsx:438
+[      17ms] [ERROR] Cannot process request to closed file 'file:///Users/hoxide/mycodes/AbstractAlgebra/Game/Metadata.lean' @ http://localhost:3000/node_modules/.vite/deps/chunk-S5QSDBI7.js?v=76aec93e:62640
+[      17ms] [WARNING] _ResponseError: Cannot process request to closed file 'file:///Users/hoxide/mycodes/AbstractAlgebra/Game/Metadata.lean'
+    at handleResponse (http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:2069:40)
+    at handleMessage (http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:1879:11)
+    at Object.handleMessage (http://localhost:3000/node_modules/.vite/deps/chunk-52RNCBML.js?v=76aec93e:51734:19)
+    at processMessageQueue (http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:1892:29)
+    at http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:1870:11 @ http://localhost:3000/src/components/infoview/goals.tsx:438
+[      29ms] [ERROR] Cannot process request to closed file 'file:///Users/hoxide/mycodes/AbstractAlgebra/Game/Metadata.lean' @ http://localhost:3000/node_modules/.vite/deps/chunk-S5QSDBI7.js?v=76aec93e:62640
+[      29ms] [WARNING] _ResponseError: Cannot process request to closed file 'file:///Users/hoxide/mycodes/AbstractAlgebra/Game/Metadata.lean'
+    at handleResponse (http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:2069:40)
+    at handleMessage (http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:1879:11)
+    at Object.handleMessage (http://localhost:3000/node_modules/.vite/deps/chunk-52RNCBML.js?v=76aec93e:51734:19)
+    at processMessageQueue (http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:1892:29)
+    at http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:1870:11 @ http://localhost:3000/src/components/infoview/goals.tsx:438
+[      42ms] [ERROR] Cannot process request to closed file 'file:///Users/hoxide/mycodes/AbstractAlgebra/Game/Metadata.lean' @ http://localhost:3000/node_modules/.vite/deps/chunk-S5QSDBI7.js?v=76aec93e:62640
+[      43ms] [WARNING] _ResponseError: Cannot process request to closed file 'file:///Users/hoxide/mycodes/AbstractAlgebra/Game/Metadata.lean'
+    at handleResponse (http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:2069:40)
+    at handleMessage (http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:1879:11)
+    at Object.handleMessage (http://localhost:3000/node_modules/.vite/deps/chunk-52RNCBML.js?v=76aec93e:51734:19)
+    at processMessageQueue (http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:1892:29)
+    at http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:1870:11 @ http://localhost:3000/src/components/infoview/goals.tsx:438
+[      57ms] [ERROR] Cannot process request to closed file 'file:///Users/hoxide/mycodes/AbstractAlgebra/Game/Metadata.lean' @ http://localhost:3000/node_modules/.vite/deps/chunk-S5QSDBI7.js?v=76aec93e:62640
+[      57ms] [WARNING] _ResponseError: Cannot process request to closed file 'file:///Users/hoxide/mycodes/AbstractAlgebra/Game/Metadata.lean'
+    at handleResponse (http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:2069:40)
+    at handleMessage (http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:1879:11)
+    at Object.handleMessage (http://localhost:3000/node_modules/.vite/deps/chunk-52RNCBML.js?v=76aec93e:51734:19)
+    at processMessageQueue (http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:1892:29)
+    at http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:1870:11 @ http://localhost:3000/src/components/infoview/goals.tsx:438
+[      69ms] [ERROR] Cannot process request to closed file 'file:///Users/hoxide/mycodes/AbstractAlgebra/Game/Metadata.lean' @ http://localhost:3000/node_modules/.vite/deps/chunk-S5QSDBI7.js?v=76aec93e:62640
+[      69ms] [WARNING] _ResponseError: Cannot process request to closed file 'file:///Users/hoxide/mycodes/AbstractAlgebra/Game/Metadata.lean'
+    at handleResponse (http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:2069:40)
+    at handleMessage (http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:1879:11)
+    at Object.handleMessage (http://localhost:3000/node_modules/.vite/deps/chunk-52RNCBML.js?v=76aec93e:51734:19)
+    at processMessageQueue (http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:1892:29)
+    at http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:1870:11 @ http://localhost:3000/src/components/infoview/goals.tsx:438
+[     225ms] [ERROR] Cannot process request to closed file 'file:///Users/hoxide/mycodes/AbstractAlgebra/Game/Metadata.lean' @ http://localhost:3000/node_modules/.vite/deps/chunk-S5QSDBI7.js?v=76aec93e:62640
+[     226ms] [WARNING] _ResponseError: Cannot process request to closed file 'file:///Users/hoxide/mycodes/AbstractAlgebra/Game/Metadata.lean'
+    at handleResponse (http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:2069:40)
+    at handleMessage (http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:1879:11)
+    at Object.handleMessage (http://localhost:3000/node_modules/.vite/deps/chunk-52RNCBML.js?v=76aec93e:51734:19)
+    at processMessageQueue (http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:1892:29)
+    at http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:1870:11 @ http://localhost:3000/src/components/infoview/goals.tsx:438
+[     242ms] _ResponseError: Cannot process request to closed file 'file:///Users/hoxide/mycodes/AbstractAlgebra/Game/Metadata.lean'
+    at handleResponse (http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:2069:40)
+    at handleMessage (http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:1879:11)
+    at Object.handleMessage (http://localhost:3000/node_modules/.vite/deps/chunk-52RNCBML.js?v=76aec93e:51734:19)
+    at processMessageQueue (http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:1892:29)
+    at http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:1870:11
+[     240ms] [ERROR] Cannot process request to closed file 'file:///Users/hoxide/mycodes/AbstractAlgebra/Game/Metadata.lean' @ http://localhost:3000/node_modules/.vite/deps/chunk-S5QSDBI7.js?v=76aec93e:62640
+[     240ms] [WARNING] _ResponseError: Cannot process request to closed file 'file:///Users/hoxide/mycodes/AbstractAlgebra/Game/Metadata.lean'
+    at handleResponse (http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:2069:40)
+    at handleMessage (http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:1879:11)
+    at Object.handleMessage (http://localhost:3000/node_modules/.vite/deps/chunk-52RNCBML.js?v=76aec93e:51734:19)
+    at processMessageQueue (http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:1892:29)
+    at http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:1870:11 @ http://localhost:3000/src/components/infoview/goals.tsx:438
+[     241ms] [WARNING] _ResponseError: Cannot process request to closed file 'file:///Users/hoxide/mycodes/AbstractAlgebra/Game/Metadata.lean'
+    at handleResponse (http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:2069:40)
+    at handleMessage (http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:1879:11)
+    at Object.handleMessage (http://localhost:3000/node_modules/.vite/deps/chunk-52RNCBML.js?v=76aec93e:51734:19)
+    at processMessageQueue (http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:1892:29)
+    at http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:1870:11 @ http://localhost:3000/src/components/infoview/goals.tsx:438
+[     249ms] _ResponseError: Cannot process request to closed file 'file:///Users/hoxide/mycodes/AbstractAlgebra/Game/Metadata.lean'
+    at handleResponse (http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:2069:40)
+    at handleMessage (http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:1879:11)
+    at Object.handleMessage (http://localhost:3000/node_modules/.vite/deps/chunk-52RNCBML.js?v=76aec93e:51734:19)
+    at processMessageQueue (http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:1892:29)
+    at http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:1870:11
+[    7527ms] [WARNING] [LeanMonaco]: There can only be one active LeanMonaco instance at a time. Disposing previous instance. @ http://localhost:3000/node_modules/.vite/deps/lean4monaco.js?v=76aec93e:25134
+[    8060ms] [WARNING] No connection to Lean @ http://localhost:3000/src/components/infoview/goals.tsx:434
+[    8060ms] [WARNING] No connection to Lean @ http://localhost:3000/src/components/infoview/goals.tsx:434
+[    8359ms] [WARNING] No connection to Lean @ http://localhost:3000/src/components/infoview/goals.tsx:434
+[   10142ms] [WARNING] No connection to Lean @ http://localhost:3000/src/components/infoview/goals.tsx:434
+[   21970ms] [ERROR]  @ http://localhost:3000/node_modules/.vite/deps/chunk-S5QSDBI7.js?v=76aec93e:62640
+[   21974ms] [ERROR]  @ http://localhost:3000/node_modules/.vite/deps/chunk-S5QSDBI7.js?v=76aec93e:62640

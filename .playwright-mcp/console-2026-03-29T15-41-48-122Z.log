@@ -1,0 +1,25 @@
+[     149ms] [WARNING] No connection to Lean @ http://localhost:3000/src/components/infoview/goals.tsx:434
+[     180ms] [ERROR] Cannot process request to closed file 'file:///Users/hoxide/mycodes/AbstractAlgebra/Game/Metadata.lean' @ http://localhost:3000/node_modules/.vite/deps/chunk-S5QSDBI7.js?v=76aec93e:62640
+[     181ms] [WARNING] _ResponseError: Cannot process request to closed file 'file:///Users/hoxide/mycodes/AbstractAlgebra/Game/Metadata.lean'
+    at handleResponse (http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:2069:40)
+    at handleMessage (http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:1879:11)
+    at Object.handleMessage (http://localhost:3000/node_modules/.vite/deps/chunk-52RNCBML.js?v=76aec93e:51734:19)
+    at processMessageQueue (http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:1892:29)
+    at http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:1870:11 @ http://localhost:3000/src/components/infoview/goals.tsx:438
+[     181ms] [WARNING] _ResponseError: Cannot process request to closed file 'file:///Users/hoxide/mycodes/AbstractAlgebra/Game/Metadata.lean'
+    at handleResponse (http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:2069:40)
+    at handleMessage (http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:1879:11)
+    at Object.handleMessage (http://localhost:3000/node_modules/.vite/deps/chunk-52RNCBML.js?v=76aec93e:51734:19)
+    at processMessageQueue (http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:1892:29)
+    at http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:1870:11 @ http://localhost:3000/src/components/infoview/goals.tsx:438
+[     213ms] _ResponseError: Cannot process request to closed file 'file:///Users/hoxide/mycodes/AbstractAlgebra/Game/Metadata.lean'
+    at handleResponse (http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:2069:40)
+    at handleMessage (http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:1879:11)
+    at Object.handleMessage (http://localhost:3000/node_modules/.vite/deps/chunk-52RNCBML.js?v=76aec93e:51734:19)
+    at processMessageQueue (http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:1892:29)
+    at http://localhost:3000/node_modules/.vite/deps/chunk-BXMP2DV4.js?v=76aec93e:1870:11
+[     297ms] [WARNING] No connection to Lean @ http://localhost:3000/src/components/infoview/goals.tsx:434
+[     366ms] [WARNING] No connection to Lean @ http://localhost:3000/src/components/infoview/goals.tsx:434
+[   14370ms] [ERROR]  @ http://localhost:3000/node_modules/.vite/deps/chunk-S5QSDBI7.js?v=76aec93e:62640
+[   14371ms] [ERROR]  @ http://localhost:3000/node_modules/.vite/deps/chunk-S5QSDBI7.js?v=76aec93e:62640
+[   14373ms] [ERROR]  @ http://localhost:3000/node_modules/.vite/deps/chunk-S5QSDBI7.js?v=76aec93e:62640

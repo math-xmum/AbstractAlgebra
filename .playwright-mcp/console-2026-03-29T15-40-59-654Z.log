@@ -1,0 +1,193 @@
+[     240ms] [WARNING] Error: No active Lean client.
+    at Object.createRpcSession (http://localhost:3000/node_modules/.vite/deps/lean4monaco.js?v=76aec93e:22020:15)
+    at Object.createRpcSession (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:17:45)
+    at http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:81:37
+    at new RpcSessionForFile (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:86:7)
+    at RpcSessions.connectCore (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:192:18)
+    at RpcSessions.connect (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:204:17)
+    at useRpcSessionAtTdpp (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:47:50)
+    at useRpcSessionAtPos (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:52:12)
+    at TypewriterInterface (http://localhost:3000/src/components/infoview/main.tsx:474:21)
+    at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-2KSAEFRG.js?v=76aec93e:19074:26) @ http://localhost:3000/src/components/infoview/goals.tsx:438
+[     243ms] [WARNING] Error: No active Lean client.
+    at Object.createRpcSession (http://localhost:3000/node_modules/.vite/deps/lean4monaco.js?v=76aec93e:22020:15)
+    at Object.createRpcSession (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:17:45)
+    at http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:81:37
+    at new RpcSessionForFile (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:86:7)
+    at RpcSessions.connectCore (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:192:18)
+    at RpcSessions.connect (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:204:17)
+    at useRpcSessionAtTdpp (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:47:50)
+    at useRpcSessionAtPos (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:52:12)
+    at TypewriterInterface (http://localhost:3000/src/components/infoview/main.tsx:474:21)
+    at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-2KSAEFRG.js?v=76aec93e:19074:26) @ http://localhost:3000/src/components/infoview/goals.tsx:438
+[     247ms] [WARNING] Error: No active Lean client.
+    at Object.createRpcSession (http://localhost:3000/node_modules/.vite/deps/lean4monaco.js?v=76aec93e:22020:15)
+    at Object.createRpcSession (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:17:45)
+    at http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:81:37
+    at new RpcSessionForFile (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:86:7)
+    at RpcSessions.connectCore (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:192:18)
+    at RpcSessions.connect (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:204:17)
+    at useRpcSessionAtTdpp (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:47:50)
+    at useRpcSessionAtPos (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:52:12)
+    at TypewriterInterface (http://localhost:3000/src/components/infoview/main.tsx:474:21)
+    at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-2KSAEFRG.js?v=76aec93e:19074:26) @ http://localhost:3000/src/components/infoview/goals.tsx:438
+[     252ms] [WARNING] Error: No active Lean client.
+    at Object.createRpcSession (http://localhost:3000/node_modules/.vite/deps/lean4monaco.js?v=76aec93e:22020:15)
+    at Object.createRpcSession (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:17:45)
+    at http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:81:37
+    at new RpcSessionForFile (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:86:7)
+    at RpcSessions.connectCore (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:192:18)
+    at RpcSessions.connect (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:204:17)
+    at useRpcSessionAtTdpp (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:47:50)
+    at useRpcSessionAtPos (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:52:12)
+    at TypewriterInterface (http://localhost:3000/src/components/infoview/main.tsx:474:21)
+    at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-2KSAEFRG.js?v=76aec93e:19074:26) @ http://localhost:3000/src/components/infoview/goals.tsx:438
+[     255ms] [WARNING] Error: No active Lean client.
+    at Object.createRpcSession (http://localhost:3000/node_modules/.vite/deps/lean4monaco.js?v=76aec93e:22020:15)
+    at Object.createRpcSession (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:17:45)
+    at http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:81:37
+    at new RpcSessionForFile (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:86:7)
+    at RpcSessions.connectCore (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:192:18)
+    at RpcSessions.connect (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:204:17)
+    at useRpcSessionAtTdpp (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:47:50)
+    at useRpcSessionAtPos (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:52:12)
+    at TypewriterInterface (http://localhost:3000/src/components/infoview/main.tsx:474:21)
+    at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-2KSAEFRG.js?v=76aec93e:19074:26) @ http://localhost:3000/src/components/infoview/goals.tsx:438
+[     259ms] [WARNING] Error: No active Lean client.
+    at Object.createRpcSession (http://localhost:3000/node_modules/.vite/deps/lean4monaco.js?v=76aec93e:22020:15)
+    at Object.createRpcSession (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:17:45)
+    at http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:81:37
+    at new RpcSessionForFile (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:86:7)
+    at RpcSessions.connectCore (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:192:18)
+    at RpcSessions.connect (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:204:17)
+    at useRpcSessionAtTdpp (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:47:50)
+    at useRpcSessionAtPos (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:52:12)
+    at TypewriterInterface (http://localhost:3000/src/components/infoview/main.tsx:474:21)
+    at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-2KSAEFRG.js?v=76aec93e:19074:26) @ http://localhost:3000/src/components/infoview/goals.tsx:438
+[     261ms] [WARNING] Error: No active Lean client.
+    at Object.createRpcSession (http://localhost:3000/node_modules/.vite/deps/lean4monaco.js?v=76aec93e:22020:15)
+    at Object.createRpcSession (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:17:45)
+    at http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:81:37
+    at new RpcSessionForFile (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:86:7)
+    at RpcSessions.connectCore (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:192:18)
+    at RpcSessions.connect (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:204:17)
+    at useRpcSessionAtTdpp (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:47:50)
+    at useRpcSessionAtPos (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:52:12)
+    at TypewriterInterface (http://localhost:3000/src/components/infoview/main.tsx:474:21)
+    at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-2KSAEFRG.js?v=76aec93e:19074:26) @ http://localhost:3000/src/components/infoview/goals.tsx:438
+[     264ms] [WARNING] Error: No active Lean client.
+    at Object.createRpcSession (http://localhost:3000/node_modules/.vite/deps/lean4monaco.js?v=76aec93e:22020:15)
+    at Object.createRpcSession (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:17:45)
+    at http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:81:37
+    at new RpcSessionForFile (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:86:7)
+    at RpcSessions.connectCore (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:192:18)
+    at RpcSessions.connect (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:204:17)
+    at useRpcSessionAtTdpp (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:47:50)
+    at useRpcSessionAtPos (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:52:12)
+    at TypewriterInterface (http://localhost:3000/src/components/infoview/main.tsx:474:21)
+    at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-2KSAEFRG.js?v=76aec93e:19074:26) @ http://localhost:3000/src/components/infoview/goals.tsx:438
+[     266ms] [WARNING] Error: No active Lean client.
+    at Object.createRpcSession (http://localhost:3000/node_modules/.vite/deps/lean4monaco.js?v=76aec93e:22020:15)
+    at Object.createRpcSession (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:17:45)
+    at http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:81:37
+    at new RpcSessionForFile (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:86:7)
+    at RpcSessions.connectCore (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:192:18)
+    at RpcSessions.connect (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:204:17)
+    at useRpcSessionAtTdpp (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:47:50)
+    at useRpcSessionAtPos (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:52:12)
+    at TypewriterInterface (http://localhost:3000/src/components/infoview/main.tsx:474:21)
+    at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-2KSAEFRG.js?v=76aec93e:19074:26) @ http://localhost:3000/src/components/infoview/goals.tsx:438
+[     268ms] [WARNING] Error: No active Lean client.
+    at Object.createRpcSession (http://localhost:3000/node_modules/.vite/deps/lean4monaco.js?v=76aec93e:22020:15)
+    at Object.createRpcSession (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:17:45)
+    at http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:81:37
+    at new RpcSessionForFile (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:86:7)
+    at RpcSessions.connectCore (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:192:18)
+    at RpcSessions.connect (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:204:17)
+    at useRpcSessionAtTdpp (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:47:50)
+    at useRpcSessionAtPos (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:52:12)
+    at TypewriterInterface (http://localhost:3000/src/components/infoview/main.tsx:474:21)
+    at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-2KSAEFRG.js?v=76aec93e:19074:26) @ http://localhost:3000/src/components/infoview/goals.tsx:438
+[     271ms] [WARNING] Error: No active Lean client.
+    at Object.createRpcSession (http://localhost:3000/node_modules/.vite/deps/lean4monaco.js?v=76aec93e:22020:15)
+    at Object.createRpcSession (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:17:45)
+    at http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:81:37
+    at new RpcSessionForFile (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:86:7)
+    at RpcSessions.connectCore (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:192:18)
+    at RpcSessions.connect (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:204:17)
+    at useRpcSessionAtTdpp (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:47:50)
+    at useRpcSessionAtPos (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:52:12)
+    at TypewriterInterface (http://localhost:3000/src/components/infoview/main.tsx:474:21)
+    at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-2KSAEFRG.js?v=76aec93e:19074:26) @ http://localhost:3000/src/components/infoview/goals.tsx:438
+[     273ms] [WARNING] Error: No active Lean client.
+    at Object.createRpcSession (http://localhost:3000/node_modules/.vite/deps/lean4monaco.js?v=76aec93e:22020:15)
+    at Object.createRpcSession (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:17:45)
+    at http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:81:37
+    at new RpcSessionForFile (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:86:7)
+    at RpcSessions.connectCore (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:192:18)
+    at RpcSessions.connect (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:204:17)
+    at useRpcSessionAtTdpp (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:47:50)
+    at useRpcSessionAtPos (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:52:12)
+    at TypewriterInterface (http://localhost:3000/src/components/infoview/main.tsx:474:21)
+    at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-2KSAEFRG.js?v=76aec93e:19074:26) @ http://localhost:3000/src/components/infoview/goals.tsx:438
+[     276ms] [WARNING] Error: No active Lean client.
+    at Object.createRpcSession (http://localhost:3000/node_modules/.vite/deps/lean4monaco.js?v=76aec93e:22020:15)
+    at Object.createRpcSession (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:17:45)
+    at http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:81:37
+    at new RpcSessionForFile (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:86:7)
+    at RpcSessions.connectCore (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:192:18)
+    at RpcSessions.connect (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:204:17)
+    at useRpcSessionAtTdpp (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:47:50)
+    at useRpcSessionAtPos (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:52:12)
+    at TypewriterInterface (http://localhost:3000/src/components/infoview/main.tsx:474:21)
+    at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-2KSAEFRG.js?v=76aec93e:19074:26) @ http://localhost:3000/src/components/infoview/goals.tsx:438
+[     278ms] [WARNING] Error: No active Lean client.
+    at Object.createRpcSession (http://localhost:3000/node_modules/.vite/deps/lean4monaco.js?v=76aec93e:22020:15)
+    at Object.createRpcSession (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:17:45)
+    at http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:81:37
+    at new RpcSessionForFile (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:86:7)
+    at RpcSessions.connectCore (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:192:18)
+    at RpcSessions.connect (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:204:17)
+    at useRpcSessionAtTdpp (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:47:50)
+    at useRpcSessionAtPos (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:52:12)
+    at TypewriterInterface (http://localhost:3000/src/components/infoview/main.tsx:474:21)
+    at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-2KSAEFRG.js?v=76aec93e:19074:26) @ http://localhost:3000/src/components/infoview/goals.tsx:438
+[     280ms] [WARNING] Error: No active Lean client.
+    at Object.createRpcSession (http://localhost:3000/node_modules/.vite/deps/lean4monaco.js?v=76aec93e:22020:15)
+    at Object.createRpcSession (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:17:45)
+    at http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:81:37
+    at new RpcSessionForFile (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:86:7)
+    at RpcSessions.connectCore (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:192:18)
+    at RpcSessions.connect (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:204:17)
+    at useRpcSessionAtTdpp (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:47:50)
+    at useRpcSessionAtPos (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:52:12)
+    at TypewriterInterface (http://localhost:3000/src/components/infoview/main.tsx:474:21)
+    at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-2KSAEFRG.js?v=76aec93e:19074:26) @ http://localhost:3000/src/components/infoview/goals.tsx:438
+[     284ms] [WARNING] Error: No active Lean client.
+    at Object.createRpcSession (http://localhost:3000/node_modules/.vite/deps/lean4monaco.js?v=76aec93e:22020:15)
+    at Object.createRpcSession (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:17:45)
+    at http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:81:37
+    at new RpcSessionForFile (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:86:7)
+    at RpcSessions.connectCore (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:192:18)
+    at RpcSessions.connect (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:204:17)
+    at useRpcSessionAtTdpp (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:47:50)
+    at useRpcSessionAtPos (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:52:12)
+    at TypewriterInterface (http://localhost:3000/src/components/infoview/main.tsx:474:21)
+    at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-2KSAEFRG.js?v=76aec93e:19074:26) @ http://localhost:3000/src/components/infoview/goals.tsx:438
+[     292ms] [WARNING] No connection to Lean @ http://localhost:3000/src/components/infoview/goals.tsx:434
+[     319ms] [WARNING] No connection to Lean @ http://localhost:3000/src/components/infoview/goals.tsx:434
+[     356ms] Error: No active Lean client.
+    at Object.createRpcSession (http://localhost:3000/node_modules/.vite/deps/lean4monaco.js?v=76aec93e:22020:15)
+    at Object.createRpcSession (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:17:45)
+    at http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:81:37
+    at new RpcSessionForFile (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:86:7)
+    at RpcSessions.connectCore (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:192:18)
+    at RpcSessions.connect (http://localhost:3000/node_modules/.vite/deps/@leanprover_infoview-api.js?v=76aec93e:204:17)
+    at useRpcSessionAtTdpp (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:47:50)
+    at useRpcSessionAtPos (http://localhost:3000/@fs/Users/hoxide/mycodes/lean4game/node_modules/vscode-lean4/lean4-infoview/src/infoview/rpcSessions.tsx:52:12)
+    at TypewriterInterface (http://localhost:3000/src/components/infoview/main.tsx:474:21)
+    at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-2KSAEFRG.js?v=76aec93e:19074:26)
+[     376ms] [WARNING] No connection to Lean @ http://localhost:3000/src/components/infoview/goals.tsx:434
+[     498ms] [WARNING] No connection to Lean @ http://localhost:3000/src/components/infoview/goals.tsx:434
+[   21660ms] [ERROR]  @ http://localhost:3000/node_modules/.vite/deps/chunk-S5QSDBI7.js?v=76aec93e:62640
+[   21662ms] [ERROR]  @ http://localhost:3000/node_modules/.vite/deps/chunk-S5QSDBI7.js?v=76aec93e:62640
