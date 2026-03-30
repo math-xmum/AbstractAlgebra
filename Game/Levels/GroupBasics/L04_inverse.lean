@@ -5,6 +5,8 @@ World "GroupBasics"
 
 Level 4
 
+Title "Existence of Inverses"
+
 Introduction "
 A  monoid is a semi-group with identity and .
 
@@ -26,5 +28,7 @@ Statement (a: G) : ∃ (b:G), (a*b =1 ∧ b*a = 1) := by
   · group
 
 
+
+Conclusion "Every element in a group has an inverse. We used `And.intro` to split a conjunction into two goals."
 
 NewTheorem And.intro

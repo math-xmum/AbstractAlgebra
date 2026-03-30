@@ -5,6 +5,8 @@ World "GroupAction"
 
 Level 3
 
+Title "Orbit-Stabilizer Bijection"
+
 Introduction "
 Let X be a G-set.
 In this Level, we construct the natural bijection G/G_x → G x for any x∈ X.
@@ -59,7 +61,7 @@ Statement (x : X) : G ⧸  stabilizer G x ≃ orbit G x  := by
   · Hint "The surjectivity proof uses `QuotientGroup.mk_out_eq_mul` to relate a coset representative to the original element."
     exact orbit_map_surjective x
 
-
+Conclusion "You constructed a bijection between G/G_x and the orbit Gx. For finite groups, this gives |Gx| = [G : G_x], the orbit-stabilizer theorem."
 
 NewTheorem QuotientGroup.mk_out_eq_mul Equiv.ofBijective MulAction.mem_orbit MulAction.mem_stabilizer_iff SemigroupAction.mul_smul Equiv.ofBijective MulAction.stabilizer MulAction.orbit inv_smul_smul QuotientGroup.eq
 NewTactic apply_fun

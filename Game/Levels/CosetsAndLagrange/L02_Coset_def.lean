@@ -5,6 +5,8 @@ World "CosetsAndLagrange"
 
 Level 2
 
+Title "Cosets Are Equinumerous"
+
 Introduction "
 Let H be a subgroup of G.
 The subset g • H := {gh | h∈H} for some g∈G is called a left coset of H.
@@ -60,5 +62,6 @@ Statement :
     intro x
     ext;group
 
+Conclusion "You constructed a bijection between two cosets gH and kH. This shows all left cosets of H have the same cardinality."
 
 NewTheorem Set

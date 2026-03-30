@@ -9,6 +9,8 @@ open Pointwise
 
 Level 6
 
+Title "Universal Property: Uniqueness"
+
 Introduction "
 This universal property characterizes the quotient group in the following sense:
 any pairs (Q, π : G →* Q) satisfying the following properties are canonically isomorphic to each other:
@@ -115,7 +117,7 @@ Statement [hN : N.Normal] {Q P:Type u} [Group Q] [Group P] (piP : G →* P) (piQ
       Hint "Now use try to close the goal use {HtoFun'}. Try `simp`. "
       simp [<-HtoFun']
 
-
+Conclusion "You proved that quotient groups satisfying the universal property are canonically isomorphic. This characterizes G/N up to unique isomorphism."
 
 
 

@@ -4,6 +4,8 @@ World "GroupBasics"
 
 Level 6
 
+Title "Subgroup Criterion"
+
 Introduction "
 A subgroup of a group $G$ is a nonempty subset $H$ of $G$ that is closed under
 multiplication and inverses.
@@ -29,5 +31,7 @@ Statement (h1 : H.Nonempty) (h2 : ∀ᵉ (x ∈ H) (y ∈ H), x * y⁻¹ ∈ H) 
   Hint "The hypotheses `h1` and `h2` are exactly what `Subgroup.ofDiv` needs.
   Use `exact Subgroup.ofDiv H h1 h2` to construct the subgroup."
   exact Subgroup.ofDiv H h1 h2
+
+Conclusion "A nonempty subset closed under x * y⁻¹ is a subgroup. Mathlib's `Subgroup.ofDiv` packages this criterion."
 
 NewTheorem Subgroup.ofDiv Subgroup.mem_of_inv_mul_mem Subgroup.mem_of_mem_mul_inv Subgroup.inv_mem Subgroup.mul_mem

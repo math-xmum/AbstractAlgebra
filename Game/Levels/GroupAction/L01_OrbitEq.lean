@@ -6,6 +6,8 @@ World "GroupAction"
 
 Level 1
 
+Title "Orbit Equality Criterion"
+
 Introduction "
 Let X be a G-set.
 For x ∈ X, let Gx be the orbit of x.
@@ -71,6 +73,8 @@ Statement (x y : X) :  MulAction.orbit G x = MulAction.orbit G y ↔ ∃ g:G , g
       exact orbit_transfer_fwd hg hz
     · intro hz
       exact orbit_transfer_bwd hg hz
+
+Conclusion "You showed that two orbits Gx and Gy are equal precisely when y lies in the orbit of x. Orbits partition the set X."
 
 NewTheorem SemigroupAction.mul_smul MulAction.one_smul Set.range MulAction.orbit
 OnlyTactic intro constructor group rw beta_reduce nth_rw obtain ext

@@ -5,7 +5,7 @@ import Game.Levels.Lemmas.Group
 World "Magma"
 
 Level 8
-
+Title "Isomorphisms preserve identity"
 
 variable (α β:Type*) [Mul α] [Mul β]
 
@@ -30,6 +30,8 @@ Statement (e : α) (he: Mul.isIdentity e) (φ : α ≃* β): Mul.isIdentity (φ 
   Hint "Same idea for the right identity."
   rw [← MulEquiv.map_mul, he.2]
 
+
+Conclusion "You proved that a multiplicative equivalence maps an identity element to an identity element. Isomorphisms preserve all algebraic structure, including the identity."
 
 NewTactic apply_fun unfold rw sepcialize «let»
 OnlyTactic unfold rw sepcialize «let»

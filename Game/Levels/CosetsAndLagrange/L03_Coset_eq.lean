@@ -5,6 +5,8 @@ World "CosetsAndLagrange"
 
 Level 3
 
+Title "Coset Equality Criterion"
+
 Introduction "
 Let H be a subgroup of G.
 Then g • H = k • H if and only if k⁻¹ * g ∈ H.
@@ -32,5 +34,6 @@ Statement (k : G) :(g • (H : Set G)  = k • (H : Set G)) → k⁻¹ * g ∈ H
     apply (mem_leftCoset_iff k).1
     assumption
 
+Conclusion "You proved that if gH = kH then k⁻¹g ∈ H. This gives a concrete algebraic test for when two cosets coincide."
 
 NewTheorem Subgroup.one_mem mem_leftCoset_iff

@@ -5,6 +5,8 @@ World "GroupBasics"
 
 Level 8
 
+Title "Z/nZ is a Commutative Group"
+
 Introduction "
 Let Z_n be the set of integers modulo $n$.
 Then Z_n form a commutative group (i.e. an Abelian group).
@@ -69,6 +71,8 @@ Statement {n : ℕ} {hn : n ≠ 0} {hn' : 0<n}:
       Hint "Use `add_comm' "
       rw [add_comm]
 
+
+Conclusion "We verified all the group axioms for modular arithmetic, making Z/nZ a commutative group."
 
 NewTheorem CommGroup_mk ext_lemma add_assoc add_comm Nat.mod_succ_eq_iff_lt Fin.is_lt Nat.mod_add_mod  Nat.add_mod_mod  Fin.mk.injEq Fin.is_le' Nat.sub_add_cancel Nat.mod_self Fin.zero_eta Nat.add_comm Nat.ne_zero_of_lt Nat.mod_eq_of_lt
 NewDefinition add neg zero

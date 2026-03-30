@@ -5,6 +5,8 @@ World "CosetsAndLagrange"
 
 Level 1
 
+Title "Coset Membership Criterion"
+
 Introduction "
 Let H be a subgroup of G.
 The subset g • H := {gh | h∈H} for some g∈G is called a left coset of H.
@@ -44,3 +46,5 @@ Statement : x ∈ g • H ↔ g⁻¹ * x ∈ H := by
     use g⁻¹*x
     Hint "The goal can be cleared by `simp'/`group' and `assumption'"
     exact ⟨h1, by simp⟩
+
+Conclusion "Well done! You have shown that x ∈ gH if and only if g⁻¹x ∈ H. This basic criterion will be used throughout the coset theory."

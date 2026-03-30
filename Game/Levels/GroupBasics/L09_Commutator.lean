@@ -5,6 +5,8 @@ World "GroupBasics"
 
 Level 9
 
+Title "Commutators and Commutativity"
+
 Introduction "
 The expression `⁅a,b⁆:=a * b * a⁻¹ * b⁻¹' is called the commutator of $a$ and $b$.
 
@@ -35,6 +37,8 @@ Statement {a b: G} : a * b = b * a ↔  a * b * a⁻¹* b⁻¹=1  := by
 
 
 #check mul_right_cancel
+
+Conclusion "Two elements commute if and only if their commutator is trivial."
 
 NewTheorem mul_right_cancel mul_left_cancel mul_right_cancel_iff
 mul_right_cancel_iff commutatorElement_def

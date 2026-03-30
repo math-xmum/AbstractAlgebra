@@ -7,6 +7,8 @@ World "GroupAction"
 
 Level 2
 
+Title "Conjugation of Stabilizers"
+
 Introduction "
 Let X be a G-set.
 Let G_x := { g ∈ G | g • x = x} be the stabilizer for a point x ∈ G.
@@ -68,6 +70,8 @@ Statement (x y : X) (g:G) (hxy : y = g • x): (MulAut.conj g) • stabilizer G 
     Hint "The condition g * s * g⁻¹ = h equivalent to s = g⁻¹ * h * g. Try `use g⁻¹ * h * g`."
     use g⁻¹ * h * g
     exact conj_stab_bwd hxy H
+
+Conclusion "You proved that if y = g . x, then the stabilizer of y is the conjugate g G_x g⁻¹. Points in the same orbit have conjugate stabilizers."
 
 NewTheorem MulAction.mem_orbit MulAction.mem_stabilizer_iff SemigroupAction.mul_smul Equiv.ofBijective MulAction.stabilizer MulAction.orbit inv_smul_smul QuotientGroup.eq smul_eq_iff_eq_inv_smul Subgroup.mem_smul_pointwise_iff_exists MulAut.conj_apply MulAut.smul_def
 NewTactic apply_fun simp_rw

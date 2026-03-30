@@ -6,6 +6,7 @@ import Mathlib.Analysis.SpecialFunctions.Pow.Complex
 World "Magma"
 
 Level 9
+Title "ℂ and ℝ are not isomorphic"
 
 #check IsEmpty.mk
 #check pow_two
@@ -34,6 +35,8 @@ Statement: IsEmpty (ℂ ≃* ℝ) := by
   intro f
   Hint "We have a ready-made lemma `no_mul_equiv_complex_real` that derives a contradiction from any such equivalence. Use `exact no_mul_equiv_complex_real f`."
   exact no_mul_equiv_complex_real f
+
+Conclusion "You proved that no multiplicative bijection between ℂ and ℝ can exist, because ℂ has a square root of −1 while ℝ does not. This shows the two fields are fundamentally different as multiplicative structures."
 
 NewTheorem sq_nonneg Complex.cpow_nat_inv_pow pow_two IsEmpty.mk
 OnlyTactic «let» «have» rw norm_cast norm_num

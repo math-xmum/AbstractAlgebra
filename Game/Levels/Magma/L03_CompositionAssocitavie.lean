@@ -5,6 +5,7 @@ import Game.Levels.Lemmas.Group
 World "Magma"
 
 Level 3
+Title "Composition is associative"
 
 open Set
 
@@ -22,6 +23,8 @@ Statement {α : Type*} (f g h : α → α): (f ∘ g) ∘ h = f ∘ (g ∘ h) :=
   Hint "Now we have $f(g(h(x))) = f((g \\circ h)(x))$. Let's expand $(g \\circ h)(x)$ to complete the proof."
   rw [Function.comp_apply]
 
+
+Conclusion "You proved that function composition is associative by showing both sides agree on every input. Associativity is one of the key axioms that makes function composition a semigroup operation."
 
 OnlyTactic ext rw
 NewTheorem Function.comp_apply

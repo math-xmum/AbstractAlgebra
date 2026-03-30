@@ -5,6 +5,8 @@ World "GroupBasics"
 
 Level 7
 
+Title "kZ is a Subgroup of Z"
+
 Introduction "
 For example, ℤ is a group under addition.
 Now the set of even integers, 2ℤ := {2n | n ∈ ℤ }, is a subgroup of ℤ.
@@ -101,5 +103,7 @@ Statement (k : ℤ) : AddSubgroupClass (SubSetP (· %k = 0)) ℤ :=
     Hint "Use hypothesis to simp the goal"
     simp [ha,hb]
 
+
+Conclusion "The multiples of k form a subgroup of the integers. In fact, every subgroup of Z has this form."
 
 NewTheorem SubSetP.def Int.sub_emod addsubgroupclass_make

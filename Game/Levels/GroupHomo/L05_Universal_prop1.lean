@@ -10,6 +10,8 @@ open Pointwise
 
 Level 5
 
+Title "Universal Property: Existence"
+
 Introduction "
 We now explore the universal property of quotient group.
 
@@ -105,6 +107,6 @@ Statement [hN : N.Normal] :
     Hint "Again we use s = π (s.out), which is automatically simplified by `simp [{π}]`. "
     simp [π]
 
-
+Conclusion "You established the universal property of quotient groups: any homomorphism killing N factors uniquely through G/N."
 
 NewTheorem ExistsUnique.intro QuotientGroup.mk'_eq_mk'

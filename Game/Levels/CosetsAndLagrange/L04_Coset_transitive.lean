@@ -5,6 +5,8 @@ World "CosetsAndLagrange"
 
 Level 4
 
+Title "Coset Transitivity"
+
 Introduction "
 Let H be a subgroup of G.
 
@@ -56,3 +58,5 @@ Statement {x y : G} (hx : x ∈ g • (H : Set G)) :  y ∈  g • (H : Set G) �
     Hint "Now use `mem_leftCoset_iff` to translate {hx} into g⁻¹ * x ∈ H."
     Hint "Now use ((g⁻¹*x) * (x⁻¹ *y)) to close the goal. "
     exact coset_backward hx hxy
+
+Conclusion "You showed that y ∈ gH if and only if x⁻¹y ∈ H, for any x already in gH. This means each coset is an orbit under right translation by H."

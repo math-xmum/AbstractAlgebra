@@ -5,6 +5,8 @@ World "GroupHomomorphism"
 
 Level 3
 
+Title "Kernel Is Closed Under Conjugation"
+
 Introduction "
 Let  f : G →* H be a group homomorphism.
 Then the kernel of f is defined by
@@ -40,7 +42,7 @@ Statement (f : G →* H) :
   Hint "Use `group` to finish the goal"
   group
 
-
+Conclusion "You proved that the kernel of a homomorphism is closed under conjugation, which means it is a normal subgroup."
 
 open scoped Pointwise
 

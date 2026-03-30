@@ -4,6 +4,8 @@ World "CosetsAndLagrange"
 
 Level 5
 
+Title "Cosets Are Disjoint or Equal"
+
 Introduction "
 Let H be a subgroup of G.
 For two cosets g • H and k • H, either
@@ -35,5 +37,7 @@ Statement  (g k : G) :
   Hint "Do the same thing for z ∈ k • H. If you use `rw` The goal is automatically closed since `rw` all rewrite the goal and then apply `rfl`. If you wish to prevent this, you can use the tactic `rewrite` instead."
   rewrite [Subgroup.mem_coset_iff_diff_mem_subgroup hx2]
   rfl
+
+Conclusion "You proved that any two left cosets are either disjoint or identical. This is the key step toward showing that cosets partition the group."
 
 NewTheorem Classical.or_iff_not_imp_left Classical.or_iff_not_imp_right Subgroup.mem_coset_iff_diff_mem_subgroup

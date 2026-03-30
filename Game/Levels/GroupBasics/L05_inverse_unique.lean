@@ -5,6 +5,8 @@ World "GroupBasics"
 
 Level 5
 
+Title "Uniqueness of Inverses"
+
 Introduction "
 Note that if inverse exits, then it is unique.
 "
@@ -33,5 +35,7 @@ Statement (a b c: G)
 
   Hint "Finally, we use the property that multiplying by 1 on the left doesn't change the value. "
   rw [one_mul]
+
+Conclusion "Inverses are unique: if both b and c are inverses of a, then b = c. The proof uses associativity and the identity element."
 
 NewTheorem And.intro mul_one mul_assoc one_mul

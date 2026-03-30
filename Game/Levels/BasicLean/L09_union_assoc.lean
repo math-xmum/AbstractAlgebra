@@ -4,6 +4,8 @@ World "BasicLean"
 Level 9
 Title "Union is associative"
 
+Introduction "In this level you will prove that set union is associative: (s ∪ t) ∪ r = s ∪ (t ∪ r). The key idea is to reduce the set equation to a logical statement about disjunction (∨), which is itself associative."
+
 /-- Disjunction is associative: re-bracketing three `Or`s. -/
 lemma or_assoc_iff {a b c : Prop} : (a ∨ b) ∨ c ↔ a ∨ (b ∨ c) := by
   constructor

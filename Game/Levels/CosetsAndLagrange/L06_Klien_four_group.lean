@@ -5,6 +5,8 @@ World "CosetsAndLagrange"
 
 Level 6
 
+Title "Klein Four-Group Is Not Cyclic"
+
 Introduction "
 Let H be a subgroup of G.
 The set of all left cosets of H is denoted by
@@ -71,3 +73,5 @@ theorem C2_prod_C2_not_cyclic {C : Type u_1} [Group C] [Fintype C]  (h : Nat.car
   specialize orderle2 g
   Hint "Clearly {hg} and {orderle2} are contradictory relations for natural numbers. These type of problem can be automaticaly proved by `linarith`."
   omega
+
+Conclusion "You showed that C₂ × C₂ is not cyclic by proving every element has order at most 2, contradicting the existence of an element of order 4."

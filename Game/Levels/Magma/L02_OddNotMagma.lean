@@ -5,6 +5,7 @@ import Game.Levels.Lemmas.Group
 World "Magma"
 
 Level 2
+Title "Odd integers are not a magma"
 
 open Set
 
@@ -34,6 +35,8 @@ Statement : ¬ Set.isAddMagma {x : ℤ | Odd x} := by
   use 1,1
   Hint "We need to prove that $1$ is odd, $1$ is odd, and $1 + 1 = 2$ is not odd. The `decide` tactic can automatically prove this kind of simple arithmetic fact."
   decide
+
+Conclusion "By exhibiting a concrete counterexample (1 + 1 = 2 is even), you proved that odd integers are not closed under addition. A single counterexample suffices to disprove closure."
 
 NewTactic use decide exact
 NewDefinition Set.isAddMagma

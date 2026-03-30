@@ -5,6 +5,8 @@ World "GroupHomomorphism"
 
 Level 1
 
+Title "Homomorphisms Preserve Identity"
+
 Introduction "
 Suppose H and G are two groups.
 A group (or monoid) homomorphism is a map f: H → G such that for all
@@ -35,6 +37,8 @@ Statement (f : H →* G) : f 1  = 1  := by
   nth_rw 3 [<-mul_one (f 1)] at h1
   Hint "Finally one can apply `mul_left_cancel` to obtain the goal."
   exact mul_left_cancel h1
+
+Conclusion "You proved that every group homomorphism sends the identity to the identity, using the cancellation law."
 
 NewTheorem mul_left_cancel map_mul mul_one MonoidHom.mk' mul_eq_left Function.leftInverse_iff_comp Function.rightInverse_iff_comp MulEquiv.intro
 NewTactic apply_fun beta_reduce

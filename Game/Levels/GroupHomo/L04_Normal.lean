@@ -9,6 +9,8 @@ open Pointwise
 
 Level 4
 
+Title "Normal Subgroups and Coset Multiplication"
+
 Introduction "
 A subgroup N of G is called a normal subgroup if
 ∀ g n, n ∈ N → g*n*g⁻¹ ∈ N.
@@ -76,6 +78,7 @@ Statement : N.Normal ↔ ∀ g h : G,  (g • (N :Set G)) * (h • N) = (g * h) 
     Try specializing the hypothesis with `g` and `g⁻¹`."
     exact coset_mul_imp_normal N H
 
+Conclusion "You proved that N is normal if and only if coset multiplication is well-defined: (gN)(hN) = (gh)N. This is what makes the quotient group G/N a group."
 
 open scoped Pointwise
 
