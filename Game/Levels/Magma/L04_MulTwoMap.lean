@@ -5,6 +5,7 @@ import Game.Levels.Lemmas.Group
 World "Magma"
 
 Level 4
+Title "Squaring is a homomorphism"
 
 Introduction "The following statement claims that the function $f(x) = x^2$ (or $x * x$ in Lean notation) is a multiplication homomorphism. In other words, for any two natural numbers $x$ and $y$, $f(x * y) = f(x) * f(y)$."
 
@@ -30,6 +31,8 @@ Statement: Mul.isMulMap (fun (x :ℕ) => x * x) := by
   Hint "Finally, we can use associativity one more time to match the right side exactly. "
   rw [<-Nat.mul_assoc x x (y*y)]
 
+
+Conclusion "You proved that x ↦ x² preserves multiplication on ℕ. This is your first example of a magma homomorphism — a map that respects the binary operation."
 
 NewTactic unfold beta_reduce intro rw
 OnlyTactic unfold beta_reduce intro rw

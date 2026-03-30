@@ -5,6 +5,7 @@ import Game.Levels.Lemmas.Group
 World "Magma"
 
 Level 7
+Title "Identity element is unique"
 
 Introduction "
 Suppose $G$ is a set with a binary operation $*$.

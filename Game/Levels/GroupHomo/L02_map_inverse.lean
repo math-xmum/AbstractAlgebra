@@ -1,9 +1,12 @@
 import Game.Metadata
+import Mathlib.Data.ZMod.Defs
 -- import Mathlib
 
 World "GroupHomomorphism"
 
 Level 2
+
+Title "Homomorphisms Preserve Inverses"
 
 Introduction "
 Another easy consequence of the definition of group homomorphism,  f : H →* G, is that it sends inverse to inverse, i.e ∀ h : H f (h⁻¹) = (f h)⁻¹.
@@ -24,6 +27,8 @@ Statement (f : H →* G) : ∀ h : H,  f h⁻¹ = (f h)⁻¹  := by
   Hint "It is the time to use `mul_eq_one_iff_eq_inv` to clear up {hh} and finish the proof"
   rw [mul_eq_one_iff_eq_inv] at hh
   assumption
+
+Conclusion "You showed that f(h⁻¹) = (f h)⁻¹ for any group homomorphism. Homomorphisms respect the full group structure."
 
 open scoped Pointwise
 #check (1 : ZMod 6) +ᵥ ({1,2,3}: Set (ZMod 6))

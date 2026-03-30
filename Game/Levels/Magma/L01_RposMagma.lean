@@ -1,11 +1,12 @@
 import Game.Metadata
 
 import Game.Levels.Lemmas.Group
+import Mathlib.Data.Real.Basic
 
 World "Magma"
 
 Level 1
-
+Title "Positive reals form a magma"
 
 #check {x : ℝ | x > 0 }
 #check mul_pos_iff_of_pos_left
@@ -30,6 +31,8 @@ Statement : Set.isMagma {x : ℝ | x > 0} := by
   exact hy
 
 #check Set.isAddMagma
+
+Conclusion "You have shown that the positive real numbers are closed under multiplication, making them a magma. This is the first step toward recognizing (ℝ₊, ×) as a group."
 
 OnlyTactic unfold use rw decide push_neg
 NewTheorem Set.mem_setOf_eq mul_pos

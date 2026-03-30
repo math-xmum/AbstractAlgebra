@@ -5,6 +5,8 @@ World "GroupHomomorphism"
 
 Level 1
 
+Title "Homomorphisms Preserve Identity"
+
 Introduction "
 Suppose H and G are two groups.
 A group (or monoid) homomorphism is a map f: H → G such that for all
@@ -26,7 +28,7 @@ Statement (f : H →* G) : f 1  = 1  := by
   Hint "The idea is to use 1 * 1 = 1. (This can be done by invoking `mul_one (1:H)`).
   Here we should use `(1:H)` to indicate that `1` is the identity element in H.
   Use `have` to establish this claim."
-  have h1 : 1 * 1 = 1 := mul_one (1:H)
+  have h1 : (1:H) * 1 = 1 := mul_one (1:H)
   Hint "Now let us apply f on the both sides of {h1}. This can be done by `apply_fun f at {h1}` "
   apply_fun f at h1
   Hint "Let us use `map_mul` on {h1} to obtain f 1 * f 1  = f 1"
@@ -36,5 +38,7 @@ Statement (f : H →* G) : f 1  = 1  := by
   Hint "Finally one can apply `mul_left_cancel` to obtain the goal."
   exact mul_left_cancel h1
 
-NewTheorem mul_left_cancel map_mul mul_one GroupHom.intro mul_right_eq_self Function.leftInverse_iff_comp Function.rightInverse_iff_comp MulEquiv.intro
+Conclusion "You proved that every group homomorphism sends the identity to the identity, using the cancellation law."
+
+NewTheorem mul_left_cancel map_mul mul_one MonoidHom.mk' mul_eq_left Function.leftInverse_iff_comp Function.rightInverse_iff_comp MulEquiv.intro
 NewTactic apply_fun beta_reduce

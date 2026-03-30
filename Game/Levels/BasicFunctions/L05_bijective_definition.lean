@@ -11,4 +11,4 @@ Statement {α β : Type} (f : α → β) : Function.Bijective f ↔ Function.Inj
   rfl
 
 Conclusion "Level Completed!"
-NewTactic use rfl
+NewTactic use rfl constructor

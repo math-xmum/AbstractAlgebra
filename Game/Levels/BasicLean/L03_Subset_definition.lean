@@ -13,3 +13,5 @@ Statement {α : Type*} (s t : Set α): s ⊆ t ↔ ∀ x, x ∈ s → x ∈  t  
 
 
 Conclusion "Level Completed!"
+
+NewDefinition Set Set.mem_setOf_eq

@@ -1,10 +1,13 @@
 import Game.Metadata
 import Game.Generator.Basic
+import Mathlib.Algebra.Group.Subgroup.Pointwise
 -- import Mathlib
 
 World "GroupAction"
 
 Level 2
+
+Title "Conjugation of Stabilizers"
 
 Introduction "
 Let X be a G-set.
@@ -27,8 +30,25 @@ open MulAction
 
 variable {G X:Type*} [Group G] [MulAction G X]
 
-#check  QuotientGroup.mk_out'_eq_mul
+#check  QuotientGroup.mk_out_eq_mul
 
+/-- Forward direction: if k stabilizes x and h = g * k * g⁻¹, then h stabilizes y = g • x. -/
+private lemma conj_stab_fwd {x y : X} {g h : G} (hxy : y = g • x)
+    (H : ∃ k, k • x = x ∧ g * k * g⁻¹ = h) : h • y = y := by
+  obtain ⟨k, Hk1, Hk2⟩ := H
+  subst hxy; subst Hk2
+  show (g * k * g⁻¹) • (g • x) = g • x
+  rw [mul_smul, mul_smul, inv_smul_smul, Hk1]
+
+/-- Backward direction: if h stabilizes y = g • x, then g⁻¹ * h * g stabilizes x. -/
+private lemma conj_stab_bwd {x y : X} {g h : G} (hxy : y = g • x)
+    (H : h • y = y) : (g⁻¹ * h * g) • x = x ∧ g * (g⁻¹ * h * g) * g⁻¹ = h := by
+  constructor
+  · replace hxy := hxy.symm
+    rw [smul_eq_iff_eq_inv_smul] at hxy
+    rw [hxy]; nth_rw 2 [←H]
+    repeat rw [←mul_smul]; group
+  · group
 
 Statement (x y : X) (g:G) (hxy : y = g • x): (MulAut.conj g) • stabilizer G x = stabilizer G y  := by
   Hint "To show two sets A and B are equal, it suffices to show that x ∈ A ↔ x ∈ B. This can be done by  `ext`. Try `ext h`. "
@@ -44,34 +64,14 @@ Statement (x y : X) (g:G) (hxy : y = g • x): (MulAut.conj g) • stabilizer G 
   constructor
   · Hint "Introduce the hypothesis use `intro`."
     intro H
-    Hint "Use `obtain ⟨k,Hk1,Hk2⟩ := H` to obtain k and the hypothesis. "
-    obtain ⟨k,Hk1,Hk2⟩ := H
-    Hint "Rewrite the goal using {hxy}, {Hk1} and {Hk2}. You may need to use `nth_rw`. "
-    rw [hxy]
-    rw [<-Hk2]
-    nth_rw 2 [<-Hk1]
-    Hint "Use `MulAction.mul_suml` to translate the goal into the form (g * k * g⁻¹ * g) • x = (g * k) • x"
-    repeat rw [<-MulAction.mul_smul]
-    Hint "Now use `group` to close the goal."
-    group
+    exact conj_stab_fwd hxy H
   · Hint "Introduce the hypothesis. "
     intro H
     Hint "The condition g * s * g⁻¹ = h equivalent to s = g⁻¹ * h * g. Try `use g⁻¹ * h * g`."
     use g⁻¹ * h * g
-    Hint "Use `constructor` to split the goal."
-    constructor
-    · Hint "Use `smul_eq_iff_eq_inv_smul` to rewrite the goal.
-      Before the rewrite {hxy} into `g • x = y`. You can use `replace hxy := hxy.symm`."
-      replace hxy := hxy.symm
-      rw [smul_eq_iff_eq_inv_smul] at hxy
-      Hint "Rewrite the goal using {hxy}, {H} and `MulAction.mul_smul`. You may use `nth_rw`."
-      rw [hxy]
-      nth_rw 2 [<-H]
-      repeat rw [<-MulAction.mul_smul]
-      Hint "This follows from the group law. "
-      group
-    · Hint "This follows from the group law. "
-      group
+    exact conj_stab_bwd hxy H
 
-NewTheorem MulAction.mem_orbit MulAction.mem_stabilizer_iff MulAction.mul_smul Equiv.ofBijective MulAction.stabilizer MulAction.orbit inv_smul_smul QuotientGroup.eq smul_eq_iff_eq_inv_smul Subgroup.mem_smul_pointwise_iff_exists MulAut.conj_apply MulAut.smul_def
+Conclusion "You proved that if y = g . x, then the stabilizer of y is the conjugate g G_x g⁻¹. Points in the same orbit have conjugate stabilizers."
+
+NewTheorem MulAction.mem_orbit MulAction.mem_stabilizer_iff SemigroupAction.mul_smul Equiv.ofBijective MulAction.stabilizer MulAction.orbit inv_smul_smul QuotientGroup.eq smul_eq_iff_eq_inv_smul Subgroup.mem_smul_pointwise_iff_exists MulAut.conj_apply MulAut.smul_def
 NewTactic apply_fun simp_rw

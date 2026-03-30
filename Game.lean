@@ -3,7 +3,8 @@ import Game.Levels.BasicLean
 import Game.Levels.BasicFunctions
 import Game.Levels.EquivalenceRelation
 import Game.Levels.Magma
-import Game.Levels.BasicGroupTheory
+import Game.Levels.GroupBasics
+import Game.Levels.CosetsAndLagrange
 import Game.Levels.GroupHomo
 import Game.Levels.GroupAction
 

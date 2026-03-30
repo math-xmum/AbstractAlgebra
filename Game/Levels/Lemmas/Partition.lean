@@ -1,14 +1,7 @@
-import Mathlib.Order.SetNotation
-import Mathlib.Init.Logic
-import Mathlib.Init.Set
 import Mathlib.Data.Set.Basic
 import Mathlib.Data.SetLike.Basic
-import Mathlib.Tactic
-
-
-/-- A collection `c : Set (Set α)` of sets is a partition of `α` into pairwise
-disjoint sets if `∅ ∉ c` and each element `a : α` belongs to a unique set `b ∈ c`. -/
-def IsPartition (c : Set (Set α)) := ∅ ∉ c ∧ ∀ a, ∃! b, b ∈ c ∧ a ∈ b
+import Mathlib.Order.SetNotation
+import Mathlib.Data.Setoid.Partition
 
 def IsPartition' (c : Set (Set α)) := ∅ ∉ c ∧ ( ⋃₀ c = Set.univ) ∧ ( ∀ a ∈ c,  ∀ b ∈ c, a ∩ b ≠ ∅ → a = b)
 
@@ -45,10 +38,10 @@ lemma equivclass_eq_iff_equiv  {x y: α}: {z | x ≈ z} = {z | y ≈ z}  ↔ x �
   exact Setoid.trans H H1
 
 lemma equivclass_nonempty (x : α) : {y | x ≈ y} ≠ ∅ := by
-  rw [ne_eq]
   intro h
-  apply Set.not_mem_empty x
-  rw [<-h, Set.mem_setOf_eq]
+  have : x ∈ ({y | x ≈ y} : Set α) := Setoid.refl x
+  rw [h] at this
+  exact (Set.mem_empty_iff_false x).mp this
 
 
 

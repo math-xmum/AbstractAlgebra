@@ -5,6 +5,8 @@ World "GroupAction"
 
 Level 3
 
+Title "Orbit-Stabilizer Bijection"
+
 Introduction "
 Let X be a G-set.
 In this Level, we construct the natural bijection G/G_x → G x for any x∈ X.
@@ -17,62 +19,49 @@ open MulAction
 
 variable {G X:Type*} [Group G] [MulAction G X]
 
-#check  QuotientGroup.mk_out'_eq_mul
+#check  QuotientGroup.mk_out_eq_mul
 
+/-- The canonical map G/G_x → orbit G x is injective. -/
+private lemma orbit_map_injective (x : X) :
+    Function.Injective (fun y : G ⧸ stabilizer G x => (⟨y.out • x, MulAction.mem_orbit _ _⟩ : orbit G x)) := by
+  intro y1 y2
+  simp
+  intro H
+  apply_fun (y2.out⁻¹ • ·) at H
+  simp only [inv_smul_smul] at H
+  rw [←mul_smul, ←MulAction.mem_stabilizer_iff] at H
+  rw [←QuotientGroup.eq] at H
+  simp at H
+  rw [H]
+
+/-- The canonical map G/G_x → orbit G x is surjective. -/
+private lemma orbit_map_surjective (x : X) :
+    Function.Surjective (fun y : G ⧸ stabilizer G x => (⟨y.out • x, MulAction.mem_orbit _ _⟩ : orbit G x)) := by
+  intro ⟨y, hy⟩
+  obtain ⟨g, hg⟩ := hy
+  beta_reduce at hg
+  simp
+  use g
+  have hqg : ∃ (h : stabilizer G x), (g : G ⧸ stabilizer G x).out = g * h := QuotientGroup.mk_out_eq_mul _ _
+  obtain ⟨h, hh⟩ := hqg
+  rw [hh, mul_smul, MulAction.mem_stabilizer_iff.1 h.2]
+  exact hg
+
+noncomputable section
 
 Statement (x : X) : G ⧸  stabilizer G x ≃ orbit G x  := by
   Hint "We construct the equivalence by `Equiv.ofBijective`."
   apply Equiv.ofBijective
-  Hint "Pick the 2nd goal to construct the map use `pick_goal 2`."
-  pick_goal 2
-  · Hint "Introduce the variable"
-    intro y
-    Hint "Use {y}.out' to act on {x}. "
-    use y.out' • x
-    Hint "Show that {y}.out' • x is in the orbit by `MulAction.mem_orbit`."
-    apply MulAction.mem_orbit
+  Hint "We construct the function by sending y to y.out • x."
+  show Function.Bijective (fun y : G ⧸ stabilizer G x => ⟨y.out • x, MulAction.mem_orbit _ _⟩)
   Hint "Now prove the map is bijective. First split the goal using `constructor`."
   constructor
-  · Hint "Introduce the variable"
-    intro y1 y2
-    Hint "Simplify the goal into human readable form by `simp`."
-    simp
-    Hint "Introduce the assumption."
-    intro H
-    Hint "Multiply y2.out'⁻¹ on the both sides of {H}. Try `apply_fun (y2.out'⁻¹ • ·) at {H}`.
-    "
-    apply_fun (y2.out'⁻¹ • ·) at H
-    Hint "Note that a⁻¹ • a • x = x. Use `simp` to simplify the goal. "
-    simp only [inv_smul_smul] at H
-    Hint "Now one use `MulAction.mem_stabilizer_iff` to show that y2.out'⁻¹ y1.out' ∈ stablizer G x."
-    Hint "One may need `MulAction.mul_smul` to rewrite {H} first."
-    rw [<-MulAction.mul_smul,<-MulAction.mem_stabilizer_iff] at H
-    Hint "Now we conclude that [{y2}.out'] = [{y1}.out'] using `QuotientGroup.eq`. "
-    rw [<-QuotientGroup.eq] at  H
-    Hint "Simplify {H}"
-    simp at H
-    Hint "Now it is clear."
-    rw [H]
-  · Hint "Introduce the variables by `intro ⟨y, hy⟩`. "
-    intro ⟨y,hy⟩
-    Hint "y ∈ orbit G x means that there is g such that  g • x = y. Use `obtain` to get g and the claim. "
-    obtain ⟨g,hg⟩ := hy
-    Hint "Do beta_reduction by `beta_reduce at {hg}` or `simp at {hg}`."
-    beta_reduce at hg
-    Hint "Simplify the goal into human readable form by `simp`."
-    simp
-    Hint "Use the image of {g} in the coset space. Because of automatically coercion, one can write `use g`. "
-    use g
-    Hint "Note that [{g}].out' = {g}* h for some h ∈ stabilizer G x. Use tactic `have` and theorem `QuotientGroup.mk_out'_eq_mul` to obtain the claim."
-    have hqg : ∃ (h : stabilizer G x), (g: G ⧸  stabilizer G x).out' = g * h := QuotientGroup.mk_out'_eq_mul _ _
-    Hint "Now obtain h and the assumption of h"
-    obtain ⟨h, hh⟩ := hqg
-    Hint "The rest is clear by {hh} and {h} • x = x. One should use `MulAction.mul_smul` and `MulAction.mem_stabilizer_iff`. "
-    rw [hh,MulAction.mul_smul]
-    rw [MulAction.mem_stabilizer_iff.1 h.2]
-    exact hg
+  · Hint "The injectivity proof uses `apply_fun`, `inv_smul_smul`, `mul_smul`, `MulAction.mem_stabilizer_iff`, and `QuotientGroup.eq`."
+    exact orbit_map_injective x
+  · Hint "The surjectivity proof uses `QuotientGroup.mk_out_eq_mul` to relate a coset representative to the original element."
+    exact orbit_map_surjective x
 
+Conclusion "You constructed a bijection between G/G_x and the orbit Gx. For finite groups, this gives |Gx| = [G : G_x], the orbit-stabilizer theorem."
 
-
-NewTheorem QuotientGroup.mk_out'_eq_mul Equiv.ofBijective MulAction.mem_orbit MulAction.mem_stabilizer_iff MulAction.mul_smul Equiv.ofBijective MulAction.stabilizer MulAction.orbit inv_smul_smul QuotientGroup.eq
+NewTheorem QuotientGroup.mk_out_eq_mul Equiv.ofBijective MulAction.mem_orbit MulAction.mem_stabilizer_iff SemigroupAction.mul_smul Equiv.ofBijective MulAction.stabilizer MulAction.orbit inv_smul_smul QuotientGroup.eq
 NewTactic apply_fun
