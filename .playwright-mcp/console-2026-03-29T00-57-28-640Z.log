@@ -1,8 +1,0 @@
-[    4487ms] [WARNING] [LeanMonaco]: There can only be one active LeanMonaco instance at a time. Disposing previous instance. @ http://localhost:3000/node_modules/.vite/deps/lean4monaco.js?v=76aec93e:25134
-[    5051ms] [WARNING] No connection to Lean @ http://localhost:3000/src/components/infoview/goals.tsx:434
-[    5051ms] [WARNING] No connection to Lean @ http://localhost:3000/src/components/infoview/goals.tsx:434
-[    5180ms] [WARNING] No connection to Lean @ http://localhost:3000/src/components/infoview/goals.tsx:434
-[    7116ms] [WARNING] No connection to Lean @ http://localhost:3000/src/components/infoview/goals.tsx:434
-[   26335ms] [ERROR]  @ http://localhost:3000/node_modules/.vite/deps/chunk-S5QSDBI7.js?v=76aec93e:62640
-[   26336ms] [ERROR]  @ http://localhost:3000/node_modules/.vite/deps/chunk-S5QSDBI7.js?v=76aec93e:62640
-[   26337ms] [ERROR]  @ http://localhost:3000/node_modules/.vite/deps/chunk-S5QSDBI7.js?v=76aec93e:62640

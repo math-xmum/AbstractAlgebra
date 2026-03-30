@@ -4,3 +4,8 @@ lake-packages/
 **/.DS_Store
 .i18n/**/*.mo
 .i18n/en/Game.pot
+
+# Playwright MCP logs and screenshots
+.playwright-mcp/
+*.png
+.mcp.json
