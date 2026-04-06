@@ -325,6 +325,43 @@ A **lattice** is a partially ordered set where every pair has a **join** (least 
 
 ---
 
+# The Derived (Commutator) Subgroup
+
+**Definition.** The **commutator** of $a, b \in G$ is $[a, b] = aba^{-1}b^{-1}$.
+
+<v-click>
+
+The **derived subgroup** (or commutator subgroup) is:
+$$[G, G] = \langle [a, b] \mid a, b \in G \rangle$$
+
+</v-click>
+
+<v-click>
+
+**Key properties:**
+- $[G,G] \trianglelefteq G$ (it is a normal subgroup)
+- $G/[G,G]$ is the largest **abelian quotient** of $G$ (the abelianization $G^{\text{ab}}$)
+- $G$ is abelian $\iff$ $[G,G] = \{e\}$
+
+</v-click>
+
+<v-click>
+
+**Example.** $[GL_n(\mathbb{R}), GL_n(\mathbb{R})] = SL_n(\mathbb{R})$ for $n \geq 2$.
+
+*Proof idea.* Every matrix of determinant 1 is a product of commutators (since $\det[A,B] = 1$). The abelianization is $GL_n(\mathbb{R})^{\text{ab}} = GL_n/SL_n \cong \mathbb{R}^*$ via the determinant. $\square$
+
+</v-click>
+
+<v-click>
+
+So $GL_n(\mathbb{R})$ has center $\cong \mathbb{R}^*$ (scalar matrices) and derived subgroup $= SL_n(\mathbb{R})$. The structure is controlled by $\det$:
+$$1 \to SL_n(\mathbb{R}) \to GL_n(\mathbb{R}) \xrightarrow{\det} \mathbb{R}^* \to 1$$
+
+</v-click>
+
+---
+
 # Classification of Subgroups of $\mathbb{Z}$
 
 **Theorem.** Every subgroup of $(\mathbb{Z}, +)$ is of the form $k\mathbb{Z}$ for some $k \in \mathbb{N}$.
