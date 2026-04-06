@@ -437,22 +437,25 @@ $A_5 \cong SI$ is the smallest **non-abelian simple group** — this connects to
 <div style="display: flex; gap: 1.5rem;">
 <div style="flex: 1;">
 
-**Example 6.** The rotation group $SO(3)$ acts on the unit sphere $S^2$:
-
-Every rotation is a bijection $S^2 \to S^2$.
+**Example 6.** $SO(3)$ acts on $S^2$ — **transitively** (one orbit = entire sphere).
 
 <v-click>
 
-- **Orbits**: $SO(3)$ acts **transitively** — any point can be rotated to any other
-- **Stabilizer** of the north pole $= SO(2)$ (rotations about the $z$-axis)
+- **Stabilizer** of north pole $= SO(2)$ (rotations about $z$-axis)
 - Orbit-stabilizer: $S^2 \cong SO(3)/SO(2)$
 
 </v-click>
 
 <v-click>
 
-**Example 7.** $O(n)$ acts on $\mathbb{R}^n$ (orthogonal transformations).
-- **Orbits** = concentric spheres $S^{n-1}_r$ (radius $r$)
+The subgroup $SO(2) \leq SO(3)$ acts on $S^2$ **non-transitively**: orbits = latitude circles, poles are fixed points.
+
+</v-click>
+
+<v-click>
+
+**Example 7.** $O(n) \curvearrowright \mathbb{R}^n$ (orthogonal transformations).
+- **Orbits** = concentric spheres $S^{n-1}_r$ (not transitive on $\mathbb{R}^n$!)
 - **Stabilizer** of $(r,0,...,0)$ $\cong O(n-1)$
 
 </v-click>
@@ -460,7 +463,7 @@ Every rotation is a bijection $S^2 \to S^2$.
 </div>
 <div style="flex: 0 0 auto;">
 
-<img src="/so3-sphere.png" style="height: 220px;" />
+<img src="/so3-sphere.png" style="height: 250px;" />
 
 </div>
 </div>
