@@ -323,6 +323,12 @@ A **lattice** is a partially ordered set where every pair has a **join** (least 
 
 </v-click>
 
+<v-click>
+
+**Homework.** Write a complete proof that $Z(GL_n(\mathbb{R})) = \{\lambda I_n\}$. You may use ChatGPT/Gemini to help you understand the argument, but you must write the final proof **in your own words** and verify each step.
+
+</v-click>
+
 ---
 
 # The Derived (Commutator) Subgroup
