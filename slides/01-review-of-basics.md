@@ -519,9 +519,11 @@ In particular, $|H|$ divides $|G|$.
 </div>
 <div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center;">
 
-<img src="/lagrange.jpg" style="height: 140px; border-radius: 4px;" />
+<img src="/lagrange.jpg" style="height: 100px; border-radius: 4px;" />
 
-<div style="font-size: 0.7rem; opacity: 0.6;">Lagrange (1736–1813)</div>
+<img src="/lagrange-tomb.jpg" style="height: 100px; border-radius: 4px; margin-top: 0.3rem;" />
+
+<div style="font-size: 0.65rem; opacity: 0.6;">Lagrange (1736–1813)<br/>Tomb in the Pantheon, Paris</div>
 
 </div>
 </div>
