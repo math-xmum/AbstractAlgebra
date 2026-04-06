@@ -283,7 +283,11 @@ A **lattice** is a partially ordered set where every pair has a **join** (least 
 
 <v-click>
 
-**More examples:** $A_n \leq S_n$ (alternating group), $Z(G) \leq G$ (center), $SL_n(\mathbb{Z}) \leq GL_n(\mathbb{R})$.
+**More examples:** $A_n \leq S_n$ (alternating group), $SL_n(\mathbb{Z}) \leq GL_n(\mathbb{R})$.
+
+**Definition.** The **center** of $G$ is $Z(G) = \{g \in G \mid gx = xg \text{ for all } x \in G\} \leq G$.
+
+**Exercise.** Verify that $Z(G)$ is a subgroup using the two-step criterion.
 
 </v-click>
 
