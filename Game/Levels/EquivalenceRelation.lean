@@ -30,9 +30,11 @@ import Game.Levels.EquivalenceRelation.L22_EquivDescent
 
 
 
-World "BasicFunctions"
-Title "Basic properties of Functions"
+World "EquivalenceRelation"
+Title "Equivalence Relations"
 
 Introduction "
 We now learn the definition of equivalence relations and partitions.
 "
+
+-- Dependency declared in Game.lean

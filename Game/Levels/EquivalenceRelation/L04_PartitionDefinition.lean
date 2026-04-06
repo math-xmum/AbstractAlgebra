@@ -2,9 +2,8 @@ import Game.Metadata
 import Game.Generator.Basic
 -- import Mathlib
 
-#check Set.not_mem_empty
 theorem Set.ne_empty_of_mem {a : α} {s : Set α} (h : a ∈ s) : s ≠ ∅ := fun e =>
-   Set.not_mem_empty a $ e ▸ h
+   ((Set.mem_empty_iff_false a).mp (e ▸ h))
 
 
 World "EquivalenceRelation"
@@ -14,68 +13,96 @@ Level 4
 variable {α : Type*} (C : Set (Set α))
 
 
-Introduction "The following statement shows the equivalence between two definitions of a partition of a set. The first definition (IsPartition) states that a collection $C$ of subsets is a partition if it doesn't contain the empty set and every element belongs to exactly one subset in $C$. The second definition (IsPartition') states that $C$ doesn't contain the empty set, covers the whole space, and its elements are pairwise disjoint."
+Introduction "
+A **partition** of a set divides it into non-overlapping, exhaustive pieces. There are two natural ways to state this:
+
+- **IsPartition C**: The collection $C$ does not contain $\\emptyset$, and every element belongs to **exactly one** member of $C$ (existence + uniqueness, written `∃!`).
+- **IsPartition' C**: The collection $C$ does not contain $\\emptyset$, the union $\\bigcup C$ equals the whole space, and distinct members of $C$ are **disjoint**.
+
+These two formulations are equivalent. In the forward direction, uniqueness gives both coverage and disjointness. In the reverse direction, coverage plus disjointness gives uniqueness.
+
+This is a longer proof. Key new tactics you will use:
+
+- `unfold <name>` -- expands a definition in the goal.
+- `apply <lemma>` -- works backwards from the goal, matching its conclusion.
+- `obtain ⟨x, hx⟩ := H` -- destructs an existential hypothesis.
+- `specialize H x` -- substitutes a specific value into a universally quantified hypothesis.
+- `push_neg` -- pushes negations inward through quantifiers.
+- `use t` -- provides a witness for an existential goal.
+"
 
 Statement : IsPartition C ↔ IsPartition' C := by
-  Hint "We start by unfolding the definition of IsPartition. This will reveal that it consists of two parts: ∅ ∉ C and a uniqueness condition for elements. You can use `unfold`."
+  Hint "Start by expanding the definition of `IsPartition` with `unfold IsPartition`. The `unfold` tactic replaces a defined name in the goal with its definition."
   unfold IsPartition
-  Hint "Now we unfold IsPartition' to see its three components: $∅ ∉ C$, the union covers the whole space, and pairwise disjointness. Again, use `unfold`."
+  Hint "Now expand `IsPartition'` with `unfold IsPartition'`."
   unfold IsPartition'
-  Hint "The goal now has similar structures on both sides. We can use `and_congr_right'` to focus on the parts that differ, since both definitions share the $∅ ∉ C$ condition."
+  Hint "Both sides share the condition `∅ ∉ C`. Use `apply and_congr_right'` to keep that part and focus on proving the remaining parts are equivalent.
+
+The `apply` tactic works backwards: if the goal matches the conclusion of a lemma, it replaces the goal with the lemma's premises."
   apply and_congr_right'
-  Hint "We now need to prove the equivalence between the uniqueness condition and the union+disjointness conditions. We'll split this into two implications using `constructor`."
+  Hint "We need an iff between the uniqueness condition and the (coverage + disjointness) condition. Use `constructor` to split into two implications."
   constructor
-  Hint "For the forward implication (→), we introduce the hypothesis H2 that every element has a unique containing set in $C$. Use `rintro`."
+  Hint "**Forward direction.** Assume every element has a unique containing set. Use `rintro H2` to introduce this hypothesis.
+
+The `rintro` tactic is like `intro` but supports pattern-matching on the introduced term."
   rintro H2
-  Hint "We need to prove two things: that the union covers the whole space, and the pairwise disjointness. We'll tackle them separately using `constructor`."
+  Hint "We must show two things (coverage and disjointness). Use `constructor` to split the conjunction."
   constructor
-  Hint "To show $⋃₀ C = Set.univ$, we can rewrite it using set extensionality to show every element is in the union. Use `rw [Set.eq_univ_iff_forall]`."
+  Hint "**Coverage:** We need the union of `C` to equal the universal set. Rewrite this as a forall statement with `rw [Set.eq_univ_iff_forall]`."
   rw [Set.eq_univ_iff_forall]
-  Hint "We need to show for an arbitrary element x that it's in some set in $C$. We can use the uniqueness hypothesis H2 to find this set. Use `intro x`."
+  Hint "Introduce an arbitrary element `x` with `intro x`."
   intro x
-  Hint "The set membership can be rewritten using the definition of union. Use `rw [Set.mem_sUnion]`."
+  Hint "Rewrite membership in a union: `rw [Set.mem_sUnion]` turns the goal into `∃ t ∈ C, x ∈ t`."
   rw [Set.mem_sUnion]
-  Hint "From {H2} {x}, we can obtain the unique set t containing {x}. Use `obtain ⟨t, _, _⟩ := {H2} {x}`."
+  Hint "From the uniqueness hypothesis `{H2} x`, we can extract the unique set containing `x`. Use `obtain ⟨t, _, _⟩ := {H2} x`.
+
+The `obtain` tactic destructs an existential or conjunction into its components."
   obtain ⟨t, _, _⟩ := H2 x
-  Hint "We can now use this set {t} as witness for the existential. Use `use t`."
+  Hint "Provide the witness `t` for the existential with `use t`.
+
+The `use` tactic supplies a witness for an existential goal `∃ x, P x`."
   use t
-  Hint "For the second part of the forward implication, we need to show pairwise disjointness. We introduce sets `a` and `b` in $C$ that intersect. Use `intro a ha b hb hab`."
+  Hint "**Disjointness:** We must show that if two sets in $C$ have non-empty intersection, they are equal. Use `intro a ha b hb hab`."
   intro a ha b hb hab
-  Hint "The intersection non-emptiness can be rewritten as having a common element. Use `push_neg at hab`."
+  Hint "The hypothesis `hab` says the intersection is non-empty. Use `push_neg at hab` to rewrite it as the existence of a common element.
+
+The `push_neg` tactic pushes negations inward: `¬ (S = ∅)` becomes `∃ x ∈ S, True` (or similar)."
   push_neg at hab
-  Hint "We can obtain the common element `x` from the non-empty intersection. Use `obtain ⟨x,hax,hbx⟩ := hab`."
+  Hint "Extract the common element `x` with `obtain ⟨x, hax, hbx⟩ := hab`."
   obtain ⟨x,hax,hbx⟩ := hab
-  Hint "We specialize our uniqueness hypothesis {H2} to this element {x}. Use `specialize {H2} {x}`."
+  Hint "Specialize the uniqueness hypothesis to this element: `specialize {H2} x`.
+
+The `specialize` tactic applies a hypothesis to specific arguments, replacing it with the result."
   specialize H2 x
-  Hint "We unfold the ExistsUnique to work with its components. Use `unfold ExistsUnique at {H2}`."
+  Hint "Unfold the `ExistsUnique` to access its components: `unfold ExistsUnique at {H2}`."
   unfold ExistsUnique at H2
-  Hint "We can obtain the unique set `c` containing {x} from {H2}. Use `obtain ⟨c, hc1, hc2⟩ := {H2}`."
+  Hint "Extract the unique set `c` and the uniqueness proof: `obtain ⟨c, hc1, hc2⟩ := {H2}`."
   obtain ⟨c, hc1, hc2⟩ := H2
-  Hint "Using the uniqueness, we can show both {a} and {b} must equal {c}. Use `have aeqc := {hc2} {a} ⟨{ha},{hax}⟩`."
+  Hint "Since `a` is in $C$ and contains `x`, the uniqueness condition forces `a = c`. Use `have aeqc := {hc2} a ⟨ha, hax⟩`."
   have aeqc := hc2 a ⟨ha,hax⟩
-  Hint "Similarly, {b} must equal {c}. Use `have beqc := {hc2} {b} ⟨{hb},{hbx}⟩`."
+  Hint "Similarly, `b = c`. Use `have beqc := {hc2} b ⟨hb, hbx⟩`."
   have beqc := hc2 b ⟨hb,hbx⟩
-  Hint "Now we can rewrite using these equalities to conclude. Use `rw [aeqc, beqc]`."
+  Hint "Now rewrite `a` and `b` to `c` with `rw [aeqc, beqc]`."
   rw [aeqc, beqc]
-  Hint "For the reverse implication (←), we introduce the hypotheses about union and disjointness. Use `rintro ⟨H1,H2⟩`."
+  Hint "**Reverse direction.** Assume coverage and disjointness. Use `rintro ⟨H1, H2⟩` to destructure the conjunction."
   rintro ⟨H1,H2⟩
-  Hint "We rewrite the union equality using extensionality. Use `rw [Set.eq_univ_iff_forall] at {H1}`."
+  Hint "Rewrite the coverage hypothesis: `rw [Set.eq_univ_iff_forall] at {H1}` turns it into a forall."
   rw [Set.eq_univ_iff_forall] at H1
-  Hint "For an arbitrary element `x`, we need to show there's a unique set in $C$ containing it. Use `intro x`."
+  Hint "Introduce an arbitrary element with `intro x`."
   intro x
-  Hint "From the covering property {H1}, we can obtain some set `b` containing {x}. Use `obtain ⟨b, hb⟩ := {H1} {x}`."
+  Hint "From coverage, get a set containing `x`: `obtain ⟨b, hb⟩ := {H1} x`."
   obtain ⟨b, hb⟩ := H1 x
-  Hint "We'll use {b} as our candidate for the unique set. Use `use b`."
+  Hint "Provide `b` as the witness for the unique set: `use b`."
   use b
-  Hint "We need to show both existence and uniqueness. We'll structure this with `constructor`."
+  Hint "Split existence and uniqueness with `constructor`."
   constructor
-  Hint "The existence part follows directly from how we chose {b}. Use `exact hb`."
+  Hint "Existence follows directly: `exact hb`."
   exact hb
-  Hint "For uniqueness, we introduce another set `c` containing {x}. Use `intro c hc`."
+  Hint "For uniqueness, introduce another set `c` containing `x`: `intro c hc`."
   intro c hc
-  Hint "We show {c} and {b} intersect at {x}, so they must be equal by {H2}. Use `have hcb: c ∩ b ≠ ∅ := ...`."
+  Hint "The sets `c` and `b` both contain `x`, so their intersection is non-empty. Use `have hcb : c ∩ b ≠ ∅ := Set.ne_empty_of_mem (a := x) ⟨hc.2, hb.2⟩`."
   have hcb: c ∩ b ≠ ∅ := Set.ne_empty_of_mem (a :=x) ⟨hc.2,hb.2⟩
-  Hint "Finally, we apply the disjointness condition to conclude. Use `exact {H2} {c} {hc}.1 {b} {hb}.1 hcb`."
+  Hint "By disjointness, `c = b`. Use `exact {H2} c hc.1 b hb.1 hcb`."
   exact H2 c hc.1 b hb.1 hcb
 
 

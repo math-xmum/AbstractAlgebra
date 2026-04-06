@@ -7,43 +7,42 @@ World "Magma"
 Level 7
 
 Introduction "
-Suppose $G$ is a set with a binary operation $*$.
+Suppose $(G, *)$ is a magma under **multiplication**. An element $e \\in G$ is an
+**identity element** if $x * e = x$ and $e * x = x$ for every $x \\in G$.
+The definition `Mul.isIdentity e` encodes exactly this.
 
-The following statement claims that identity element is unique.
+We prove that the identity element is **unique**: if both $e$ and $e'$ are identity
+elements, then $e = e'$.
 
-Suppose $e$ and $e'$ are two identity elements, we need to prove $e=e'$.
+The key idea is to evaluate the product $e' * e$ in two ways. The tactic `specialize`
+instantiates a universally quantified hypothesis with a concrete value.
+For example, `specialize h a` replaces `h : ∀ x, P x` with `h : P a`.
 "
 
 variable (α :Type*) [Mul α]
 
 
-Introduction "This statement proves the uniqueness of the identity element in a group. It shows that if both $e$ and $e'$ satisfy the properties of an identity element (left and right multiplication), then they must be equal."
-
 open Mul
-
-Introduction "The following statement claims that in a multiplicative structure, if $e$ and $e'$ are both identity elements, then they must be equal. This is a fundamental result showing that identity elements are unique."
 
 
 
 Statement (e e' : α) (he: Mul.isIdentity e) (he': Mul.isIdentity e') : e = e' := by
-  Hint "First, let's unfold the definition of `Mul.isIdentity` to see what we're working with. You can use `unfold Mul.isIdentity at *`."
+  Hint "Start by expanding the definition of `Mul.isIdentity` in all hypotheses. Use `unfold Mul.isIdentity at *` -- the `at *` means 'apply everywhere'."
   unfold Mul.isIdentity at *
 
-  Hint "Now we have {he} and {he'} which tell us that $e$ and $e'$ are identity elements. Let's specialize {he} to the element $e'$. You can use `specialize {he} e'`."
-  Hint "The tactic specialize h a₁ ... aₙ works on local hypothesis h. The premises of this hypothesis, either universal quantifications or non-dependent implications, are instantiated by concrete terms coming from arguments a₁ ... aₙ. The tactic adds a new hypothesis with the same name h := h a₁ ... aₙ and tries to clear the previous one."
+  Hint "Now `{he}` says `∀ x, x * e = x ∧ e * x = x`, and similarly for `{he'}`. Use `specialize {he} e'` to instantiate `{he}` with $e'$, giving `e' * e = e' ∧ e * e' = e'`."
   specialize he e'
 
-  Hint "We now have {he} which says $e' * e = e'$ and $e * e' = e'$. Let's rewrite our goal using the first part. You can use `rw [<- {he}.1]`."
+  Hint "From `{he}` we know `e' * e = e'` (the `.1` component). Rewrite the goal `e = e'` backwards: use `rw [<- {he}.1]` to change the goal to `e = e' * e`."
   rw [<- he.1]
 
-  Hint "Now we need to show that $e = e' * e$. Let's specialize {he'} to the element $e$. You can use `specialize {he'} e`."
+  Hint "Now we need `e = e' * e`. Use `specialize {he'} e` to get `e * e' = e ∧ e' * e = e`."
   specialize he' e
 
-  Hint "Finally, we have {he'} which says $e' * e = e$. We can use this to complete the proof by rewriting with the second component of {he'}. You can use `rw [{he'}.2]`."
+  Hint "The `.2` component of `{he'}` gives `e' * e = e`. Use `rw [{he'}.2]` to rewrite the goal, making both sides equal and closing the proof."
   rw [he'.2]
 
-Conclusion "Note: The proof doesn't actually use the second claim of `he` or the first claim of `he'`, but they're part of the symmetric definition of identity elements.
-"
+Conclusion "Note: we only used `he.1` (that $e' * e = e'$) and `he'.2` (that $e' * e = e$). The other halves were not needed, but they are part of the symmetric definition of an identity element."
 
 NewDefinition Mul.isIdentity MulEquiv.apply_symm_apply
 OnlyTactic unfold rw sepcialize

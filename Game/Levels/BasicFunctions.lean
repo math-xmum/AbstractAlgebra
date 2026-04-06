@@ -10,3 +10,5 @@ Title "Basic properties of Functions"
 Introduction "
 We now learn some basic properties of Functions.
 "
+
+-- Dependency declared in Game.lean

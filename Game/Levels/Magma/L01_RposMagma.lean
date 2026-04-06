@@ -13,20 +13,29 @@ Level 1
 
 open Set
 
-Introduction "The following statement claims that the set of positive real numbers forms a magma under multiplication. A magma is simply a set with a binary operation that is closed under that operation."
+Introduction "
+A **magma** is a set equipped with a binary operation that is *closed* under that operation.
+More precisely, a set $S$ with an operation $\\cdot$ is a magma if for every $a, b \\in S$,
+we have $a \\cdot b \\in S$.
+
+In this level we prove that the positive real numbers $\\{x \\in \\mathbb{R} \\mid x > 0\\}$
+form a magma under **multiplication**: the product of two positive reals is again positive.
+
+The definition `Set.isMagma S` unfolds to: for all $x, y \\in S$, we have $x * y \\in S$.
+"
 
 Statement : Set.isMagma {x : ℝ | x > 0} := by
-  Hint "We need to show that the set of positive real numbers is closed under multiplication. Let's unfold the definition of `Set.isMagma`."
+  Hint "The goal is `Set.isMagma S` where `S` is the set of positive reals. The tactic `unfold` replaces a definition with its body. Use `unfold Set.isMagma` to expand the definition and see the closure condition explicitly."
   unfold Set.isMagma
-  Hint "Now we need to prove that for any two positive real numbers, their product is also positive. Let's introduce the variables and hypotheses."
+  Hint "The goal is now a universal statement: for all `x y` in the set, `x * y` is also in the set. Use `intro x y hx hy` to introduce the elements `x`, `y` and their membership hypotheses `hx : x > 0` and `hy : y > 0`."
   intro x y hx hy
-  Hint "We need to show that the product x * y belongs to the set of positive real numbers. Let's rewrite the goal using the set membership definition."
+  Hint "The goal says `x * y` is in the set of positive reals. The theorem `Set.mem_setOf_eq` rewrites membership in a set-builder set into the underlying predicate. Use `rw [Set.mem_setOf_eq]` to simplify the goal to `x * y > 0`."
   rw [Set.mem_setOf_eq]
-  Hint "Now we need to prove that x * y > 0. We can use the theorem `mul_pos` which states that the product of two positive numbers is positive."
+  Hint "We need to show `x * y > 0`. The theorem `mul_pos` states that if `0 < a` and `0 < b` then `0 < a * b`. Use `apply mul_pos` to reduce the goal to two subgoals: `x > 0` and `y > 0`."
   apply mul_pos
-  Hint "For the first subgoal, we need to show that x > 0. This follows directly from our hypothesis {hx}."
+  Hint "The first subgoal is `x > 0`, which is exactly our hypothesis `{hx}`. Use `exact hx`."
   exact hx
-  Hint "For the second subgoal, we need to show that y > 0. This follows directly from our hypothesis {hy}."
+  Hint "The second subgoal is `y > 0`, which is exactly our hypothesis `{hy}`. Use `exact hy`."
   exact hy
 
 #check Set.isAddMagma

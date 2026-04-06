@@ -7,3 +7,12 @@ import Game.Levels.Magma.L06_SubNonAssocitavie
 import Game.Levels.Magma.L07_IdentityUnique
 import Game.Levels.Magma.L08_IdenityMagmaIso
 import Game.Levels.Magma.L09_CRnonIso
+
+World "Magma"
+Title "Magma"
+
+Introduction "
+We now learn about Magmas, which are sets equipped with a binary operation.
+"
+
+-- Dependency declared in Game.lean

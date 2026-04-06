@@ -10,115 +10,123 @@ open Pointwise
 Level 4
 
 Introduction "
-A subgroup N of G is called a normal subgroup if
-∀ g n, n ∈ N → g*n*g⁻¹ ∈ N.
+A subgroup `N` of `G` is **normal** if `∀ g n, n ∈ N → g * n * g⁻¹ ∈ N`.
 
-We will show that N is normal if and only if the multiplication of any two left cosets is still a left coset.
+We prove: `N` is normal if and only if the product of any two left cosets
+is again a left coset, i.e., `(g • N) * (h • N) = (g * h) • N`.
 
-In this case, the equation (g • N) * (h • N) = (g*h) • N must holds since g*h is in (g • N) * (h • N).
+This is what makes the quotient `G/N` into a group: coset multiplication
+is well-defined precisely when `N` is normal. The resulting map
+`π : G → G/N` is the **canonical group homomorphism**.
 
-By this property,
-we see that
-the map G → Set G sending g to gN is a monoid homomorphism, whose image is the set G/N of left cosets of N.
-We call π : G → G/N canonical  group homomorphism.
-
+This is a longer proof. Take it step by step!
 "
 variable {G H:Type*} [Group G] (N : Subgroup G)
 
 #check Subgroup.Normal.conj_mem
 
 Statement : N.Normal ↔ ∀ g h : G,  (g • (N :Set G)) * (h • N) = (g * h) • N := by
-  Hint "Use `constructor` to split the statement into two directions."
+  Hint "The goal is an `↔`. Use `constructor` to split it into the forward (`→`) and
+  backward (`←`) directions."
   constructor
-  · Hint "Introduces all the necessary hypotheses and free variables."
+  · Hint "Use `intro H g h` to introduce the normality hypothesis and two group elements."
     intro H g h
-    Hint "To prove to sets equal, we need to prove that an element in one set if and only if it is in the other set.
-    We can use the `ext` tactic to rewrite the goal."
+    Hint "To prove two sets are equal, show they have the same elements. The `ext x`
+    tactic reduces `A = B` to `x ∈ A ↔ x ∈ B`."
     ext x
-    Hint "Use constructor to split the statement into two directions."
+    Hint "Use `constructor` to split the `↔`."
     constructor
-    · Hint "Introduces all the necessary hypotheses and free variables."
+    · Hint "Use `intro hx` to assume `x ∈ (g • N) * (h • N)`."
       intro hx
-      Hint "Apply the `Set.mem_mul_set_iff` rewrite rule at hypothesis {hx} to transform the membership condition in terms of a product of elements from the left and right sets. This will express {hx} as the existence of two elements whose product equals {x}."
+      Hint "Rewrite `{hx}` using `Set.mem_mul_set_iff` to express membership as:
+      there exist `a ∈ g • N` and `b ∈ h • N` with `a * b = x`.
+      `rw [Set.mem_mul_set_iff] at {hx}`"
       rw [Set.mem_mul_set_iff] at hx
-      Hint "Decompose the existential statement {hx} into individual components `a`, `b`, `ha`, `hb`, and `hab`, to extract elements from the cosets `g • ↑N` and `h • ↑N` and establish their product relation.
-      One can achieve this by using the `obtain` tactic.
-      "
+      Hint "Use `obtain` to unpack `{hx}` into elements and their properties:
+      `obtain ⟨a, b, ha, hb, hab⟩ := {hx}`"
       obtain ⟨a, b, ha, hb,hab⟩ := hx
-      Hint "Use `obtain` to destructure the membership condition {ha} : a ∈ g • ↑N into an element `n1` of the subgroup `N` and an equation `g * n1 = a`."
+      Hint "Unpack `{ha} : a ∈ g • N` to get `n1 ∈ N` with `g * n1 = a`:
+      `obtain ⟨n1, hn1, ha : g * n1 = a⟩ := {ha}`"
       obtain ⟨n1, hn1, ha : g*n1 = a ⟩ := ha
-      Hint "Apply the same technique to destructure the membership condition {hb} : b ∈ h • ↑N` into an element `n2` of the subgroup `N` and an equation `h * n2 = b`."
+      Hint "Similarly unpack `{hb}` to get `n2 ∈ N` with `h * n2 = b`:
+      `obtain ⟨n2, hn2, hb : h * n2 = b⟩ := {hb}`"
       obtain ⟨n2, hn2, hb : h*n2 = b ⟩ := hb
-      Hint "Note that (g*h) *(h⁻¹ * n1 * h * n2).  To clear the existential statement x ∈ (g * h) • N, we can use  Use `h⁻¹ * n1 * h * n2`."
+      Hint "We need to show `x ∈ (g * h) • N`, i.e., find `n ∈ N` with `(g*h)*n = x`.
+      Note `(g*h) * (h⁻¹ * n1 * h * n2) = g * n1 * (h * n2) = a * b = x`.
+      So provide the witness: `use h⁻¹ * n1 * h * n2`"
       use (h⁻¹ * n1 * h * n2)
-      Hint "Use the `constructor` tactic to split the goal into two separate subgoals."
+      Hint "Use `constructor` to split into: (1) the witness is in `N`, and (2) the product equals `x`."
       constructor
-      · Hint "Since n2 ∈ N, it suffices to show that h⁻¹ * n * h ∈ N. One can apply `Subgroup.mul_mem`."
+      · Hint "Since `n2 ∈ N`, it suffices to show `h⁻¹ * n1 * h ∈ N`. Use `Subgroup.mul_mem`
+        to split the product: `apply Subgroup.mul_mem _ _ hn2`"
         apply Subgroup.mul_mem  _ _ hn2
-        Hint "Now apply the definition of Normal subgroup, but one should rewrite h⁻¹ * n1 * h as  h⁻¹ * n1 * (h⁻¹)⁻¹. One can use `inv_inv`"
+        Hint "We need `h⁻¹ * n1 * h ∈ N`. Normality says `g * n * g⁻¹ ∈ N`, so
+        rewrite `h` as `(h⁻¹)⁻¹` using `inv_inv`: `nth_rw 2 [<-inv_inv h]`"
         --have hnh : h⁻¹ * n1 * h =  h⁻¹ * n1 * (h⁻¹)⁻¹ := by group
         nth_rw 2 [<-inv_inv h]
-        Hint "Apply the `Subgroup.Normal.conj_mem` lemma."
+        Hint "Now apply `Subgroup.Normal.conj_mem H` to use the normality hypothesis."
         apply Subgroup.Normal.conj_mem H
-        Hint "Now this is exact {hn1}. "
+        Hint "The remaining goal is `n1 ∈ N`, which is exactly `{hn1}`. Use `exact {hn1}`."
         exact hn1
-      · Hint "This is a direct computation by {hab}, {ha}, {hb} following the group law."
+      · Hint "This is a direct computation from `{hab}`, `{ha}`, `{hb}` and group laws."
         simp [<-hab,<-ha,<-hb];group
-    · Hint "Introduce the hypothesis."
+    · Hint "Use `intro H` to assume `x ∈ (g * h) • N`."
       intro H
-      Hint "Extract the element n and the assumption n∈N and ghn=x from the hypothesis {H} using the `obtain` tactic."
+      Hint "Unpack `{H}` to get `n ∈ N` with `g * h * n = x`:
+      `obtain ⟨n, hn, hx : g * h * n = x⟩ := {H}`"
       obtain ⟨n, hn,hx : g*h*n = x⟩ := H
-      Hint "Rewrite the goal using the `Set.mem_mul_set_iff`."
+      Hint "Rewrite the goal using `Set.mem_mul_set_iff` to express membership as a product."
       rw [Set.mem_mul_set_iff]
-      Hint "Now figure out what `a` and `b` should be. "
+      Hint "We need `a ∈ g • N` and `b ∈ h • N` with `a * b = x`.
+      Choose `a = g` and `b = h * n`: `use g, (h * n)`"
       use g,(h*n)
-      Hint "Use constructor to split the goal. "
+      Hint "Use `constructor` to split the goal."
       constructor
-      · Hint "This is easy since g = g * 1."
+      · Hint "Show `g ∈ g • N` by writing `g = g * 1` and noting `1 ∈ N`."
         use 1
-        Hint "Use `aesop` to finish the goal."
+        Hint "The automation `aesop` closes this."
         aesop
-      · Hint "Use constructor to split the goal."
+      · Hint "Use `constructor` to split the remaining conjunct."
         constructor
-        · Hint "This is easy since h * n = h * n. You also can use aesop."
+        · Hint "Show `h * n ∈ h • N` using the witness `n`."
           use n; aesop
-        · Hint "This is more or less {hx}."
+        · Hint "The equation `g * (h * n) = x` follows from `{hx}` by associativity."
           rw [<-hx];group
-  · Hint "Introduce the hypothesis."
+  · Hint "Use `intro H` to assume the coset multiplication property. Then `constructor`
+    to begin constructing the `Normal` instance."
     intro H
-    Hint "Use constructor to split the goal."
+    Hint "Use `constructor` to start the proof of normality."
     constructor
-    Hint "Introduce the variables and hypothesis."
+    Hint "Use `intro n hn g` to introduce the element, its membership, and the conjugator."
     intro n hn g
-    Hint "How about set h = g⁻¹? You can use `specialize` tactic."
+    Hint "Specialize the coset hypothesis to `g` and `g⁻¹`:
+    `specialize H g (g⁻¹)`. This gives `(g • N) * (g⁻¹ • N) = (g * g⁻¹) • N`."
     specialize H g (g⁻¹)
-    Hint "The goal can be simplified."
+    Hint "Simplify `g * g⁻¹` to `1` with `simp at H`."
     simp at H
-    Hint "Here is a tricky point, `g * n * g⁻¹ ∈ N` is different from `g * n * g⁻¹ ∈ ↑N`. The subgroup N of G is more than a subset of G and ↑N = (N : Set G) represents the underlying set of N (via coercion).
-    If you simply use `rw [<-H]` it will fail.
-    On the other hand, they are not that different.
-    You can use
-    ` rw [<- SetLike.mem_coe]`
-    to reformulate the goal.
-    "
+    Hint "**Subtlety:** `g * n * g⁻¹ ∈ N` (subgroup membership) is different from
+    `g * n * g⁻¹ ∈ ↑N` (set membership). The coercion `↑N = (N : Set G)` is the
+    underlying set. Use `rw [<-SetLike.mem_coe]` to switch to set membership."
     rw [<-SetLike.mem_coe]
-    Hint "Now you can rewrite"
+    Hint "Now `rw [<-H]` rewrites `↑N` to `(g • N) * (g⁻¹ • N)`."
     rw [<-H]
-    Hint "Now find (a,b)∈ g N × g⁻¹ N so that a*b = g * n * g⁻¹. "
-    use (g*n, g⁻¹)
-    Hint "Use constructor to split the goal."
+    Hint "Use `rw [Set.mem_mul]` to express membership as a product of two elements."
+    rw [Set.mem_mul]
+    Hint "Provide the first element `g * n` from `g • N`: `use g * n`"
+    use g*n
+    Hint "Use `constructor` to split the goal."
     constructor
-    · Hint "This is nothing but g*n ∈ g • N and g⁻¹ * 1 ∈ g⁻¹ • N. You can use Set.mem_prod, or just `simp`.  "
-      rw [Set.mem_prod]
-      Hint "Break down the goal into two separate sub-goals using the `constructor` tactic."
+    · exact ⟨n,hn,rfl⟩
+    · Hint "Provide the second element `g⁻¹` from `g⁻¹ • N`: `use g⁻¹`"
+      use g⁻¹
+      Hint "Use `constructor` to split."
       constructor
-      · exact ⟨n,hn,rfl⟩
-      · Hint "You need to use `one_mem`."
-        exact ⟨1,by simp [Subgroup.one_mem],by simp⟩
-    · Hint "This is simple."
-      simp
+      · Hint "Show `g⁻¹ ∈ g⁻¹ • N` by writing `g⁻¹ = g⁻¹ * 1` and using `Subgroup.one_mem`."
+        exact ⟨1, Subgroup.one_mem _, mul_one _⟩
+      · Hint "The equation `g * n * g⁻¹ = (g * n) * g⁻¹` is group arithmetic. Use `group`."
+        group
 
 
 open scoped Pointwise
 
-NewTheorem MonoidHom.mem_ker inv_inv Set.mem_mul_set_iff Subgroup.Normal.conj_mem Subgroup.one_mem Subgroup.mul_mem Set.mem_prod SetLike.mem_coe
+NewTheorem MonoidHom.mem_ker Set.mem_mul_set_iff Subgroup.Normal.conj_mem Subgroup.one_mem Subgroup.mul_mem Set.mem_prod SetLike.mem_coe

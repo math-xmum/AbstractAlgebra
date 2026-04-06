@@ -1,13 +1,11 @@
 import Game.Metadata
 import Game.Levels.BasicLean
-/-
 import Game.Levels.BasicFunctions
 import Game.Levels.EquivalenceRelation
 import Game.Levels.Magma
 import Game.Levels.BasicGroupTheory
 import Game.Levels.GroupHomo
 import Game.Levels.GroupAction
--/
 
 set_option lean4game.showDependencyReasons true
 -- Here's what we'll put on the title screen
@@ -29,6 +27,10 @@ CaptionShort "Abstract Algebra Game "
 CaptionLong "Abstract Algebra Game for MAT211 and MAT205 Xiamen University Malaysia."
 -- Prerequisites "" -- add this if your game depends on other games
 -- CoverImage "images/cover.png"
+
+/-! World dependency graph -/
+Dependency BasicLean → BasicFunctions → EquivalenceRelation → BasicGroupTheory → GroupHomomorphism → GroupAction
+Dependency BasicFunctions → Magma → BasicGroupTheory
 
 /-! Build the game. Show's warnings if it found a problem with your game. -/
 MakeGame

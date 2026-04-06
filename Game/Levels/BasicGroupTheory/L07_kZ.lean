@@ -5,18 +5,15 @@ World "BasicGroupTheory"
 
 Level 7
 
-Introduction "
-For example, ℤ is a group under addition.
-Now the set of even integers, 2ℤ := {2n | n ∈ ℤ }, is a subgroup of ℤ.
-More generally, kℤ := {k*n | n ∈ ℤ } is also a subgroup of ℤ.
-Morover, all subgoup of ℤ is of the form kℤ for some k ∈ ℕ.
+Introduction "The integers $\\mathbb{Z}$ form a group under addition. For any integer $k$, the set $k\\mathbb{Z} = \\{k \\cdot n \\mid n \\in \\mathbb{Z}\\}$ is a subgroup of $\\mathbb{Z}$. For example, $2\\mathbb{Z}$ is the even integers.
 
-In fact, ℕ → {subgroup of ℤ} given by k ↦ kℤ is a bijection.
-"
+In fact, every subgroup of $\\mathbb{Z}$ has the form $k\\mathbb{Z}$ for some $k \\in \\mathbb{N}$.
+
+In this level, we show that the set $\\{a \\in \\mathbb{Z} \\mid a \\mod k = 0\\}$ forms an additive subgroup of $\\mathbb{Z}$, using `addsubgroupclass_make`. The key lemma is `Int.sub_emod`: `(a - b) % k = ((a % k) - (b % k)) % k`."
 
 open Monoid
 
-lemma subgroup_make {G : Type*} [Group G] (P : G → Prop) (h1 : P 1) (h2 :∀ {a b:G}, P a → P b → P (a * b⁻¹)): Subgroup G where
+def subgroup_make {G : Type*} [Group G] (P : G → Prop) (h1 : P 1) (h2 :∀ {a b:G}, P a → P b → P (a * b⁻¹)): Subgroup G where
   carrier := {a | P a}
   mul_mem' := sorry
   one_mem' := h1
@@ -27,7 +24,7 @@ lemma subgroup_make {G : Type*} [Group G] (P : G → Prop) (h1 : P 1) (h2 :∀ {
     simp only [one_mul] at this
     exact this
 
-lemma addsubgroup_make {G : Type*} [AddGroup G] (P : G → Prop) (h1 : P 0) (h2 :∀ {a b:G}, P a → P b → P (a - b)): AddSubgroup G where
+def addsubgroup_make {G : Type*} [AddGroup G] (P : G → Prop) (h1 : P 0) (h2 :∀ {a b:G}, P a → P b → P (a - b)): AddSubgroup G where
   carrier := {a | P a}
   add_mem' := sorry
   zero_mem' := h1
@@ -45,7 +42,7 @@ inductive SubSetP  (P : G → Prop)
 instance (P : α → Prop): SetLike (SubSetP P) α where
   coe := fun _ => {a  | P a}
   coe_injective' := by
-    intro _ _
+    intro ⟨⟩ ⟨⟩
     simp
 
 /--
@@ -61,17 +58,17 @@ lemma neg_mem {G : Type*} [AddGroup G] (P : G → Prop) (h1 : P 0) (h2 :∀ {a b
     simp only [zero_sub] at this
     exact this
 
-lemma addsubgroupclass_make {G : Type*} [AddGroup G] (P : G → Prop) (h1 : P 0) (h2 :∀ {a b:G}, P a → P b → P (a - b)): AddSubgroupClass (SubSetP P) G where
+def addsubgroupclass_make {G : Type*} [AddGroup G] (P : G → Prop) (h1 : P 0) (h2 :∀ {a b:G}, P a → P b → P (a - b)): AddSubgroupClass (SubSetP P) G where
   zero_mem := by
     intro s
     exact h1
   neg_mem := by
     intro s x
-    simp [SubSetP.def]
+    simp only [SubSetP.def]
     apply neg_mem P h1 h2
   add_mem := by
     intro s a b
-    simp [SubSetP.def]
+    simp only [SubSetP.def]
     intro ha hb
     have hnb := neg_mem P h1 h2 b hb
     have := h2 ha hnb
@@ -81,17 +78,18 @@ lemma addsubgroupclass_make {G : Type*} [AddGroup G] (P : G → Prop) (h1 : P 0)
 
 #check Int.sub_emod
 
+variable (k : ℤ) in
 Statement : AddSubgroupClass (SubSetP (· %k = 0)) ℤ :=
   by
     apply addsubgroupclass_make
-    · simp
-    Hint "Intro all elements"
+    · simp only [Int.zero_emod]
+    Hint "Introduce the elements and hypotheses with `intro a b` followed by `intro ha hb`."
     intro a b
     intro ha hb
-    Hint "Use Int.sub_emod"
+    Hint "Rewrite using `rw [Int.sub_emod]` to express `(a - b) % k` in terms of `a % k` and `b % k`."
     rw [Int.sub_emod]
-    Hint "Use hypothesis to simp the goal"
-    simp [ha,hb]
+    Hint "Now `ha : a % k = 0` and `hb : b % k = 0`. Use `simp [ha, hb]` to substitute these and simplify."
+    simp only [ha, hb, sub_self, Int.zero_emod]
 
 
 NewTheorem SubSetP.def Int.sub_emod addsubgroupclass_make

@@ -13,3 +13,5 @@ Title "Group Homomorphism"
 Introduction "
 We now learn Homomorphism and normal subgroups.
 "
+
+-- Dependency declared in Game.lean

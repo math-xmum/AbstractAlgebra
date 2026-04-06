@@ -10,3 +10,5 @@ Title "Group Action"
 Introduction "
 We now learn Group Action.
 "
+
+-- Dependency declared in Game.lean

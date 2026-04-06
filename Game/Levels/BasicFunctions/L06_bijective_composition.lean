@@ -4,32 +4,40 @@ World "BasicFunctions"
 Level 6
 Title "Composition of surjective function."
 
-Introduction "The following statement claims that the composition of two bijective functions is also bijective. Specifically, if $f: α → β$ and $g: β → γ$ are both bijective, then $g ∘ f: α → γ$ is also bijective. A bijective function is both injective (one-to-one) and surjective (onto)."
+Introduction "If $f : α → β$ and $g : β → γ$ are both bijective, then $g ∘ f : α → γ$ is also bijective. Since bijectivity means being both injective and surjective, we split the proof into two parts and reuse the ideas from Levels 2 and 4.
+
+Note: if `hf : Function.Bijective f`, then `hf.1` is the injectivity part and `hf.2` is the surjectivity part (since `Bijective` is defined as a conjunction `∧`)."
 
 Statement {α β γ : Type} (f : α → β) (g : β → γ) (hf : Function.Bijective f) (hg : Function.Bijective g) : Function.Bijective (g ∘ f) := by
-  Hint "To prove that $g ∘ f$ is bijective, we need to show it is both injective and surjective. You can use `constructor` to split the goal into these two parts."
+  Hint "The goal is `Function.Bijective (g ∘ f)`, which is `Function.Injective (g ∘ f) ∧ Function.Surjective (g ∘ f)`. Use `constructor` to split it into two subgoals.
+
+The `constructor` tactic splits a goal of the form `P ∧ Q` into two separate goals: first `P`, then `Q`."
   constructor
-  Hint "First, we prove injectivity of $g ∘ f$. We need to show that if $(g ∘ f)(x) = (g ∘ f)(y)$, then $x = y$. You can use `intro` to introduce variables x and y and hypothesis h."
+  Hint "**Subgoal 1: Injectivity.** We must show `∀ x y, (g ∘ f) x = (g ∘ f) y → x = y`. Use `intro x y h` to introduce the variables and hypothesis."
   intro x y h
-  Hint "To show $x = y$, we can use the injectivity of {f} (since $f$ is bijective). You can use `apply {hf}.1` to reduce the goal to showing $f(x) = f(y)$."
+  Hint "The goal is `{x} = {y}`. Since `{hf}.1` is the injectivity of $f$, `apply {hf}.1` changes the goal to `f {x} = f {y}`.
+
+Recall: `.1` extracts the first component of a conjunction. Here `{hf} : Bijective f` is `Injective f ∧ Surjective f`, so `{hf}.1 : Injective f`."
   apply hf.1
-  Hint "Now, to show $f(x) = f(y)$, we can use the injectivity of {g} (since $g$ is bijective). You can use `apply {hg}.1` to reduce the goal to showing $g(f(x)) = g(f(y))$."
+  Hint "The goal is `f {x} = f {y}`. Use `apply {hg}.1` — the injectivity of $g$ — to reduce this to `g (f {x}) = g (f {y})`."
   apply hg.1
-  Hint "The goal $g(f(x)) = g(f(y))$ is exactly our hypothesis {h}, so we can use `exact {h}`."
+  Hint "The goal `g (f {x}) = g (f {y})` matches `{h}` exactly. Use `exact {h}`."
   exact h
-  Hint "Now, we prove surjectivity of $g ∘ f$. We need to show that for any $y : γ$, there exists an $a : α$ such that $(g ∘ f)(a) = y$. You can use `intro` to introduce y."
+  Hint "**Subgoal 2: Surjectivity.** We must show `∀ y, ∃ a, (g ∘ f) a = y`. Use `intro y` to fix an arbitrary element of $γ$."
   intro y
-  Hint "Since {g} is surjective, there exists some $x : β$ such that $g(x) = y$. You can use `rcases {hg}.2 {y} with ⟨x, hx⟩` to obtain such an x and the equality hx."
+  Hint "Use surjectivity of $g$ to find a preimage: `rcases {hg}.2 {y} with ⟨x, hx⟩` gives `x : β` and `hx : g x = {y}`.
+
+Here `{hg}.2` is the surjectivity part of `{hg} : Bijective g`."
   rcases hg.2 y with ⟨x, hx⟩
-  Hint "Since {f} is surjective, there exists some $a : α$ such that $f(a) = x$. You can use `rcases {hf}.2 {x} with ⟨a, ha⟩` to obtain such an a and the equality ha."
+  Hint "Now use surjectivity of $f$: `rcases {hf}.2 {x} with ⟨a, ha⟩` gives `a : α` and `ha : f a = {x}`."
   rcases hf.2 x with ⟨a, ha⟩
-  Hint "We can now use {a} as our witness for the existential. You can use `use {a}` to set up the goal $(g ∘ f)(a) = y$."
+  Hint "Provide `{a}` as the witness with `use {a}`. The goal becomes `(g ∘ f) {a} = {y}`."
   use a
-  Hint "To prove $(g ∘ f)(a) = y$, we can rewrite using {hx} and {ha}. You can use `rw [← {hx}, ← {ha}]` to simplify the goal."
+  Hint "Rewrite using `{ha}` and `{hx}`: `rw [← {hx}, ← {ha}]` transforms the goal so both sides match definitionally."
   rw [← hx, ← ha]
-  Hint "The goal now reduces to $(g ∘ f)(a) = g(f(a))$, which is true by definition of function composition. You can use `rfl` to finish the proof."
+  Hint "Both sides are now definitionally equal. Use `rfl`."
   rfl
 
 
-Conclusion "Level Completed!"
-NewTactic intro apply exact use rw rfl
+Conclusion "The composition of bijective functions is bijective. This proof combined the techniques from the injectivity and surjectivity composition proofs, using `.1` and `.2` to access the two components of the bijectivity hypotheses."
+-- NewTactic moved to BasicLean

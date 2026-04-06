@@ -2,12 +2,8 @@ import GameServer
 import Mathlib.Tactic
 import Mathlib.Data.Set.Basic
 
---import Game.Levels.Lemmas.GroupTheory
---import Game.Levels.Lemmas.Partition
-
---import Mathlib.Tactic.Common
-
---import Game.Generator.Basic
+import Game.Levels.Lemmas.GroupTheory
+import Game.Levels.Lemmas.Partition
 
 /-! Use this file to add things that should be available in all levels.
 

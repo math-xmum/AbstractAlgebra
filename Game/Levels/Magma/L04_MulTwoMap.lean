@@ -6,32 +6,43 @@ World "Magma"
 
 Level 4
 
-Introduction "The following statement claims that the function $f(x) = x^2$ (or $x * x$ in Lean notation) is a multiplication homomorphism. In other words, for any two natural numbers $x$ and $y$, $f(x * y) = f(x) * f(y)$."
+Introduction "
+A **magma homomorphism** is a function between two magmas that preserves the binary operation.
+Given magmas $(A, *)$ and $(B, \\cdot)$, a function $f : A \\to B$ is a homomorphism if
+$f(a * b) = f(a) \\cdot f(b)$ for all $a, b$.
+
+Here both the domain and codomain are $(\\mathbb{N}, \\times)$ -- the natural numbers under
+**multiplication**. The definition `Mul.isMulMap f` says exactly that
+$f(x * y) = f(x) * f(y)$ for all $x, y$.
+
+We prove that $f(x) = x \\cdot x$ is a multiplicative homomorphism on $\\mathbb{N}$.
+The key tools are `Nat.mul_assoc` and `Nat.mul_comm`.
+"
 
 Statement: Mul.isMulMap (fun (x :ℕ) => x * x) := by
-  Hint "We need to unfold the definition of `Mul.isMulMap` to see what we need to prove. Use `unfold Mul.isMulMap`."
+  Hint "Start by expanding the definition. Use `unfold Mul.isMulMap` to see the homomorphism condition explicitly."
   unfold Mul.isMulMap
 
-  Hint "Now we need to simplify the anonymous function applications. Use `beta_reduce` to evaluate the function applications."
+  Hint "The goal contains anonymous function applications like `(fun x => x * x) a`. The tactic `beta_reduce` evaluates these, replacing them with `a * a`. Use `beta_reduce`."
   beta_reduce
 
-  Hint "We need to prove that for all natural numbers $x$ and $y$, $(x * y) * (x * y) = (x * x) * (y *y)$. Let's introduce these variables with `intro x y`."
+  Hint "The goal is now `∀ x y, (x * y) * (x * y) = (x * x) * (y * y)`. Use `intro x y` to fix two arbitrary natural numbers."
   intro x y
 
-  Hint "Now we need to manipulate the left side of the equation to match the right side. Let's use the associativity of multiplication. Use `rw [Nat.mul_assoc x y (x * y)]`."
+  Hint "We need to rearrange `(x * y) * (x * y)` into `(x * x) * (y * y)` using associativity and commutativity. First, use `rw [Nat.mul_assoc x y (x * y)]` to re-associate the left side as `x * (y * (x * y))`."
   rw [Nat.mul_assoc x y (x * y)]
 
-  Hint "We can use the commutativity of multiplication to reorder the terms. "
+  Hint "Now swap `y * (x * y)` to `(x * y) * y` using `rw [Nat.mul_comm y (x*y)]`."
   rw [Nat.mul_comm y (x*y)]
 
-  Hint "Apply associativity again to group the terms properly. "
+  Hint "Re-associate `(x * y) * y` into `x * (y * y)` using `rw [Nat.mul_assoc x y y]`."
   rw [Nat.mul_assoc x y y]
 
-  Hint "Finally, we can use associativity one more time to match the right side exactly. "
+  Hint "Finally, use `rw [<-Nat.mul_assoc x x (y*y)]` to group `x * (x * (y * y))` as `(x * x) * (y * y)`, matching the right side exactly."
   rw [<-Nat.mul_assoc x x (y*y)]
 
 
-NewTactic unfold beta_reduce intro rw
+-- NewTactic moved to BasicLean
 OnlyTactic unfold beta_reduce intro rw
 NewTheorem Nat.mul_assoc Nat.mul_comm
 OnlyTheorem Nat.mul_assoc Nat.mul_comm

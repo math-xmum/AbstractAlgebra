@@ -4,63 +4,71 @@ World "BasicLean"
 Level 9
 Title "Union is associative"
 
+Introduction "We prove that set union is associative: $(s \\cup t) \\cup r = s \\cup (t \\cup r)$. This level introduces two new tactics for working with disjunctions (\"or\" statements):
+
+  **`left`** -- When your goal is a disjunction `P \\vee Q`, the `left` tactic changes the goal to `P`. You are committing to proving the left alternative.
+
+  **`right`** -- Similarly, `right` changes a goal `P \\vee Q` to `Q`, committing to the right alternative.
+
+  Since set union corresponds to logical disjunction, these tactics are essential for proving union-related statements."
+
 Statement {α : Type*} (s t r : Set α): (s ∪ t) ∪ r = s ∪ (t ∪ r) := by
-  Hint "We start by showing that the two sets are equal by proving that for every element x, x belongs to both sides of the equation. You can use `ext x`."
+  Hint "As in the previous level, we prove set equality by showing both sides have the same elements. Use `ext x` to introduce an arbitrary element `x`."
   ext x
-  Hint "Rewrite the goal using the definition of set union to break down the expression on both sides. You can use `rw [Set.mem_union]`."
+  Hint "Unfold one layer of union using `rw [Set.mem_union]`. This rewrites the outermost union on the left-hand side of the `↔`."
   rw [Set.mem_union]
-  Hint "To prove the equivalence, we need to show both directions: {x} ∈ (s ∪ t) ∪ r → {x} ∈ s ∪ (t ∪ r) and {x} ∈ s ∪ (t ∪ r) → {x} ∈ (s ∪ t) ∪ r. You can use `constructor`."
+  Hint "The goal is a bi-implication. Use `constructor` to split it into two directions."
   constructor
-  Hint "For the first direction, we need to consider cases where {x} is in s ∪ t or in r. You can use `rintro (h | h)`."
+  Hint "**Forward direction**: The hypothesis is a disjunction (`x ∈ s ∪ t ∨ x ∈ r`). Use `rintro (h | h)` to introduce it and case-split: the first case gives `h : x ∈ s ∪ t`, the second gives `h : x ∈ r`."
   rintro (h | h)
-  Hint "Use the definition of set union to further break down {h}. You can use `rw [Set.mem_union] at *`."
+  Hint "Unfold the union definition everywhere (in the goal and hypotheses) with `rw [Set.mem_union] at *`."
   rw [Set.mem_union] at *
-  Hint "For the first case, where {x} ∈ s ∪ t, consider sub-cases where {x} ∈ s or {x} ∈ t. You can use `rcases h with h | h`."
+  Hint "The hypothesis `h : x ∈ s ∨ x ∈ t` is itself a disjunction. Use `rcases h with h | h` to case-split on it."
   rcases h with h | h
-  Hint "For the sub-case where {x} ∈ s, it is enough to show {x} ∈ s ∪ (t ∪ r). You can use `left`."
+  Hint "We have `h : x ∈ s` and need to show `x ∈ s ∨ x ∈ t ∪ r`. Since we can prove the left disjunct, use `left`."
   left
-  Hint "Now, conclude this case since {x} ∈ s implies {x} ∈ s. You can use `exact h`."
+  Hint "The goal is now exactly `h`. Close it with `exact h`."
   exact h
-  Hint "For the sub-case where {x} ∈ t, we need to show {x} ∈ s ∪ (t ∪ r). You can use `right` to focus on the second part."
+  Hint "We have `h : x ∈ t` and need `x ∈ s ∨ x ∈ t ∪ r`. Use `right` to commit to proving the right disjunct."
   right
-  Hint "Rewrite the goal to show {x} ∈ t ∪ r using `rw [Set.mem_union]`."
+  Hint "Unfold the union with `rw [Set.mem_union]`, then use `left` since we know `x ∈ t`."
   rw [Set.mem_union]
-  Hint "Now, {x} ∈ t directly implies {x} ∈ t ∪ r. You can use `left`."
+  Hint "Use `left` and then `exact h`."
   left
-  Hint "Conclude this sub-case since {x} ∈ t implies {x} ∈ t. You can use `exact h`."
+  Hint "Close the goal with `exact h`."
   exact h
-  Hint "For the case where {x} ∈ r, show {x} ∈ s ∪ (t ∪ r). You can use `right` to focus on the second part."
+  Hint "Now we handle `h : x ∈ r`. We need `x ∈ s ∨ x ∈ t ∪ r`. Use `right`."
   right
-  Hint "Rewrite the goal to show {x} ∈ t ∪ r using `rw [Set.mem_union]`."
+  Hint "Unfold the union with `rw [Set.mem_union]`, then use `right` since we know `x ∈ r`."
   rw [Set.mem_union]
-  Hint "Conclude this case by showing {x} ∈ r implies {x} ∈ r. You can use `right`."
+  Hint "Use `right` to select the `x ∈ r` disjunct."
   right
-  Hint "Finally, use `exact h` to conclude this case since {x} ∈ r implies {x} ∈ r."
+  Hint "Close the goal with `exact h`."
   exact h
-  Hint "For the second direction, consider cases where {x} is in s or in t ∪ r. You can use `rintro (h | h)`."
+  Hint "**Backward direction**: Use `rintro (h | h)` to case-split on whether `x ∈ s` or `x ∈ t ∪ r`."
   rintro (h | h)
-  Hint "For the case where {x} ∈ s, it is enough to show {x} ∈ s ∪ t. You can use `left`."
+  Hint "We have `h : x ∈ s` and need `x ∈ s ∪ t ∨ x ∈ r`. Use `left` to focus on `x ∈ s ∪ t`."
   left
-  Hint "Rewrite the goal to show {x} ∈ s ∪ t using `rw [Set.mem_union]`."
+  Hint "Unfold with `rw [Set.mem_union]`, then `left` and `exact h`."
   rw [Set.mem_union]
-  Hint "Conclude this case since {x} ∈ s implies {x} ∈ {s} ∨ {x}∈ {t}. You can use `exact h`."
+  Hint "Use `left` to pick `x ∈ s`, then `exact h`."
   left
   exact h
-  Hint "For the case where {x} ∈ t ∪ r, consider sub-cases where {x} ∈ t or {x} ∈ r. You can use `rcases h with h | h`."
+  Hint "We have `h : x ∈ t ∪ r`. Case-split with `rcases h with h | h`."
   rcases h with h | h
-  Hint "For the sub-case where {x} ∈ t, show {x} ∈ s ∪ t. You can use `left`."
+  Hint "We have `h : x ∈ t`. Use `left` to target `x ∈ s ∪ t`."
   left
-  Hint "Rewrite the goal to show {x} ∈ s ∪ t using `rw [Set.mem_union]`."
+  Hint "Unfold with `rw [Set.mem_union]`, then `right` and `exact h`."
   rw [Set.mem_union]
-  Hint "Conclude this sub-case since {x} ∈ t implies {x} ∈ t. You can use `right` and then `exact h`."
+  Hint "Use `right` to pick `x ∈ t`, then `exact h`."
   right
   exact h
-  Hint "For the sub-case where {x} ∈ r, show {x} ∈ s ∪ t ∨ {x} ∈ r. You can use `right`."
+  Hint "We have `h : x ∈ r` and need `x ∈ s ∪ t ∨ x ∈ r`. Use `right`."
   right
-  Hint "Finally, use `exact h` to conclude this sub-case since {x} ∈ r implies {x} ∈ r."
+  Hint "Close the goal with `exact h`."
   exact h
 
 
 
-Conclusion "Level Completed!"
+Conclusion "You proved associativity of union! The `left` and `right` tactics let you choose which side of a disjunction to prove. Combined with `rintro (h | h)` for case-splitting on disjunctions, you now have all the tools needed to reason about union membership."
 NewTactic left right

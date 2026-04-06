@@ -6,12 +6,11 @@ World "BasicGroupTheory"
 Level 12
 
 Introduction "
-Let H be a subgroup of G.
-The subset g • H := {gh | h∈H} for some g∈G is called a left coset of H.
+All left cosets of H have the same size. More precisely, for any g, k in G there is a natural bijection between g • H and k • H, given by x ↦ (k * g⁻¹) * x.
 
-Basically all cosets are essentially the same in the sense that there is a natural bijection between g H and k H for arbitrary g k ∈ G.
+In Lean 4, a bijection between two types is represented by `Equiv α β`. An `Equiv` bundles four pieces of data: a forward map `toFun`, an inverse map `invFun`, and proofs that they are mutual inverses (`left_inv` and `right_inv`).
 
-In Lean, a bijection between two types α and β is represented by the type `Equiv α β'
+In this level you will construct such an `Equiv` explicitly.
 "
 
 open Monoid Group
@@ -26,44 +25,45 @@ open Pointwise
 
 Statement :
   Equiv (g • H :Set G) (k • H : Set G):= by
-  Hint "Use `constructor' to expend the definition of Equiv"
-  constructor
-  Hint "Pick the 3rd goal, which required to define a map from g • H to k • H using `pick_goal 3'"
-  pick_goal 3
-  · Hint " Define the map g • H ∋ x ↦ (k * g⁻¹)*x. On can achive this by using `use fun x => ⟨(k * g⁻¹)*x, ?_⟩'
-    Here we need to prove that the function is well defined, i.e.  `(k * g⁻¹)*x ∈ k • H'
+  Hint "We build the `Equiv` by supplying its four fields. The `refine` tactic lets us provide a structure with holes (`?fieldName`) to fill in later."
+  refine ⟨?toFun, ?invFun, ?left_inv, ?right_inv⟩
+  Hint "We now define the forward map from g • H to k • H."
+  case toFun =>
+    Hint "Define the map by x ↦ (k * g⁻¹) * x. Since x is an element of the subtype g • H, the output must be a subtype element of k • H, so we need to prove that (k * g⁻¹) * x ∈ k • H.
     "
-    use fun x => ⟨(k * g⁻¹)*x, ?_⟩
-    Hint " x ∈ g • H means ∃ h ∈ H, g • h = x  "
-    obtain ⟨h,b,hh⟩ := x.2
-    Hint "One can clear up the expression in {hh} by `simp at {hh}'"
-    simp at hh
-    Hint "To show k * g⁻¹ * ↑x ∈ k • H, one should provide an element a in h such that k g⁻¹ x  = k a. Ore one can try to replace x by g*h first and simplify the expression using `group'."
-    rw [<-hh]
-    group
-    Hint "Now `use h'. "
-    use h
-    trivial
-  Hint "Now construct the inverse function by  `pick_goal 3'"
-  pick_goal 3
-  · Hint "This is the same as the first case. We let you to practice by yourself."
-    use fun x => ⟨(g * k⁻¹)*x, ?_⟩
-    obtain ⟨h,b,hh⟩ := x.2
-    simp at hh
-    rw [<-hh]
-    group
-    Hint "Now `use h'. "
-    use h
-    trivial
-  · Hint "`Function.LeftInverse g f' means ∀ x, g (f x) = x. So we use `intro' to reveal the goal. "
+    exact fun x => ⟨(k * g⁻¹)*x, by
+      Hint "Since x ∈ g • H, there exists h ∈ H such that g * h = x. Use `obtain` to decompose `x.2`."
+      obtain ⟨h,b,hh⟩ := x.2
+      Hint "Simplify the coercion in `{hh}` using `simp at {hh}`."
+      simp at hh
+      Hint "Now rewrite using `{hh}` so that x becomes g * h, then `group` simplifies k * g⁻¹ * (g * h) to k * h."
+      rw [<-hh]
+      group
+      Hint "Now `use h` to provide the witness, and `trivial` finishes the proof."
+      use h
+      trivial⟩
+  Hint "Now construct the inverse map from k • H to g • H. The argument is symmetric: use x ↦ (g * k⁻¹) * x."
+  case invFun =>
+    Hint "This case is analogous to the forward map, with g and k swapped."
+    exact fun x => ⟨(g * k⁻¹)*x, by
+      obtain ⟨h,b,hh⟩ := x.2
+      simp at hh
+      rw [<-hh]
+      group
+      Hint "Use `use h` and `trivial` to finish, just like the forward case."
+      use h
+      trivial⟩
+  case left_inv =>
+    Hint "`left_inv` asks us to show that applying invFun after toFun returns the original element. This means for all x, we need invFun (toFun x) = x. Use `intro x` to fix an element."
     intro x
-    Hint "Since `x' is a subtype, `y = x' if and only if the `y.1 = x.1'. Use `ext' to reduced the problem to comparing the values hold in  y and x. "
+    Hint "Since elements of g • H are subtypes, equality reduces to equality of the underlying group elements. The `ext` tactic does exactly this reduction."
     ext
-    Hint "Use `simp' to clear up the goal"
+    Hint "Use `simp` to simplify coercions in the goal."
     simp
-    Hint "Use `group' to finish the proof. "
+    Hint "The `group` tactic closes goals that follow from the group axioms. Here it proves g * k⁻¹ * (k * g⁻¹ * x) = x."
     group
-  · Hint "This is similar to the pervious case."
+  case right_inv =>
+    Hint "This is symmetric to `left_inv`. Use `intro x`, then `ext`, and finish with `group`."
     intro x
     ext;group
 

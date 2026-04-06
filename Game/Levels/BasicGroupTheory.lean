@@ -26,47 +26,4 @@ Introduction "
 We start with some basic facts in the group theory.
 "
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-World "BasicGroupTheory"
-Title "Basic Group Theory"
-
-Introduction "
-We now learn some basic Group Theory.
-"
+-- Dependency declared in Game.lean

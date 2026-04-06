@@ -5,28 +5,23 @@ Level 1
 
 Title "mul_assoc"
 
-Introduction "The next levels focus on the basic properties required in the definition of group.
+Introduction "Welcome to Group Theory! A **group** is a set $G$ with a binary operation $*$ satisfying three axioms: associativity, existence of an identity element, and existence of inverses.
 
-In this second level the goal is `a * b * c = b * (a * c)`, but to help us we have an assumption `h` saying that `a * b = b * a`.
+In this level, the goal is `a * b * c = b * (a * c)`. You have a hypothesis `h : a * b = b * a` in your assumptions panel.
 
-Check that you can see `h` in your list of assumptions.
-Before we can use `rfl`, we have to substitute `b * a` for `a * b`.
+The key tactic here is `rw` (rewrite). Given a proof `h : X = Y`, the command `rw [h]` replaces occurrences of `X` with `Y` in the goal. You can chain multiple rewrites: `rw [h1, h2]`.
 
-We do this in Lean by rewriting the proof `h`, using the `rw` tactic."
+We will also use `mul_assoc`, which states `a * b * c = a * (b * c)` for any group elements."
 
 Statement (G : Type*) [Group G] (a b c : G) (h : a * b = b * a) : a * b * c = b * (a * c) := by
-  Hint "First execute `rw [h]` to replace the `a * b` with `b * a`."
+  Hint "The goal contains `a * b * c`. Since `h : a * b = b * a`, execute `rw [h]` to replace `a * b` with `b * a`."
   rw [h]
-  Hint "Then recall the definition of group in level 1, we know that `(a b c : G): a * b * c = a* (b * c)`.
-
-  The proof of `a * b * c = a * (b * c)` is called mul_assoc."
-  -- Check out the "Lemma" tab in the list of lemmas on the right for this and other proofs.
-  Hint "Continue with `rw [mul_assoc]` to change `b * a * c`  to `b * (a * c)`. Lean can automatically identify variables to apply the lemmas."
+  Hint "Now the goal is `b * a * c = b * (a * c)`. The theorem `mul_assoc` states that `a * b * c = a * (b * c)` for any group elements. Use `rw [mul_assoc]` -- Lean will automatically match the variables."
   rw [mul_assoc]
 
-Conclusion "Level completed! Note that you can do `rw [h, mul_assoc]` to solve this level in one line.
+Conclusion "Well done! You can also solve this in one line: `rw [h, mul_assoc]`.
 
-Let's continue the journey."
+The `rw` tactic is your main tool for equational reasoning. Combined with group-theoretic lemmas like `mul_assoc`, it lets you transform expressions step by step."
 
 /- Use these commands to add items to the game's inventory. -/
 

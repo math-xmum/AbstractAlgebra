@@ -4,12 +4,16 @@ World "BasicFunctions"
 Level 1
 Title "Definition of injective function."
 
-Introduction "The statement we are about to prove is a characterization of the injectivity of a function. It states that a function $f$ from $\\alpha$ to $\\beta$ is injective if and only if for every pair of elements $x$ and $y$ in $\\alpha$, $f(x) = f(y)$ implies $x = y$. This is a fundamental property of injective functions, which ensures that different inputs map to different outputs."
+Introduction "A function $f : α → β$ is **injective** (one-to-one) if distinct inputs always produce distinct outputs. Equivalently, whenever $f(x) = f(y)$, we must have $x = y$.
+
+In Lean 4, `Function.Injective f` is *defined* as `∀ x y, f x = f y → x = y`. Since the goal is this exact definition, both sides of the `↔` are definitionally equal."
 Statement {α β γ : Type} (f : α → β) (g : β → γ) : Function.Injective f ↔ ∀ x y, f x = f y → x = y := by
-  Hint "The goal is already in the form of a well-known equivalence for injective functions. Therefore, we can conclude the proof directly using `rfl`, which shows that both sides of the equivalence are equal by definition."
+  Hint "The goal `Function.Injective f ↔ ∀ x y, f x = f y → x = y` is a **definitional equality** — the left side unfolds to exactly the right side.
+
+The `rfl` tactic closes any goal of the form `a = a` or `a ↔ a`, including when both sides are definitionally equal. Try `rfl`."
   rfl
 
 
-Conclusion "Level Completed!"
+Conclusion "Nicely done! You have seen that `Function.Injective f` is defined as `∀ x y, f x = f y → x = y`. The `rfl` tactic works here because both sides are the same by definition."
 
-NewTactic «suffices» obtain
+-- NewTactic moved to BasicLean

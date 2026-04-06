@@ -5,11 +5,11 @@ Level 5
 
 Title "Containing relation is reflexive."
 
-Introduction "The following statement asserts that for a set $s$ of type $\\alpha$, $s$ is a subset of itself. This is a fundamental property of sets, known as reflexivity of subset relation."
+Introduction "This level asks you to prove that every set is a subset of itself -- the reflexivity of the subset relation. Since $s \\subseteq s$ means every element of $s$ is in $s$, the proof is straightforward: introduce an arbitrary element and its membership hypothesis, then use that hypothesis directly."
 Statement  {α : Type*} (s : Set α) : s ⊆ s := by
-  Hint "We start by introducing an arbitrary element x of the set s and a hypothesis xs stating that x is a member of {s}. You can use `intro`."
+  Hint "The goal is `s ⊆ s`, which unfolds to `∀ x, x ∈ s → x ∈ s`. Use `intro x xs` to introduce an arbitrary element `x` and the hypothesis `xs : x ∈ s`."
   intro x xs
-  Hint "The goal is to show that {x} is in {s}, which is already given by the hypothesis {xs}. You can use `exact {xs}`."
+  Hint "The goal is now `x ∈ s`, which is exactly the hypothesis `{xs}`. Use `exact {xs}` to close the goal."
   exact xs
 
-Conclusion "Level Completed!"
+Conclusion "Reflexivity of subset is one of the simplest proofs using `intro` and `exact`. The hypothesis you introduce is exactly what you need to close the goal -- no intermediate steps required."

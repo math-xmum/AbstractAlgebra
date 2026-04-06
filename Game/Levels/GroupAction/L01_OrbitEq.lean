@@ -7,14 +7,15 @@ World "GroupAction"
 Level 1
 
 Introduction "
-Let X be a G-set.
-For x ∈ X, let Gx be the orbit of x.
+Welcome to the Group Action world!
 
-In Mathlib, z ∈ Gx means ∃ g ∈ G such that g • x = z.
+Let `G` act on a set `X`. For `x : X`, the **orbit** of `x` is
+`Gx = {g • x | g : G}`. In Lean, `MulAction.orbit G x` is this set,
+and `z ∈ orbit G x` means `∃ g : G, g • x = z`.
 
-Then Gx = Gy ⟺  exists g ∈ G such that y = g • x.
+We prove: `orbit G x = orbit G y ↔ ∃ g : G, g • x = y`.
 
-We now prove this following the definition of group action.
+Two orbits are equal precisely when one element can be moved to the other.
 "
 
 open Pointwise
@@ -24,46 +25,53 @@ open MulAction
 
 variable {G X:Type*} [Group G] [MulAction G X]
 
-#check  QuotientGroup.mk_out'_eq_mul
+#check  QuotientGroup.mk_out_eq_mul
 
 
 Statement (x y : X) :  MulAction.orbit G x = MulAction.orbit G y ↔ ∃ g:G , g • x = y := by
-  Hint "Use constrcuctor to split the goal."
+  Hint "The goal is an `↔`. Use `constructor` to split into the two directions."
   constructor
-  · Hint "Introduce the hypothesis."
+  · Hint "Use `intro H` to assume the orbits are equal."
     intro H
-    Hint "Observe that y ∈ Gy. Use `have h1: y ∈ orbit G y` to get the claim and then prove it. You may use `MulAction.one_smul` "
+    Hint "Since `y ∈ orbit G y` (via `1 • y = y`), and orbits are equal, `y ∈ orbit G x`.
+    Establish this: `have h1 : y ∈ orbit G y` then prove it with `use 1` and
+    `apply MulAction.one_smul`."
     have h1: y ∈ orbit G y := by
       use 1
       apply MulAction.one_smul
-    Hint "Rewrite the goal using {H}. "
+    Hint "Rewrite `{h1}` using `{H}`: `rw [<-{H}] at {h1}`. Now `{h1} : y ∈ orbit G x`,
+    which is exactly `∃ g, g • x = y`."
     rw [<-H] at h1
-    Hint "Now this is exactly {h1}."
+    Hint "The goal is now exactly `{h1}`. Use `exact {h1}`."
     exact h1
-  · Hint "Introduce the hypothesis."
+  · Hint "Use `intro H` to assume `∃ g, g • x = y`."
     intro H
-    Hint "Use  `obtain ⟨g,hg⟩ := H` to deconstruct {H} and get g and the assumption hg on g. "
+    Hint "Unpack with `obtain ⟨g, hg⟩ := H` to get `g : G` and `hg : g • x = y`."
     obtain ⟨g,hg⟩ := H
-    Hint "To prove two sets are equal is to prove z ∈ orbit G x ↔ z ∈ orbit G y. Use `ext z`"
+    Hint "To show two sets are equal, use `ext z` to prove `z ∈ orbit G x ↔ z ∈ orbit G y`."
     ext z
-    Hint "Now use constructor to decompose the goal"
+    Hint "Use `constructor` to split the `↔`."
     constructor
-    · Hint "Introduce the hypothesis. Since `simp` is too powerful, try only use `obtain`, `use`, `rw` and `group` to finish the proof. You may need `MulAction.mul_smul` and apply `beta_redace at *` when necessary. "
+    · Hint "Assume `z ∈ orbit G x`, i.e., `∃ k, k • x = z`. If `k • x = z` and `g • x = y`,
+      then `(k * g⁻¹) • y = k • x = z`. Use `obtain`, `use k * g⁻¹`, then rewrite with
+      `mul_smul` and `{hg}`. Apply `beta_reduce at *` if needed to simplify."
       intro hz
       obtain ⟨k,Hk⟩:= hz
       use k * g⁻¹
       beta_reduce at *
       rw [<-hg]
-      rw [<-MulAction.mul_smul]
+      rw [<-mul_smul]
       rw [<-Hk]
       group
-    · intro hz
+    · Hint "The reverse direction is similar: if `k • y = z`, use `k * g` to witness
+      `z ∈ orbit G x`."
+      intro hz
       obtain ⟨k,Hk⟩:= hz
       use k * g
       beta_reduce at *
       rw [<-Hk]
       rw [<-hg]
-      rw [<-MulAction.mul_smul]
+      rw [<-mul_smul]
 
-NewTheorem MulAction.mul_smul MulAction.one_smul Set.range MulAction.orbit
+NewTheorem SemigroupAction.mul_smul MulAction.one_smul Set.range MulAction.orbit
 OnlyTactic intro constructor group rw beta_reduce nth_rw obtain ext

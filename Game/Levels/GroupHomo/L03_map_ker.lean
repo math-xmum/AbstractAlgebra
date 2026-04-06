@@ -6,38 +6,39 @@ World "GroupHomomorphism"
 Level 3
 
 Introduction "
-Let  f : G →* H be a group homomorphism.
-Then the kernel of f is defined by
+The **kernel** of a group homomorphism `f : G →* H` is
 
-Ker(f) := {g ∈ G | f(g) = 1}
+`ker(f) := {g : G | f(g) = 1}`
 
-It is easy to see that Ker(f) is a subgroup of G.
-But Ker(f) satisfies one additional property:
+In Lean, `f.ker` is the kernel and `MonoidHom.mem_ker` converts between
+`x ∈ f.ker` and `f x = 1`.
 
-∀ g ∈ G, x ∈ Ker(f),  g x g⁻¹ ∈ f
-We now prove this property.
+We prove that the kernel is closed under conjugation:
+for all `g x : G`, if `x ∈ ker(f)` then `g * x * g⁻¹ ∈ ker(f)`.
 
-A subgroup satisfies the above property is called a normal subgroup of G.
-
-Note that, if G is Abelian, then g x g⁻¹ = x ∈ Ker(f) for all x ∈ Ker(f), i.e. all subgroups of G are normal.
-But this is not the case for general groups.
-
+A subgroup with this property is called a **normal subgroup**.
+(In an abelian group every subgroup is normal, but not in general.)
 "
 variable {G H:Type*} [Group G] [Group H]
 
 Statement (f : G →* H) :
 ∀ g x : G,  x ∈ f.ker → g * x * g⁻¹ ∈ f.ker  := by
-  Hint "Use intro"
+  Hint "The goal starts with `∀ g x`. Use `intro g x hx` to introduce the variables
+  and the hypothesis `hx : x ∈ f.ker`."
   intro g x hx
-  Hint "Use MonoidHom.mem_ker on the goal and {hx}"
+  Hint "Both the goal and `{hx}` involve `∈ f.ker`. Use `MonoidHom.mem_ker` to unfold
+  these into equations `f _ = 1`:
+  `rw [MonoidHom.mem_ker]` on the goal, and `rw [MonoidHom.mem_ker] at {hx}`."
   rw [MonoidHom.mem_ker]
   rw [MonoidHom.mem_ker] at hx
-  Hint "Use `f` and `map_mul` and `map inv` on the goal"
+  Hint "The goal is `f (g * x * g⁻¹) = 1`. Expand using `map_mul` and `map_inv`:
+  `rw [map_mul, map_inv]` then `rw [map_mul]`"
   rw [map_mul,map_inv]
   rw [map_mul]
-  Hint "Use the assumption {hx}."
+  Hint "Now substitute `{hx} : f x = 1` into the goal with `rw [{hx}]`."
   rw [hx]
-  Hint "Use `group` to finish the goal"
+  Hint "The goal reduces to `f g * 1 * (f g)⁻¹ = 1`, which is pure group arithmetic.
+  Use `group` to close it."
   group
 
 

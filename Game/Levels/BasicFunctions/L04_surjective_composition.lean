@@ -5,21 +5,31 @@ Level 4
 Title "Composition of surjective function."
 
 
-Introduction "The following statement shows that the composition of two surjective functions is also surjective. That is, if $f: α → β$ and $g: β → γ$ are both surjective, then $g ∘ f: α → γ$ is surjective."
+Introduction "If $f : α → β$ and $g : β → γ$ are both surjective, then $g ∘ f : α → γ$ is also surjective.
+
+The idea: given any $y : γ$, surjectivity of $g$ gives us $x : β$ with $g(x) = y$, and surjectivity of $f$ gives us $a : α$ with $f(a) = x$. Then $(g ∘ f)(a) = g(f(a)) = g(x) = y$."
 
 Statement {α β γ : Type} (f : α → β) (g : β → γ) (hf : Function.Surjective f) (hg : Function.Surjective g) : Function.Surjective (g ∘ f) := by
-  Hint "To prove that $g ∘ f$ is surjective, we need to show that for every $y$ in $γ$, there exists some $a$ in $α$ such that $(g ∘ f)(a) = y$. We start by introducing an arbitrary element y of $γ$."
+  Hint "The goal asks us to show `∀ y, ∃ a, (g ∘ f) a = y`. Use `intro y` to fix an arbitrary element $y : γ$.
+
+The `intro` tactic moves the leading `∀` binder into the local context as a variable."
   intro y
-  Hint "Since {g} is surjective (by {hg}), there exists some x in $β$ such that $g(x) = y$. We can use `rcases` with {hg} {y} to obtain this witness."
+  Hint "Since $g$ is surjective, `{hg} {y}` has type `∃ x, g x = {y}`. Use `rcases {hg} {y} with ⟨x, hx⟩` to extract the witness `x` and proof `hx : g x = {y}`.
+
+The `rcases` tactic destructs existential statements: `rcases h with ⟨w, hw⟩` gives you the witness and its property."
   rcases hg y with ⟨x, hx⟩
-  Hint "Similarly, since {f} is surjective (by {hf}), there exists some a in $α$ such that $f(a) = x$. Again, we use `rcases` with {hf} {x} to obtain this witness."
+  Hint "Now use surjectivity of $f$ to find a preimage of `{x}`. Use `rcases {hf} {x} with ⟨a, ha⟩` to get `a : α` with `ha : f a = {x}`."
   rcases hf x with ⟨a, ha⟩
-  Hint "We now claim that this {a} is the element we're looking for. We use `use` to specify {a} as our candidate."
+  Hint "We claim `{a}` is the preimage we need. Use `use {a}` to set the existential witness.
+
+The `use` tactic provides a witness for an `∃` goal, reducing `∃ x, P x` to `P a`."
   use a
-  Hint "We need to show $(g ∘ f)(a) = y$. Using our hypotheses {hx} ($g(x) = y$) and {ha} ($f(a) = x$), we can rewrite the goal. We use `rw` with these equalities."
+  Hint "The goal is `(g ∘ f) {a} = {y}`, which is `g (f {a}) = {y}`. We know `{ha} : f {a} = {x}` and `{hx} : g {x} = {y}`. Use `rw [← {hx}, ← {ha}]` to rewrite backwards.
+
+The `←` arrow in `rw` rewrites right-to-left: `rw [← h]` replaces the RHS of `h` with its LHS."
   rw [← hx, ← ha]
-  Hint "After rewriting, we're left with $(g ∘ f)(a) = g(f(a))$, which is true by definition of function composition. The `rfl` tactic finishes the proof."
+  Hint "After rewriting, both sides are definitionally equal. Use `rfl` to finish."
   rfl
 
-Conclusion "Level Completed!"
-NewTactic use rcases intro rw
+Conclusion "The composition of surjective functions is surjective. The proof used `rcases` to extract witnesses from existential hypotheses, `use` to provide a witness for the existential goal, and `rw` to chain the equalities together."
+-- NewTactic moved to BasicLean

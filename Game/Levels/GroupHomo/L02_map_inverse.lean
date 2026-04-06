@@ -6,22 +6,29 @@ World "GroupHomomorphism"
 Level 2
 
 Introduction "
-Another easy consequence of the definition of group homomorphism,  f : H →* G, is that it sends inverse to inverse, i.e ∀ h : H f (h⁻¹) = (f h)⁻¹.
+A group homomorphism `f : H →* G` preserves inverses: for all `h : H`,
+`f(h⁻¹) = (f h)⁻¹`.
+
+**Key idea:** Show that `f(h⁻¹) * f(h) = 1`, which forces `f(h⁻¹)` to be the
+inverse of `f(h)`. We use `h⁻¹ * h = 1`, apply `f`, then invoke `map_mul` and `map_one`.
 "
 variable {G H:Type*} [Group G] [Group H]
 
 Statement (f : H →* G) : ∀ h : H,  f h⁻¹ = (f h)⁻¹  := by
-  Hint "Observe that f(h⁻¹) * f(h) = f(h⁻¹ * h) = f(1) 1. Hence f(h) is the inverse of f(h⁻¹).
-
-  One should begin with `intro h` to reveal the goal.
-  And then establish the claim h⁻¹ * h =1
-  "
+  Hint "The goal has a `∀ h`. Use `intro h` to fix an arbitrary element `h : H`.
+  Then establish `h⁻¹ * h = 1` using `have`. The `group` tactic can close this
+  arithmetic sub-goal automatically."
   intro h
   have hh : h⁻¹ * h = 1 := by group
-  Hint "Now use `f`, `map_mul` and `map_one` on {hh}. "
+  Hint "Apply `f` to both sides with `apply_fun f at {hh}`, then rewrite the left side
+  using `map_mul` and the right side using `map_one`:
+  `rw [map_mul, map_one] at {hh}`"
   apply_fun f at hh
   rw [map_mul,map_one] at hh
-  Hint "It is the time to use `mul_eq_one_iff_eq_inv` to clear up {hh} and finish the proof"
+  Hint "Now `{hh}` says `f h⁻¹ * f h = 1`. The theorem `mul_eq_one_iff_eq_inv` converts
+  `a * b = 1 ↔ a = b⁻¹`. Rewrite `{hh}` with it:
+  `rw [mul_eq_one_iff_eq_inv] at {hh}`
+  Then `assumption` closes the goal."
   rw [mul_eq_one_iff_eq_inv] at hh
   assumption
 

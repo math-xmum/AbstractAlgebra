@@ -1,6 +1,5 @@
 import Mathlib.Order.SetNotation
-import Mathlib.Init.Logic
-import Mathlib.Init.Set
+import Mathlib.Logic.Basic
 import Mathlib.Data.Set.Basic
 import Mathlib.Data.SetLike.Basic
 import Mathlib.Tactic
@@ -45,10 +44,10 @@ lemma equivclass_eq_iff_equiv  {x y: α}: {z | x ≈ z} = {z | y ≈ z}  ↔ x �
   exact Setoid.trans H H1
 
 lemma equivclass_nonempty (x : α) : {y | x ≈ y} ≠ ∅ := by
-  rw [ne_eq]
   intro h
-  apply Set.not_mem_empty x
-  rw [<-h, Set.mem_setOf_eq]
+  have : x ∈ ({y | x ≈ y} : Set α) := Set.mem_setOf_eq.mpr (Setoid.refl x)
+  rw [h] at this
+  exact this
 
 
 
