@@ -5,15 +5,59 @@ math: katex
 
 # MAT205: Abstract Algebra II
 
-## 1. Review of Basics
+<br/>
 
-<div style="margin-top: 3rem; font-size: 1.3rem; opacity: 0.6;">
+**Ma, Jia-Jun** — Xiamen University Malaysia
 
-**Ma, Jia-Jun**
+*Textbook*: Fraleigh, *A First Course in Abstract Algebra*
 
-Xiamen University Malaysia
+*Prerequisites*: MAT211 (Abstract Algebra I)
+
+---
+
+# Assessment
+
+| Component | Weight | Details |
+|-----------|--------|---------|
+| Assignments | 30% | 2 assignments, 15% each |
+| Quizzes | 10% | 2 quizzes, 5% each |
+| Midterm Exam | 20% | Covers Part I (Group Theory) |
+| Final Exam | 40% | Cumulative |
+
+---
+
+# Course Outline
+
+<div style="display: flex; gap: 3rem;">
+<div style="flex: 1;">
+
+**Part I: Advanced Group Theory**
+
+1. Review of basics
+2. Subnormal series & solvable groups
+3. Sylow theorems
+4. Applications of Sylow theorems
+5. Free groups & free abelian groups
 
 </div>
+<div style="flex: 1;">
+
+**Part II: Galois Theory**
+
+6. Field extensions
+7. Algebraic extensions
+8. Finite fields
+9. Field automorphisms
+10. Separable extensions
+11. Galois theory I & II
+12. Factorization in integral domains
+
+</div>
+</div>
+
+<br/>
+
+**Midterm**: after Part I &nbsp;&nbsp;|&nbsp;&nbsp; **Final**: cumulative (Part I + II)
 
 ---
 
@@ -22,17 +66,15 @@ Xiamen University Malaysia
 <div style="display: flex; gap: 2rem;">
 <div style="flex: 1;">
 
-A **group** $(G, \cdot)$ is a set with a binary operation satisfying:
+A **binary operation** on $S$ is a map $\cdot : S \times S \to S$.
 
-1. **Associativity**: $(a \cdot b) \cdot c = a \cdot (b \cdot c)$
-2. **Identity**: $\exists\, e \in G$ s.t. $ea = ae = a$
+A **group** $(G, \cdot)$ satisfies:
+
+1. **Associativity**: $(ab)c = a(bc)$
+2. **Identity**: $\exists\, e$ s.t. $ea = ae = a$
 3. **Inverse**: $\forall\, a,\, \exists\, a^{-1}$ s.t. $aa^{-1} = a^{-1}a = e$
 
-<v-click>
-
-**Convention**: Write $ab$ instead of $a \cdot b$.
-
-</v-click>
+**Convention**: Write $ab$ for $a \cdot b$.
 
 </div>
 <div style="flex: 0 0 auto;">
@@ -51,121 +93,119 @@ A **group** $(G, \cdot)$ is a set with a binary operation satisfying:
 
 # Examples of Groups
 
-| Group | Operation | Identity |
-|-------|-----------|----------|
-| $(\mathbb{Z}, +)$ | addition | $0$ |
-| $(\mathbb{Q}^*, \times)$ | multiplication | $1$ |
-| $(S_n, \circ)$ | composition of permutations | $\text{id}$ |
-| $(\mathbb{Z}/n\mathbb{Z}, +)$ | addition mod $n$ | $\bar{0}$ |
-| $(GL_n(\mathbb{R}), \times)$ | matrix multiplication | $I_n$ |
-
-<v-click>
+| Group | Operation | Identity | Abelian? |
+|-------|-----------|----------|----------|
+| $(\mathbb{Z}, +)$ | addition | $0$ | Yes |
+| $(\mathbb{Q}^*, \times)$ | multiplication | $1$ | Yes |
+| $(S_n, \circ)$ | permutation composition | $\text{id}$ | No ($n \geq 3$) |
+| $(\mathbb{Z}/n\mathbb{Z}, +)$ | addition mod $n$ | $\bar{0}$ | Yes |
+| $(GL_n(\mathbb{R}), \times)$ | matrix multiplication | $I_n$ | No ($n \geq 2$) |
+| $SL_n(\mathbb{Z})$ | matrix multiplication | $I_n$ | No ($n \geq 2$) |
 
 **Abelian group**: $G$ is **abelian** if $ab = ba$ for all $a, b \in G$.
 
-Among the examples above, $S_n$ for $n \geq 3$ and $GL_n(\mathbb{R})$ for $n \geq 2$ are **not** abelian.
-
-</v-click>
+$SL_n(\mathbb{Z}) = \{ A \in M_n(\mathbb{Z}) \mid \det(A) = 1 \}$ — the **special linear group** over $\mathbb{Z}$.
 
 ---
 
-# Example: $SL_n(\mathbb{Z})$
+# $SL_n(\mathbb{Z})$ is a Group
 
-**Definition.** The **special linear group** over $\mathbb{Z}$:
-$$SL_n(\mathbb{Z}) = \left\{ A \in M_n(\mathbb{Z}) \mid \det(A) = 1 \right\}$$
-
-<v-click>
-
-**Why is this a group?** Under matrix multiplication:
+**Why is $SL_n(\mathbb{Z})$ a group?** Under matrix multiplication:
 - **Closure**: $\det(AB) = \det(A)\det(B) = 1 \cdot 1 = 1$ $\checkmark$
 - **Associativity**: matrix multiplication is associative $\checkmark$
-- **Identity**: $I_n$ has $\det(I_n) = 1$ $\checkmark$
-- **Inverse**: $\det(A) = 1 \implies A^{-1}$ has integer entries (by Cramer's rule) $\checkmark$
+- **Identity**: $\det(I_n) = 1$ $\checkmark$
+- **Inverse**: $\det(A) = 1 \implies A^{-1}$ has integer entries (Cramer's rule: $A^{-1} = \text{adj}(A)/\det(A)$) $\checkmark$
 
-</v-click>
-
-<v-click>
-
-**Exercise.** Prove that $SL_n(\mathbb{Z}) \leq GL_n(\mathbb{R})$ is a subgroup. In fact, it is the kernel of
+In fact, $SL_n(\mathbb{Z})$ is the **kernel** of the determinant homomorphism:
 $$\det : GL_n(\mathbb{R}) \to \mathbb{R}^*$$
 
-</v-click>
+**Exercise.** Use the one-step subgroup criterion to prove $SL_n(\mathbb{Z}) \leq GL_n(\mathbb{R})$.
 
 ---
 
 # $SL_2(\mathbb{Z})$ and Modular Forms
 
-<div style="display: flex; gap: 1.5rem;">
-<div style="flex: 1;">
+$SL_2(\mathbb{Z})$ acts on the **upper half-plane** $\mathbb{H}$ by Mobius transformations:
 
-$SL_2(\mathbb{Z})$ acts on the **upper half-plane** $\mathbb{H} = \{z \in \mathbb{C} \mid \operatorname{Im}(z) > 0\}$:
+$$\mathbb{H} = \{z \in \mathbb{C} \mid \operatorname{Im}(z) > 0\}, \qquad \begin{pmatrix} a & b \\ c & d \end{pmatrix} \cdot z = \frac{az + b}{cz + d}$$
 
-$$\begin{pmatrix} a & b \\ c & d \end{pmatrix} \cdot z = \frac{az + b}{cz + d}$$
+<div style="display: flex; gap: 1rem; align-items: center; margin-top: 0.5rem;">
+<div style="flex: 0 0 auto;">
 
-<v-click>
-
-A **modular form** of weight $k$ is a holomorphic $f: \mathbb{H} \to \mathbb{C}$ with:
-$$f\!\left(\frac{az+b}{cz+d}\right) = (cz+d)^k f(z)$$
-
-</v-click>
-
-<v-click>
-
-Modular forms connect to:
-- **Number theory** — Fourier coefficients count arithmetic objects
-- **Fermat's Last Theorem** — Wiles' modularity theorem (1995)
-- **String theory** — partition functions
-
-</v-click>
+<img src="/fundamental-domain.svg" style="height: 200px; background: white;" />
 
 </div>
-<div style="flex: 0 0 420px; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+<div style="flex: 1; font-size: 0.95rem;">
 
-<img src="/fundamental-domain.svg" style="width: 180px; background: white; border-radius: 4px;" />
+A **modular form** of weight $k$: holomorphic $f: \mathbb{H} \to \mathbb{C}$ with
+$$f\!\left(\frac{az+b}{cz+d}\right) = (cz+d)^k f(z)$$
 
-<img src="/tessellation.svg" style="width: 420px; background: white; border-radius: 4px;" />
-
-<div style="font-size: 0.7rem; opacity: 0.5;">Fundamental domain and tessellation of $\mathbb{H}$ by $SL_2(\mathbb{Z})$</div>
+Connects to: **number theory** (counting arithmetic objects), **Fermat's Last Theorem** (Wiles 1995), **string theory** (partition functions).
 
 </div>
 </div>
 
 ---
 
-# Non-Examples
+# Non-Examples: Which axiom fails?
 
-Not every algebraic structure is a group:
+Which of the following are groups? **Which axiom fails?**
 
-- $(\mathbb{Z}, \times)$: No inverses — $2$ has no multiplicative inverse in $\mathbb{Z}$
-- $(\mathbb{N}, +)$: No inverses — no negative numbers
-- $(M_n(\mathbb{R}), \times)$: Singular matrices have no inverse
+| Structure | Operation |
+|-----------|-----------|
+| $(\mathbb{Z}, \times)$ | multiplication |
+| $(\mathbb{N}, +)$ | addition |
+| $(M_n(\mathbb{R}), \times)$ | matrix multiplication |
+| $(\mathbb{Z}, -)$ | subtraction |
 
-<v-click>
+---
 
-**Key question**: Given a set with a binary operation, which axioms fail?
+# Non-Examples: Answers
 
-</v-click>
+<div style="font-size: 0.95rem;">
+
+| Structure | Fails | Type |
+|-----------|-------|------|
+| $(\mathbb{Z}, \times)$ | **no inverses** — $2^{-1} \notin \mathbb{Z}$ | monoid |
+| $(\mathbb{N}, +)$ | **no inverses** — $-3 \notin \mathbb{N}$ | monoid |
+| $(M_n(\mathbb{R}), \times)$ | **no inverses** — singular matrices | monoid |
+| $(\mathbb{Z}, -)$ | **not associative** — $(1\!-\!1)\!-\!1 \neq 1\!-\!(1\!-\!1)$ | magma |
+
+</div>
+
+**Monoid** = associative + identity, but no inverses. **Magma** = just closure.
 
 ---
 
 # Subgroups
 
-**Definition.** A nonempty subset $H \subseteq G$ is a **subgroup** of $G$ (written $H \leq G$) if $H$ is itself a group under the same operation.
+<div style="display: flex; gap: 1.5rem;">
+<div style="flex: 1;">
 
-<v-click>
+**Definition.** A nonempty subset $H \subseteq G$ is a **subgroup** of $G$ (written $H \leq G$) if $H$ is itself a group under the same operation.
 
 **One-step subgroup criterion.** $H \leq G$ if and only if $H \neq \emptyset$ and
 $$a, b \in H \implies ab^{-1} \in H$$
-
-</v-click>
-
-<v-click>
 
 **Two-step criterion.** $H \leq G$ if and only if:
 1. $a, b \in H \implies ab \in H$ (closed under multiplication)
 2. $a \in H \implies a^{-1} \in H$ (closed under inverse)
 
-</v-click>
+</div>
+<div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center;">
+
+<img src="/lagrange.jpg" style="height: 160px; border-radius: 4px;" />
+
+<div style="font-size: 0.7rem; opacity: 0.6;">Lagrange (1736–1813)</div>
+
+</div>
+</div>
+
+<div style="font-size: 0.85rem; opacity: 0.7; margin-top: 0.5rem;">
+
+Lagrange's 1770 work on permutations of polynomial roots laid the groundwork for subgroup theory.
+
+</div>
 
 ---
 
@@ -175,23 +215,13 @@ $$a, b \in H \implies ab^{-1} \in H$$
 
 *Proof.* If $a = km$ and $b = kn$, then $a - b = k(m-n) \in k\mathbb{Z}$. $\square$
 
-<v-click>
-
 **Example 2.** The alternating group $A_n = \{\sigma \in S_n \mid \sigma \text{ is even}\} \leq S_n$.
-
-</v-click>
-
-<v-click>
 
 **Example 3.** The center $Z(G) = \{g \in G \mid gx = xg \text{ for all } x \in G\} \leq G$.
 
-</v-click>
-
-<v-click>
+**Example 4.** $SL_n(\mathbb{Z}) \leq GL_n(\mathbb{R})$ (as we showed earlier).
 
 **Exercise.** Verify that $Z(G)$ is indeed a subgroup using the two-step criterion.
-
-</v-click>
 
 ---
 
@@ -200,23 +230,14 @@ $$a, b \in H \implies ab^{-1} \in H$$
 **Definition.** Let $H \leq G$ and $g \in G$. The **left coset** of $H$ by $g$ is:
 $$gH = \{gh \mid h \in H\}$$
 
-<v-click>
-
 **Key properties:**
 1. $g \in gH$ (since $e \in H$)
 2. $gH = kH \iff k^{-1}g \in H$
 3. Two cosets are either **equal** or **disjoint**
 4. $|gH| = |H|$ for any $g \in G$
 
-</v-click>
-
-<v-click>
-
 The coset relation $a \sim b \iff a^{-1}b \in H$ is an **equivalence relation** on $G$.
-
 Cosets are the equivalence classes of this relation.
-
-</v-click>
 
 ---
 
@@ -227,20 +248,25 @@ $$G/H = \{gH \mid g \in G\}$$
 
 The number of cosets is the **index**: $[G:H] = |G/H|$.
 
-<v-click>
+<div style="display: flex; gap: 1.5rem; margin-top: 0.5rem;">
+<div style="flex: 1;">
 
 **Lagrange's Theorem.** If $G$ is a finite group and $H \leq G$, then
 $$|G| = [G:H] \cdot |H|$$
 
 In particular, $|H|$ divides $|G|$.
 
-</v-click>
-
-<v-click>
-
 **Corollary.** The order of any element divides $|G|$. Hence $g^{|G|} = e$ for all $g \in G$.
 
-</v-click>
+</div>
+<div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center;">
+
+<img src="/lagrange.jpg" style="height: 140px; border-radius: 4px;" />
+
+<div style="font-size: 0.7rem; opacity: 0.6;">Lagrange (1736–1813)</div>
+
+</div>
+</div>
 
 ---
 
@@ -256,56 +282,68 @@ The left cosets of $H$:
 | $\bar{1} + H$ | $\{\bar{1}, \bar{4}\}$ |
 | $\bar{2} + H$ | $\{\bar{2}, \bar{5}\}$ |
 
-<v-click>
-
 So $[G:H] = 3$, and indeed $|G| = 6 = 3 \times 2 = [G:H] \cdot |H|$. $\checkmark$
-
-</v-click>
 
 ---
 
 # Consequences of Lagrange's Theorem
 
+<div style="display: flex; gap: 1.5rem;">
+<div style="flex: 1; font-size: 1.1rem;">
+
 **Corollary 1.** If $|G| = p$ (prime), then $G \cong \mathbb{Z}/p\mathbb{Z}$.
 
 *Proof.* Take any $g \neq e$. Then $|\langle g \rangle|$ divides $p$, so $|\langle g \rangle| = p$, hence $\langle g \rangle = G$. $\square$
 
-<v-click>
+**Corollary 2.** (Fermat) If $p$ prime, $\gcd(a, p) = 1$, then $a^{p-1} \equiv 1 \pmod{p}$.
 
-**Corollary 2.** (Fermat's little theorem) If $p$ is prime and $\gcd(a, p) = 1$, then $a^{p-1} \equiv 1 \pmod{p}$.
+*Proof.* Apply Lagrange to $(\mathbb{Z}/p\mathbb{Z})^*$, order $p-1$. $\square$
 
-*Proof.* Apply Lagrange to $(\mathbb{Z}/p\mathbb{Z})^*$, which has order $p-1$. $\square$
+**Corollary 3.** (Euler) If $\gcd(a, n) = 1$, then $a^{\varphi(n)} \equiv 1 \pmod{n}$.
 
-</v-click>
+*Proof.* Apply Lagrange to $(\mathbb{Z}/n\mathbb{Z})^*$, order $\varphi(n)$. $\square$
 
-<v-click>
+</div>
+<div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
 
-**Corollary 3.** (Euler's theorem) If $\gcd(a, n) = 1$, then $a^{\varphi(n)} \equiv 1 \pmod{n}$.
+<img src="/fermat.jpg" style="height: 150px; border-radius: 4px;" />
 
-</v-click>
+<div style="font-size: 0.7rem; opacity: 0.6;">Fermat (1607–1665)</div>
+
+<img src="/euler.jpg" style="height: 150px; border-radius: 4px;" />
+
+<div style="font-size: 0.7rem; opacity: 0.6;">Euler (1707–1783)</div>
+
+</div>
+</div>
 
 ---
 
 # Group Homomorphisms
+
+<div style="display: flex; gap: 1.5rem;">
+<div style="flex: 1;">
 
 > *"Rather than analyzing objects, we should concentrate on **morphisms** between them."* — Grothendieck
 
 **Definition.** A map $f: G \to H$ is a **group homomorphism** if
 $$f(ab) = f(a)f(b) \quad \text{for all } a, b \in G$$
 
-<v-click>
-
 **Automatic consequences:**
 - $f(e_G) = e_H$
 - $f(a^{-1}) = f(a)^{-1}$
 
-</v-click>
-
-<v-click>
-
 **Exercise.** Prove these two consequences from the definition.
 
-</v-click>
+</div>
+<div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center;">
+
+<img src="/grothendieck.jpg" style="height: 240px; border-radius: 4px;" />
+
+<div style="font-size: 0.7rem; opacity: 0.6;">A. Grothendieck (1928–2014)</div>
+
+</div>
+</div>
 
 ---
 
@@ -315,73 +353,81 @@ $$f(ab) = f(a)f(b) \quad \text{for all } a, b \in G$$
 - **Kernel**: $\ker(f) = \{g \in G \mid f(g) = e_H\}$
 - **Image**: $\operatorname{im}(f) = \{f(g) \mid g \in G\}$
 
-<v-click>
-
 **Key facts:**
 1. $\ker(f) \leq G$ and $\operatorname{im}(f) \leq H$
 2. $f$ is injective $\iff$ $\ker(f) = \{e\}$
 3. $\ker(f)$ is a **normal** subgroup of $G$
 
-</v-click>
-
-<v-click>
-
 **Exercise.** Prove fact 3: if $g \in G$ and $n \in \ker(f)$, show $gng^{-1} \in \ker(f)$.
-
-</v-click>
 
 ---
 
 # Normal Subgroups
 
+<div style="display: flex; gap: 1.5rem;">
+<div style="flex: 1;">
+
 **Definition.** A subgroup $N \leq G$ is **normal** (written $N \trianglelefteq G$) if
 $$gNg^{-1} = N \quad \text{for all } g \in G$$
-
-<v-click>
 
 **Equivalent conditions:**
 1. $gNg^{-1} \subseteq N$ for all $g \in G$
 2. $gN = Ng$ for all $g \in G$ (left cosets = right cosets)
 3. $N = \ker(f)$ for some homomorphism $f$
 
-</v-click>
-
-<v-click>
-
 **Why normal?** If $N \trianglelefteq G$, then coset multiplication is well-defined:
 $$(gN)(hN) = (gh)N$$
 This makes $G/N$ into a group — the **quotient group**.
 
-</v-click>
+</div>
+<div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center;">
+
+<img src="/galois.jpg" style="height: 180px; border-radius: 4px;" />
+
+<div style="font-size: 0.7rem; opacity: 0.6;">Galois (1811–1832)</div>
+
+</div>
+</div>
+
+<div style="font-size: 0.85rem; opacity: 0.7;">
+
+Galois introduced normal subgroups in 1832, connecting them to solvability of polynomial equations.
+
+</div>
 
 ---
 
 # The Isomorphism Theorems
 
+<div style="display: flex; gap: 1.5rem;">
+<div style="flex: 1; font-size: 0.95rem;">
+
 **First Isomorphism Theorem.** If $f: G \to H$ is a homomorphism, then
 $$G / \ker(f) \cong \operatorname{im}(f)$$
 
-<v-click>
-
-$$G \xrightarrow{\quad f \quad} H$$
-$$\downarrow \pi \qquad \nearrow \bar{f}$$
-$$G/\ker(f)$$
-
-</v-click>
-
-<v-click>
+$$G \xrightarrow{\quad f \quad} H \qquad \downarrow \pi \quad \nearrow \bar{f} \qquad G/\ker(f)$$
 
 **Second Isomorphism Theorem.** If $A \leq G$ and $B \trianglelefteq G$, then
 $$A / (A \cap B) \cong AB / B$$
 
-</v-click>
-
-<v-click>
-
 **Third Isomorphism Theorem.** If $N \subseteq M$ are both normal in $G$, then
 $$(G/N) / (M/N) \cong G/M$$
 
-</v-click>
+</div>
+<div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center;">
+
+<img src="/noether.jpg" style="height: 180px; border-radius: 4px;" />
+
+<div style="font-size: 0.7rem; opacity: 0.6;">Emmy Noether (1882–1935)</div>
+
+</div>
+</div>
+
+<div style="font-size: 0.85rem; opacity: 0.7;">
+
+Noether formalized the isomorphism theorems in abstract form, establishing modern algebra as a discipline.
+
+</div>
 
 ---
 
@@ -389,21 +435,13 @@ $$(G/N) / (M/N) \cong G/M$$
 
 **Definition.** A group $G$ is **simple** if its only normal subgroups are $\{e\}$ and $G$.
 
-<v-click>
-
 **Examples:**
 - $\mathbb{Z}/p\mathbb{Z}$ for $p$ prime (abelian simple groups)
 - $A_n$ for $n \geq 5$ (non-abelian simple groups)
 
-</v-click>
-
-<v-click>
-
 **Theorem.** The only finite abelian simple groups are $\mathbb{Z}/p\mathbb{Z}$ for $p$ prime.
 
 *Proof.* If $G$ is abelian, every subgroup is normal. If $G$ is simple, it has no proper nontrivial subgroups. Take $g \neq e$; then $\langle g \rangle = G$. If $|G| = mn$ with $1 < m, n$, then $\langle g^m \rangle$ is a proper subgroup — contradiction. So $|G|$ is prime. $\square$
-
-</v-click>
 
 ---
 
@@ -417,11 +455,9 @@ Every finite simple group is one of:
 3. A group of **Lie type** (e.g., $PSL_n(\mathbb{F}_q)$)
 4. One of **26 sporadic groups** (e.g., the Monster group, $|M| \approx 8 \times 10^{53}$)
 
-<v-click>
+The Monster group has dimension 196,883 in its smallest faithful representation — its connections to modular functions are known as **"monstrous moonshine"** (proved by Borcherds, 1992).
 
 **This course**: We will use simple groups as building blocks via **composition series** (next lecture).
-
-</v-click>
 
 ---
 
@@ -451,11 +487,7 @@ In this course, we will study:
 4. **Field extensions** — moving from groups to fields
 5. **Galois theory** — connecting field extensions to group theory
 
-<v-click>
-
 **Next lecture**: Subnormal series and solvable groups.
-
-</v-click>
 
 ---
 layout: center

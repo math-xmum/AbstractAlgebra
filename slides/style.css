@@ -11,6 +11,12 @@
   background: #fff;
 }
 
+/* Override theme: first paragraph after h1 should NOT be faded */
+.slidev-layout h1 + p {
+  opacity: 1 !important;
+  color: #222 !important;
+}
+
 /* Headings — deep blue */
 h1 {
   color: #1a5276 !important;
@@ -93,16 +99,33 @@ a {
   border-radius: 2px;
 }
 
-/* Cover/center slides */
+/* Cover/center slides — white bg, high contrast for weak projectors */
 .slidev-layout.cover,
 .slidev-layout.center {
-  background: #1a5276;
-  color: #fff;
+  background: #fff;
+  color: #1a5276;
 }
 
 .slidev-layout.cover h1,
 .slidev-layout.center h1 {
-  color: #fff !important;
+  color: #1a5276 !important;
+}
+
+.slidev-layout.cover h2,
+.slidev-layout.center h2 {
+  color: #2471a3 !important;
+}
+
+.slidev-layout.cover p,
+.slidev-layout.cover em,
+.slidev-layout.center p {
+  color: #333 !important;
+  opacity: 1 !important;
+}
+
+.slidev-layout.cover strong,
+.slidev-layout.center strong {
+  color: #1a5276 !important;
 }
 
 /* List markers */
