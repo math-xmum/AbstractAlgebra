@@ -68,13 +68,21 @@ math: katex
 
 A **binary operation** on $S$ is a map $\cdot : S \times S \to S$.
 
+<v-click>
+
 A **group** $(G, \cdot)$ satisfies:
 
 1. **Associativity**: $(ab)c = a(bc)$
 2. **Identity**: $\exists\, e$ s.t. $ea = ae = a$
 3. **Inverse**: $\forall\, a,\, \exists\, a^{-1}$ s.t. $aa^{-1} = a^{-1}a = e$
 
+</v-click>
+
+<v-click>
+
 **Convention**: Write $ab$ for $a \cdot b$.
+
+</v-click>
 
 </div>
 <div style="flex: 0 0 auto;">
@@ -106,6 +114,10 @@ A **group** $(G, \cdot)$ satisfies:
 
 **Abelian group**: $G$ is **abelian** if $ab = ba$ for all $a, b \in G$.
 
+</v-click>
+
+<v-click>
+
 $SL_n(\mathbb{Z}) = \{ A \in M_n(\mathbb{Z}) \mid \det(A) = 1 \}$ — the **special linear group** over $\mathbb{Z}$.
 
 </v-click>
@@ -115,16 +127,29 @@ $SL_n(\mathbb{Z}) = \{ A \in M_n(\mathbb{Z}) \mid \det(A) = 1 \}$ — the **spec
 # $SL_n(\mathbb{Z})$ is a Group
 
 **Why is $SL_n(\mathbb{Z})$ a group?** Under matrix multiplication:
+
+<v-click>
+
 - **Closure**: $\det(AB) = \det(A)\det(B) = 1 \cdot 1 = 1$ $\checkmark$
+
+</v-click>
+
+<v-click>
+
 - **Associativity**: matrix multiplication is associative $\checkmark$
 - **Identity**: $\det(I_n) = 1$ $\checkmark$
+
+</v-click>
 
 <v-click>
 
 - **Inverse**: $\det(A) = 1 \implies A^{-1}$ has integer entries (Cramer's rule: $A^{-1} = \text{adj}(A)/\det(A)$) $\checkmark$
 
-In fact, $SL_n(\mathbb{Z})$ is the **kernel** of the determinant homomorphism:
-$$\det : GL_n(\mathbb{R}) \to \mathbb{R}^*$$
+</v-click>
+
+<v-click>
+
+In fact, $SL_n(\mathbb{Z})$ is the **kernel** of $\det : GL_n(\mathbb{R}) \to \mathbb{R}^*$.
 
 **Exercise.** Use the one-step subgroup criterion to prove $SL_n(\mathbb{Z}) \leq GL_n(\mathbb{R})$.
 
@@ -150,6 +175,10 @@ $$\mathbb{H} = \{z \in \mathbb{C} \mid \operatorname{Im}(z) > 0\}, \qquad \begin
 
 A **modular form** of weight $k$: holomorphic $f: \mathbb{H} \to \mathbb{C}$ with
 $$f\!\left(\frac{az+b}{cz+d}\right) = (cz+d)^k f(z)$$
+
+</v-click>
+
+<v-click>
 
 Connects to: **number theory** (counting arithmetic objects), **Fermat's Last Theorem** (Wiles 1995), **string theory** (partition functions).
 
@@ -197,8 +226,12 @@ Which of the following are groups? **Which axiom fails?**
 
 **Definition.** A nonempty subset $H \subseteq G$ is a **subgroup** of $G$ (written $H \leq G$) if $H$ is itself a group under the same operation.
 
+<v-click>
+
 **One-step subgroup criterion.** $H \leq G$ if and only if $H \neq \emptyset$ and
 $$a, b \in H \implies ab^{-1} \in H$$
+
+</v-click>
 
 <v-click>
 
@@ -234,13 +267,23 @@ Lagrange's 1770 work on permutations of polynomial roots laid the groundwork for
 
 <v-click>
 
-**Example 2.** The alternating group $A_n = \{\sigma \in S_n \mid \sigma \text{ is even}\} \leq S_n$.
+**Subgroup inclusion $\leftrightarrow$ divisibility:** $m\mathbb{Z} \subseteq k\mathbb{Z} \iff k \mid m$.
 
-**Example 3.** The center $Z(G) = \{g \in G \mid gx = xg \text{ for all } x \in G\} \leq G$.
+$$6\mathbb{Z} \subset 3\mathbb{Z} \subset \mathbb{Z}, \qquad 6\mathbb{Z} \subset 2\mathbb{Z} \subset \mathbb{Z}$$
 
-**Example 4.** $SL_n(\mathbb{Z}) \leq GL_n(\mathbb{R})$ (as we showed earlier).
+</v-click>
 
-**Exercise.** Verify that $Z(G)$ is indeed a subgroup using the two-step criterion.
+<v-click>
+
+The **lattice of subgroups** of $(\mathbb{Z}, +)$ is exactly the **divisibility lattice** of $\mathbb{N}$.
+
+A **lattice** is a partially ordered set where every pair has a **join** (least upper bound) and **meet** (greatest lower bound). For subgroups of $G$: meet = $H \cap K$, join = $\langle H, K \rangle$.
+
+</v-click>
+
+<v-click>
+
+**More examples:** $A_n \leq S_n$ (alternating group), $Z(G) \leq G$ (center), $SL_n(\mathbb{Z}) \leq GL_n(\mathbb{R})$.
 
 </v-click>
 
@@ -251,11 +294,20 @@ Lagrange's 1770 work on permutations of polynomial roots laid the groundwork for
 **Definition.** Let $H \leq G$ and $g \in G$. The **left coset** of $H$ by $g$ is:
 $$gH = \{gh \mid h \in H\}$$
 
+<v-click>
+
 **Key properties:**
 1. $g \in gH$ (since $e \in H$)
 2. $gH = kH \iff k^{-1}g \in H$
+
+</v-click>
+
+<v-click>
+
 3. Two cosets are either **equal** or **disjoint**
 4. $|gH| = |H|$ for any $g \in G$
+
+</v-click>
 
 <v-click>
 
@@ -271,15 +323,23 @@ Cosets are the equivalence classes of this relation.
 **Definition.** The set of all left cosets is the **coset space**:
 $$G/H = \{gH \mid g \in G\}$$
 
+<v-click>
+
 The number of cosets is the **index**: $[G:H] = |G/H|$.
+
+</v-click>
 
 <div style="display: flex; gap: 1.5rem; margin-top: 0.5rem;">
 <div style="flex: 1;">
+
+<v-click>
 
 **Lagrange's Theorem.** If $G$ is a finite group and $H \leq G$, then
 $$|G| = [G:H] \cdot |H|$$
 
 In particular, $|H|$ divides $|G|$.
+
+</v-click>
 
 <v-click>
 
@@ -303,6 +363,8 @@ In particular, $|H|$ divides $|G|$.
 
 Let $G = \mathbb{Z}/6\mathbb{Z} = \{\bar{0}, \bar{1}, \bar{2}, \bar{3}, \bar{4}, \bar{5}\}$ and $H = \{\bar{0}, \bar{3}\}$.
 
+<v-click>
+
 The left cosets of $H$:
 
 | Coset | Elements |
@@ -310,6 +372,8 @@ The left cosets of $H$:
 | $\bar{0} + H$ | $\{\bar{0}, \bar{3}\}$ |
 | $\bar{1} + H$ | $\{\bar{1}, \bar{4}\}$ |
 | $\bar{2} + H$ | $\{\bar{2}, \bar{5}\}$ |
+
+</v-click>
 
 <v-click>
 
@@ -333,6 +397,10 @@ So $[G:H] = 3$, and indeed $|G| = 6 = 3 \times 2 = [G:H] \cdot |H|$. $\checkmark
 **Corollary 2.** (Fermat) If $p$ prime, $\gcd(a, p) = 1$, then $a^{p-1} \equiv 1 \pmod{p}$.
 
 *Proof.* Apply Lagrange to $(\mathbb{Z}/p\mathbb{Z})^*$, order $p-1$. $\square$
+
+</v-click>
+
+<v-click>
 
 **Corollary 3.** (Euler) If $\gcd(a, n) = 1$, then $a^{\varphi(n)} \equiv 1 \pmod{n}$.
 
@@ -363,14 +431,22 @@ So $[G:H] = 3$, and indeed $|G| = 6 = 3 \times 2 = [G:H] \cdot |H|$. $\checkmark
 
 > *"Rather than analyzing objects, we should concentrate on **morphisms** between them."* — Grothendieck
 
+<v-click>
+
 **Definition.** A map $f: G \to H$ is a **group homomorphism** if
 $$f(ab) = f(a)f(b) \quad \text{for all } a, b \in G$$
+
+</v-click>
 
 <v-click>
 
 **Automatic consequences:**
 - $f(e_G) = e_H$
 - $f(a^{-1}) = f(a)^{-1}$
+
+</v-click>
+
+<v-click>
 
 **Exercise.** Prove these two consequences from the definition.
 
@@ -398,7 +474,17 @@ $$f(ab) = f(a)f(b) \quad \text{for all } a, b \in G$$
 
 **Key facts:**
 1. $\ker(f) \leq G$ and $\operatorname{im}(f) \leq H$
+
+</v-click>
+
+<v-click>
+
 2. $f$ is injective $\iff$ $\ker(f) = \{e\}$
+
+</v-click>
+
+<v-click>
+
 3. $\ker(f)$ is a **normal** subgroup of $G$
 
 **Exercise.** Prove fact 3: if $g \in G$ and $n \in \ker(f)$, show $gng^{-1} \in \ker(f)$.
@@ -414,15 +500,23 @@ $$f(ab) = f(a)f(b) \quad \text{for all } a, b \in G$$
 
 **Definition.** $N \leq G$ is **normal** ($N \trianglelefteq G$) if $gNg^{-1} = N$ for all $g \in G$.
 
+<v-click>
+
 **Equivalent conditions:**
 1. $gNg^{-1} \subseteq N$ for all $g \in G$
 2. $gN = Ng$ for all $g \in G$ (left cosets = right cosets)
 3. $N = \ker(f)$ for some homomorphism $f$
 
+</v-click>
+
 <v-click>
 
 **Why normal?** Coset multiplication becomes well-defined: $(gN)(hN) = (gh)N$.
 This makes $G/N$ a group — the **quotient group**.
+
+</v-click>
+
+<v-click>
 
 <div style="font-size: 0.85rem; opacity: 0.7; margin-top: 0.3rem;">Galois introduced normal subgroups in 1832, connecting them to solvability of polynomials.</div>
 
@@ -448,12 +542,20 @@ This makes $G/N$ a group — the **quotient group**.
 **First Isomorphism Theorem.** If $f: G \to H$ is a homomorphism, then
 $$G / \ker(f) \cong \operatorname{im}(f)$$
 
+<v-click>
+
 $$\begin{CD} G @>{f}>> H \\ @V{\pi}VV @AA{\bar{f}}A \\ G/\ker(f) @= \operatorname{im}(f) \end{CD}$$
+
+</v-click>
 
 <v-click>
 
 **Second Isomorphism Theorem.** If $A \leq G$ and $B \trianglelefteq G$, then
 $$A / (A \cap B) \cong AB / B$$
+
+</v-click>
+
+<v-click>
 
 **Third Isomorphism Theorem.** If $N \subseteq M$ are both normal in $G$, then
 $$(G/N) / (M/N) \cong G/M$$
@@ -482,13 +584,21 @@ Noether formalized the isomorphism theorems in abstract form, establishing moder
 
 **Definition.** A group $G$ is **simple** if its only normal subgroups are $\{e\}$ and $G$.
 
+<v-click>
+
 **Examples:**
 - $\mathbb{Z}/p\mathbb{Z}$ for $p$ prime (abelian simple groups)
 - $A_n$ for $n \geq 5$ (non-abelian simple groups)
 
+</v-click>
+
 <v-click>
 
 **Theorem.** The only finite abelian simple groups are $\mathbb{Z}/p\mathbb{Z}$ for $p$ prime.
+
+</v-click>
+
+<v-click>
 
 *Proof.* If $G$ is abelian, every subgroup is normal. If $G$ is simple, it has no proper nontrivial subgroups. Take $g \neq e$; then $\langle g \rangle = G$. If $|G| = mn$ with $1 < m, n$, then $\langle g^m \rangle$ is a proper subgroup — contradiction. So $|G|$ is prime. $\square$
 
@@ -500,15 +610,23 @@ Noether formalized the isomorphism theorems in abstract form, establishing moder
 
 The **CFSG** (completed ~2004, tens of thousands of pages) states:
 
+<v-click>
+
 Every finite simple group is one of:
 1. $\mathbb{Z}/p\mathbb{Z}$ (cyclic of prime order)
 2. $A_n$ for $n \geq 5$ (alternating groups)
 3. A group of **Lie type** (e.g., $PSL_n(\mathbb{F}_q)$)
 4. One of **26 sporadic groups** (e.g., the Monster group, $|M| \approx 8 \times 10^{53}$)
 
+</v-click>
+
 <v-click>
 
 The Monster group has dimension 196,883 in its smallest faithful representation — its connections to modular functions are known as **"monstrous moonshine"** (proved by Borcherds, 1992).
+
+</v-click>
+
+<v-click>
 
 **This course**: We will use simple groups as building blocks via **composition series** (next lecture).
 
