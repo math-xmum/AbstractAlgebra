@@ -90,13 +90,11 @@
 
 ---
 
-## Part III: Ring Theory (Week 13)
-
 ### Week 13
 | # | Topic | Reference |
 |---|-------|-----------|
-| L25 | Integral domains, UFDs, and PIDs | Fraleigh §45–46, PPT 17 |
-| L26 | Euclidean domains, polynomial rings, **Assignment 2 due** | Fraleigh §45–46, PPT 17 |
+| L25 | Ring theory: integral domains, UFDs, PIDs, Euclidean domains, **Assignment 2 due** | Fraleigh §45–46, PPT 17 |
+| L26 | Tutorial: review of Part II & ring theory | PPT 16 |
 
 ---
 
@@ -105,8 +103,8 @@
 ### Week 14
 | # | Topic | Reference |
 |---|-------|-----------|
-| L27 | Tutorial: review of Part II & III | PPT 16 |
-| L28 | **Review**: full course review for final exam | PPT 19 |
+| L27 | **Review**: full course review for final exam | PPT 19 |
+| L28 | *Reserve / Q&A* | |
 
 ---
 
