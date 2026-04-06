@@ -1,0 +1,111 @@
+/* MAT205 — Clean blue theme, high contrast for projectors */
+
+/* Hide Goto dialog bug */
+#slidev-goto-dialog {
+  display: none !important;
+}
+
+/* Slide base */
+.slidev-layout {
+  color: #222;
+  background: #fff;
+}
+
+/* Headings — deep blue */
+h1 {
+  color: #1a5276 !important;
+  font-weight: 700 !important;
+}
+
+h2 {
+  color: #2471a3 !important;
+  font-weight: 600 !important;
+}
+
+/* Body text */
+p, li, td {
+  color: #222;
+}
+
+strong, b {
+  color: #1a5276;
+}
+
+/* Math — large, clean */
+.katex {
+  font-size: 1.2em !important;
+}
+
+.katex-display {
+  margin: 0.8rem 0;
+  padding: 0.6rem 1rem;
+  background: #eaf2f8;
+  border-radius: 4px;
+}
+
+.katex-display > .katex {
+  font-size: 1.3em !important;
+}
+
+/* Tables — blue header */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th {
+  background: #1a5276;
+  color: #fff;
+  font-weight: 600;
+  padding: 0.4rem 0.8rem;
+  text-align: left;
+}
+
+td {
+  padding: 0.4rem 0.8rem;
+  border-bottom: 1px solid #d5dbdb;
+}
+
+tr:nth-child(even) td {
+  background: #f8f9f9;
+}
+
+/* Blockquotes */
+blockquote {
+  background: #eaf2f8;
+  border-left: 3px solid #2471a3;
+  padding: 0.5rem 1rem;
+  margin: 0.8rem 0;
+  border-radius: 0 4px 4px 0;
+}
+
+/* Links */
+a {
+  color: #2471a3 !important;
+  border: none !important;
+}
+
+/* Inline code */
+:not(pre) > code {
+  background: #eaf2f8;
+  color: #1a5276;
+  padding: 0.1em 0.3em;
+  border-radius: 2px;
+}
+
+/* Cover/center slides */
+.slidev-layout.cover,
+.slidev-layout.center {
+  background: #1a5276;
+  color: #fff;
+}
+
+.slidev-layout.cover h1,
+.slidev-layout.center h1 {
+  color: #fff !important;
+}
+
+/* List markers */
+li::marker {
+  color: #2471a3;
+}

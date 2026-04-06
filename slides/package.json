@@ -1,0 +1,15 @@
+{
+  "name": "aa2-slides",
+  "private": true,
+  "scripts": {
+    "dev": "slidev",
+    "build": "slidev build",
+    "export": "slidev export"
+  },
+  "dependencies": {
+    "@slidev/cli": "^51.0.0",
+    "@slidev/theme-default": "latest",
+    "playwright": "^1.59.1",
+    "slidev-theme-academic": "^2.1.0"
+  }
+}
