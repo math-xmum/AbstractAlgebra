@@ -39,65 +39,73 @@
 ### Week 5
 | # | Topic | Reference |
 |---|-------|-----------|
-| L09 | Solvable groups: derived series, solvability | Fraleigh §35, PPT 02 |
-| L10 | **Quiz 1** (20 min) + Nilpotent groups, central series, semi-direct products | PPT 02 |
+| L09 | **Quiz 1** (20 min) + Solvable & nilpotent groups: derived series, central series, semi-direct products | Fraleigh §35, PPT 02 |
+| L10 | Free groups: universal property, reduced words | Fraleigh §39, PPT 05 |
 
 ### Week 6
 | # | Topic | Reference |
 |---|-------|-----------|
-| L11 | Free groups: universal property, reduced words | Fraleigh §39, PPT 05 |
-| L12 | Free abelian groups: basis, rank, fundamental theorem of f.g. abelian groups | Fraleigh §38, PPT 06 |
+| L11 | Free abelian groups: basis, rank, fundamental theorem of f.g. abelian groups | Fraleigh §38, PPT 06 |
+| L12 | Tutorial: review of Part I, **Assignment 1 due** | PPT 07 |
 
 ### Week 7
 | # | Topic | Reference |
 |---|-------|-----------|
-| L13 | Tutorial: review of Part I, **Assignment 1 due** | PPT 07 |
-| L14 | **Midterm Exam** (covers Part I: Weeks 1–6) | |
+| L13 | **Midterm Exam** (covers Part I: Weeks 1–6) | |
+| L14 | Field extensions: degree, tower law | Fraleigh §29–30, PPT 08 |
 
 ---
 
-## Part II: Galois Theory (Weeks 8–14)
+## Part II: Fields & Galois Theory (Weeks 7–13)
 
 ### Week 8
 | # | Topic | Reference |
 |---|-------|-----------|
-| L15 | Field extensions: degree, tower law | Fraleigh §29–30, PPT 08 |
-| L16 | Algebraic extensions: minimal polynomial, algebraic closure | Fraleigh §31, PPT 09 |
+| L15 | Algebraic extensions: minimal polynomial, algebraic closure | Fraleigh §31, PPT 09 |
+| L16 | Finite fields: existence, uniqueness, structure of $\mathbb{F}_q$ | Fraleigh §33, PPT 10 |
 
 ### Week 9
 | # | Topic | Reference |
 |---|-------|-----------|
-| L17 | Finite fields: existence, uniqueness, structure of F_q | Fraleigh §33, PPT 10 |
-| L18 | Field automorphisms I: Frobenius, automorphism groups | Fraleigh §48, PPT 11 |
+| L17 | Field automorphisms I: Frobenius, automorphism groups | Fraleigh §48, PPT 11 |
+| L18 | Field automorphisms II: fixed fields, Artin's theorem | Fraleigh §48–49, PPT 11 |
 
 ### Week 10
 | # | Topic | Reference |
 |---|-------|-----------|
-| L19 | Field automorphisms II: fixed fields, Artin's theorem | Fraleigh §48–49, PPT 11 |
-| L20 | Isomorphism extension theorem | Fraleigh §49, PPT 12 |
+| L19 | Isomorphism extension theorem | Fraleigh §49, PPT 12 |
+| L20 | Separable extensions I: separable polynomials, separable degree | Fraleigh §51, PPT 13 |
 
 ### Week 11
 | # | Topic | Reference |
 |---|-------|-----------|
-| L21 | Separable extensions I: separable polynomials, separable degree | Fraleigh §51, PPT 13 |
-| L22 | Separable extensions II: primitive element theorem | Fraleigh §51, PPT 13 |
+| L21 | Separable extensions II: primitive element theorem | Fraleigh §51, PPT 13 |
+| L22 | Galois theory I: Galois group, Galois extensions | Fraleigh §53, PPT 14 |
 
 ### Week 12
 | # | Topic | Reference |
 |---|-------|-----------|
-| L23 | **Quiz 2** (20 min) + Galois theory I: Galois group, Galois extensions | Fraleigh §53, PPT 14 |
-| L24 | Galois theory II: fundamental theorem of Galois theory | Fraleigh §53–54, PPT 15 |
+| L23 | **Quiz 2** (20 min) + Galois theory II: fundamental theorem of Galois theory | Fraleigh §53–54, PPT 15 |
+| L24 | Applications of Galois theory: solvability by radicals, insolvability of quintic | Fraleigh §56 |
+
+---
+
+## Part III: Ring Theory (Week 13)
 
 ### Week 13
 | # | Topic | Reference |
 |---|-------|-----------|
-| L25 | Applications of Galois theory: solvability by radicals, insolvability of quintic | Fraleigh §56 |
-| L26 | Factorization in integral domains: UFDs, PIDs, Euclidean domains, **Assignment 2 due** | Fraleigh §45–46, PPT 17 |
+| L25 | Integral domains, UFDs, and PIDs | Fraleigh §45–46, PPT 17 |
+| L26 | Euclidean domains, polynomial rings, **Assignment 2 due** | Fraleigh §45–46, PPT 17 |
+
+---
+
+## Review (Week 14)
 
 ### Week 14
 | # | Topic | Reference |
 |---|-------|-----------|
-| L27 | Tutorial: review of Part II | PPT 16 |
+| L27 | Tutorial: review of Part II & III | PPT 16 |
 | L28 | **Review**: full course review for final exam | PPT 19 |
 
 ---
@@ -106,9 +114,9 @@
 
 | Event | Week | Lecture |
 |-------|------|---------|
-| Quiz 1 | Week 5 | L10 |
-| Assignment 1 due | Week 7 | L13 |
-| Midterm Exam | Week 7 | L14 |
+| Quiz 1 | Week 5 | L09 |
+| Assignment 1 due | Week 6 | L12 |
+| Midterm Exam | Week 7 | L13 |
 | Quiz 2 | Week 12 | L23 |
 | Assignment 2 due | Week 13 | L26 |
 | Final Exam | Exam period | — |
