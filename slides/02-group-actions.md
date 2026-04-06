@@ -73,25 +73,63 @@ A group action $G \curvearrowright X$ is **the same thing** as a homomorphism $\
 
 ---
 
-# Discrete Examples I: Permutations and Symmetry
+# Discrete Examples I: Symmetry of Polygons
 
-**Example 1.** $S_n$ acts on $\{1, 2, \ldots, n\}$ by $\sigma \cdot i = \sigma(i)$.
+**Example 1.** The dihedral group $D_n$ acts on the vertices of a regular $n$-gon.
+
+<img src="/d7-symmetry.png" style="height: 180px; margin-top: 0.3rem;" />
 
 <v-click>
 
-**Example 2.** The dihedral group $D_n$ acts on the vertices of a regular $n$-gon.
+$D_7$ has $2 \times 7 = 14$ elements: 7 rotations ($e, r, r^2, \ldots, r^6$) and 7 reflections.
 
-<img src="/d4-square.png" style="height: 160px; margin-top: 0.5rem;" />
+Each symmetry permutes the 7 vertices $\implies$ $D_7 \hookrightarrow S_7$.
 
 </v-click>
 
 <v-click>
 
-$D_4$ has 8 elements: 4 rotations ($e, r, r^2, r^3$) and 4 reflections ($s, rs, r^2s, r^3s$).
-
-Each symmetry permutes the 4 vertices — this defines $D_4 \hookrightarrow S_4$.
+**Example 2.** The **Rubik's cube group** acts on the 54 colored facelets. It is a subgroup of $S_{54}$ with $|G| \approx 4.3 \times 10^{19}$.
 
 </v-click>
+
+---
+
+# Discrete Examples: Rubik's Cube
+
+<div style="display: flex; gap: 1.5rem;">
+<div style="flex: 1;">
+
+The **Rubik's cube group** $G$ acts on the set of 54 colored facelets.
+
+<v-click>
+
+**Generators**: 6 face rotations $\{U, D, L, R, F, B\}$ (each of order 4).
+
+</v-click>
+
+<v-click>
+
+**Key facts**:
+- $|G| = 43{,}252{,}003{,}274{,}489{,}856{,}000 \approx 4.3 \times 10^{19}$
+- $G \leq S_{48}$ (8 corner cubies $\times$ 3 orientations + 12 edge cubies $\times$ 2 orientations)
+- **God's number** = 20: every position can be solved in $\leq 20$ moves
+
+</v-click>
+
+<v-click>
+
+The structure of $G$ involves **semi-direct products** and **wreath products** — topics we'll see later in this course.
+
+</v-click>
+
+</div>
+<div style="flex: 0 0 auto;">
+
+<img src="/rubik.jpg" style="height: 220px; border-radius: 4px;" />
+
+</div>
+</div>
 
 ---
 
