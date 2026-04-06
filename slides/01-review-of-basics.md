@@ -102,9 +102,13 @@ A **group** $(G, \cdot)$ satisfies:
 | $(GL_n(\mathbb{R}), \times)$ | matrix multiplication | $I_n$ | No ($n \geq 2$) |
 | $SL_n(\mathbb{Z})$ | matrix multiplication | $I_n$ | No ($n \geq 2$) |
 
+<v-click>
+
 **Abelian group**: $G$ is **abelian** if $ab = ba$ for all $a, b \in G$.
 
 $SL_n(\mathbb{Z}) = \{ A \in M_n(\mathbb{Z}) \mid \det(A) = 1 \}$ — the **special linear group** over $\mathbb{Z}$.
+
+</v-click>
 
 ---
 
@@ -114,12 +118,17 @@ $SL_n(\mathbb{Z}) = \{ A \in M_n(\mathbb{Z}) \mid \det(A) = 1 \}$ — the **spec
 - **Closure**: $\det(AB) = \det(A)\det(B) = 1 \cdot 1 = 1$ $\checkmark$
 - **Associativity**: matrix multiplication is associative $\checkmark$
 - **Identity**: $\det(I_n) = 1$ $\checkmark$
+
+<v-click>
+
 - **Inverse**: $\det(A) = 1 \implies A^{-1}$ has integer entries (Cramer's rule: $A^{-1} = \text{adj}(A)/\det(A)$) $\checkmark$
 
 In fact, $SL_n(\mathbb{Z})$ is the **kernel** of the determinant homomorphism:
 $$\det : GL_n(\mathbb{R}) \to \mathbb{R}^*$$
 
 **Exercise.** Use the one-step subgroup criterion to prove $SL_n(\mathbb{Z}) \leq GL_n(\mathbb{R})$.
+
+</v-click>
 
 ---
 
@@ -137,10 +146,14 @@ $$\mathbb{H} = \{z \in \mathbb{C} \mid \operatorname{Im}(z) > 0\}, \qquad \begin
 </div>
 <div style="flex: 1; font-size: 0.95rem;">
 
+<v-click>
+
 A **modular form** of weight $k$: holomorphic $f: \mathbb{H} \to \mathbb{C}$ with
 $$f\!\left(\frac{az+b}{cz+d}\right) = (cz+d)^k f(z)$$
 
 Connects to: **number theory** (counting arithmetic objects), **Fermat's Last Theorem** (Wiles 1995), **string theory** (partition functions).
+
+</v-click>
 
 </div>
 </div>
@@ -187,9 +200,13 @@ Which of the following are groups? **Which axiom fails?**
 **One-step subgroup criterion.** $H \leq G$ if and only if $H \neq \emptyset$ and
 $$a, b \in H \implies ab^{-1} \in H$$
 
+<v-click>
+
 **Two-step criterion.** $H \leq G$ if and only if:
 1. $a, b \in H \implies ab \in H$ (closed under multiplication)
 2. $a \in H \implies a^{-1} \in H$ (closed under inverse)
+
+</v-click>
 
 </div>
 <div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center;">
@@ -215,6 +232,8 @@ Lagrange's 1770 work on permutations of polynomial roots laid the groundwork for
 
 *Proof.* If $a = km$ and $b = kn$, then $a - b = k(m-n) \in k\mathbb{Z}$. $\square$
 
+<v-click>
+
 **Example 2.** The alternating group $A_n = \{\sigma \in S_n \mid \sigma \text{ is even}\} \leq S_n$.
 
 **Example 3.** The center $Z(G) = \{g \in G \mid gx = xg \text{ for all } x \in G\} \leq G$.
@@ -222,6 +241,8 @@ Lagrange's 1770 work on permutations of polynomial roots laid the groundwork for
 **Example 4.** $SL_n(\mathbb{Z}) \leq GL_n(\mathbb{R})$ (as we showed earlier).
 
 **Exercise.** Verify that $Z(G)$ is indeed a subgroup using the two-step criterion.
+
+</v-click>
 
 ---
 
@@ -236,8 +257,12 @@ $$gH = \{gh \mid h \in H\}$$
 3. Two cosets are either **equal** or **disjoint**
 4. $|gH| = |H|$ for any $g \in G$
 
+<v-click>
+
 The coset relation $a \sim b \iff a^{-1}b \in H$ is an **equivalence relation** on $G$.
 Cosets are the equivalence classes of this relation.
+
+</v-click>
 
 ---
 
@@ -256,7 +281,11 @@ $$|G| = [G:H] \cdot |H|$$
 
 In particular, $|H|$ divides $|G|$.
 
+<v-click>
+
 **Corollary.** The order of any element divides $|G|$. Hence $g^{|G|} = e$ for all $g \in G$.
+
+</v-click>
 
 </div>
 <div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center;">
@@ -282,7 +311,11 @@ The left cosets of $H$:
 | $\bar{1} + H$ | $\{\bar{1}, \bar{4}\}$ |
 | $\bar{2} + H$ | $\{\bar{2}, \bar{5}\}$ |
 
+<v-click>
+
 So $[G:H] = 3$, and indeed $|G| = 6 = 3 \times 2 = [G:H] \cdot |H|$. $\checkmark$
+
+</v-click>
 
 ---
 
@@ -295,6 +328,8 @@ So $[G:H] = 3$, and indeed $|G| = 6 = 3 \times 2 = [G:H] \cdot |H|$. $\checkmark
 
 *Proof.* Take any $g \neq e$. Then $|\langle g \rangle|$ divides $p$, so $|\langle g \rangle| = p$, hence $\langle g \rangle = G$. $\square$
 
+<v-click>
+
 **Corollary 2.** (Fermat) If $p$ prime, $\gcd(a, p) = 1$, then $a^{p-1} \equiv 1 \pmod{p}$.
 
 *Proof.* Apply Lagrange to $(\mathbb{Z}/p\mathbb{Z})^*$, order $p-1$. $\square$
@@ -302,6 +337,8 @@ So $[G:H] = 3$, and indeed $|G| = 6 = 3 \times 2 = [G:H] \cdot |H|$. $\checkmark
 **Corollary 3.** (Euler) If $\gcd(a, n) = 1$, then $a^{\varphi(n)} \equiv 1 \pmod{n}$.
 
 *Proof.* Apply Lagrange to $(\mathbb{Z}/n\mathbb{Z})^*$, order $\varphi(n)$. $\square$
+
+</v-click>
 
 </div>
 <div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
@@ -329,11 +366,15 @@ So $[G:H] = 3$, and indeed $|G| = 6 = 3 \times 2 = [G:H] \cdot |H|$. $\checkmark
 **Definition.** A map $f: G \to H$ is a **group homomorphism** if
 $$f(ab) = f(a)f(b) \quad \text{for all } a, b \in G$$
 
+<v-click>
+
 **Automatic consequences:**
 - $f(e_G) = e_H$
 - $f(a^{-1}) = f(a)^{-1}$
 
 **Exercise.** Prove these two consequences from the definition.
+
+</v-click>
 
 </div>
 <div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center;">
@@ -353,6 +394,8 @@ $$f(ab) = f(a)f(b) \quad \text{for all } a, b \in G$$
 - **Kernel**: $\ker(f) = \{g \in G \mid f(g) = e_H\}$
 - **Image**: $\operatorname{im}(f) = \{f(g) \mid g \in G\}$
 
+<v-click>
+
 **Key facts:**
 1. $\ker(f) \leq G$ and $\operatorname{im}(f) \leq H$
 2. $f$ is injective $\iff$ $\ker(f) = \{e\}$
@@ -360,39 +403,39 @@ $$f(ab) = f(a)f(b) \quad \text{for all } a, b \in G$$
 
 **Exercise.** Prove fact 3: if $g \in G$ and $n \in \ker(f)$, show $gng^{-1} \in \ker(f)$.
 
+</v-click>
+
 ---
 
 # Normal Subgroups
 
 <div style="display: flex; gap: 1.5rem;">
-<div style="flex: 1;">
+<div style="flex: 1; font-size: 0.95rem;">
 
-**Definition.** A subgroup $N \leq G$ is **normal** (written $N \trianglelefteq G$) if
-$$gNg^{-1} = N \quad \text{for all } g \in G$$
+**Definition.** $N \leq G$ is **normal** ($N \trianglelefteq G$) if $gNg^{-1} = N$ for all $g \in G$.
 
 **Equivalent conditions:**
 1. $gNg^{-1} \subseteq N$ for all $g \in G$
 2. $gN = Ng$ for all $g \in G$ (left cosets = right cosets)
 3. $N = \ker(f)$ for some homomorphism $f$
 
-**Why normal?** If $N \trianglelefteq G$, then coset multiplication is well-defined:
-$$(gN)(hN) = (gh)N$$
-This makes $G/N$ into a group — the **quotient group**.
+<v-click>
+
+**Why normal?** Coset multiplication becomes well-defined: $(gN)(hN) = (gh)N$.
+This makes $G/N$ a group — the **quotient group**.
+
+<div style="font-size: 0.85rem; opacity: 0.7; margin-top: 0.3rem;">Galois introduced normal subgroups in 1832, connecting them to solvability of polynomials.</div>
+
+</v-click>
 
 </div>
 <div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center;">
 
-<img src="/galois.jpg" style="height: 180px; border-radius: 4px;" />
+<img src="/galois.jpg" style="height: 160px; border-radius: 4px;" />
 
 <div style="font-size: 0.7rem; opacity: 0.6;">Galois (1811–1832)</div>
 
 </div>
-</div>
-
-<div style="font-size: 0.85rem; opacity: 0.7;">
-
-Galois introduced normal subgroups in 1832, connecting them to solvability of polynomial equations.
-
 </div>
 
 ---
@@ -405,13 +448,17 @@ Galois introduced normal subgroups in 1832, connecting them to solvability of po
 **First Isomorphism Theorem.** If $f: G \to H$ is a homomorphism, then
 $$G / \ker(f) \cong \operatorname{im}(f)$$
 
-$$G \xrightarrow{\quad f \quad} H \qquad \downarrow \pi \quad \nearrow \bar{f} \qquad G/\ker(f)$$
+$$\begin{CD} G @>{f}>> H \\ @V{\pi}VV @AA{\bar{f}}A \\ G/\ker(f) @= \operatorname{im}(f) \end{CD}$$
+
+<v-click>
 
 **Second Isomorphism Theorem.** If $A \leq G$ and $B \trianglelefteq G$, then
 $$A / (A \cap B) \cong AB / B$$
 
 **Third Isomorphism Theorem.** If $N \subseteq M$ are both normal in $G$, then
 $$(G/N) / (M/N) \cong G/M$$
+
+</v-click>
 
 </div>
 <div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center;">
@@ -439,9 +486,13 @@ Noether formalized the isomorphism theorems in abstract form, establishing moder
 - $\mathbb{Z}/p\mathbb{Z}$ for $p$ prime (abelian simple groups)
 - $A_n$ for $n \geq 5$ (non-abelian simple groups)
 
+<v-click>
+
 **Theorem.** The only finite abelian simple groups are $\mathbb{Z}/p\mathbb{Z}$ for $p$ prime.
 
 *Proof.* If $G$ is abelian, every subgroup is normal. If $G$ is simple, it has no proper nontrivial subgroups. Take $g \neq e$; then $\langle g \rangle = G$. If $|G| = mn$ with $1 < m, n$, then $\langle g^m \rangle$ is a proper subgroup — contradiction. So $|G|$ is prime. $\square$
+
+</v-click>
 
 ---
 
@@ -455,9 +506,13 @@ Every finite simple group is one of:
 3. A group of **Lie type** (e.g., $PSL_n(\mathbb{F}_q)$)
 4. One of **26 sporadic groups** (e.g., the Monster group, $|M| \approx 8 \times 10^{53}$)
 
+<v-click>
+
 The Monster group has dimension 196,883 in its smallest faithful representation — its connections to modular functions are known as **"monstrous moonshine"** (proved by Borcherds, 1992).
 
 **This course**: We will use simple groups as building blocks via **composition series** (next lecture).
+
+</v-click>
 
 ---
 
