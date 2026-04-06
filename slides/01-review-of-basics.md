@@ -293,6 +293,38 @@ A **lattice** is a partially ordered set where every pair has a **join** (least 
 
 ---
 
+# The Center of a Group
+
+**Recall.** $Z(G) = \{g \in G \mid gx = xg \text{ for all } x \in G\}$.
+
+<v-click>
+
+**Example 1.** $Z(GL_n(\mathbb{R})) = \{\lambda I_n \mid \lambda \in \mathbb{R}^*\} \cong \mathbb{R}^*$ (scalar matrices).
+
+*Proof sketch.* If $A$ commutes with every invertible matrix, take $A E_{ij} = E_{ij} A$ for elementary matrices $\implies$ $A$ is diagonal $\implies$ all diagonal entries equal. $\square$
+
+</v-click>
+
+<v-click>
+
+**Example 2.** $Z(S_n) = \{e\}$ for $n \geq 3$ (the symmetric group has trivial center).
+
+</v-click>
+
+<v-click>
+
+**Example 3.** $Z(D_n) = \{e, r^{n/2}\}$ if $n$ even; $Z(D_n) = \{e\}$ if $n$ odd.
+
+</v-click>
+
+<v-click>
+
+**Remark.** The quotient $G/Z(G)$ is called the **inner automorphism group** $\operatorname{Inn}(G)$. Note $PGL_n(\mathbb{R}) = GL_n(\mathbb{R})/Z(GL_n(\mathbb{R}))$ — the **projective linear group**.
+
+</v-click>
+
+---
+
 # Classification of Subgroups of $\mathbb{Z}$
 
 **Theorem.** Every subgroup of $(\mathbb{Z}, +)$ is of the form $k\mathbb{Z}$ for some $k \in \mathbb{N}$.
