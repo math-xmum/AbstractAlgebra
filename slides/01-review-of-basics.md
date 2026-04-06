@@ -124,6 +124,45 @@ $SL_n(\mathbb{Z}) = \{ A \in M_n(\mathbb{Z}) \mid \det(A) = 1 \}$ — the **spec
 
 ---
 
+# Niels Henrik Abel and the Abel Prize
+
+<div style="display: flex; gap: 1.5rem;">
+<div style="flex: 1; font-size: 0.95rem;">
+
+**Niels Henrik Abel** (1802–1829) proved that the general quintic equation has **no solution by radicals** — one of the founding results of group theory.
+
+He died at age 26 from tuberculosis, before receiving a professorship offer from Berlin.
+
+<v-click>
+
+The **Abel Prize** (est. 2003, ~\$700K) is the "Nobel Prize of Mathematics," awarded annually by the Norwegian Academy. Recent laureates:
+
+| Year | Laureate | Contribution |
+|------|----------|-------------|
+| 2026 | **Gerd Faltings** | Arithmetic geometry, Mordell conjecture |
+| 2025 | **Masaki Kashiwara** | Algebraic analysis, representation theory |
+| 2024 | **Michel Talagrand** | Probability, stochastic processes |
+
+</v-click>
+
+<v-click>
+
+Faltings' proof of the Mordell conjecture uses deep tools from **algebraic geometry** and **Galois representations** — themes we will encounter in Part II.
+
+</v-click>
+
+</div>
+<div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center;">
+
+<img src="/abel.jpg" style="height: 200px; border-radius: 4px;" />
+
+<div style="font-size: 0.7rem; opacity: 0.6;">N. H. Abel (1802–1829)</div>
+
+</div>
+</div>
+
+---
+
 # $SL_n(\mathbb{Z})$ is a Group
 
 **Why is $SL_n(\mathbb{Z})$ a group?** Under matrix multiplication:
