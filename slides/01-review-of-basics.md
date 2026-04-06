@@ -390,17 +390,33 @@ $$[G, G] = \langle [a, b] \mid a, b \in G \rangle$$
 
 </v-click>
 
+---
+
+# Example: The Structure of $GL_n(\mathbb{R})$
+
+**Theorem.** $[GL_n(\mathbb{R}), GL_n(\mathbb{R})] = SL_n(\mathbb{R})$ for $n \geq 2$.
+
 <v-click>
 
-**Example.** $[GL_n(\mathbb{R}), GL_n(\mathbb{R})] = SL_n(\mathbb{R})$ for $n \geq 2$.
-
-*Proof idea.* Every matrix of determinant 1 is a product of commutators (since $\det[A,B] = 1$). The abelianization is $GL_n(\mathbb{R})^{\text{ab}} = GL_n/SL_n \cong \mathbb{R}^*$ via the determinant. $\square$
+*Proof idea.* $\det[A,B] = \det(ABA^{-1}B^{-1}) = 1$, so $[GL_n, GL_n] \subseteq SL_n$. Conversely, every matrix of determinant 1 is a product of commutators. $\square$
 
 </v-click>
 
 <v-click>
 
-So $GL_n(\mathbb{R})$ has center $\cong \mathbb{R}^*$ (scalar matrices) and derived subgroup $= SL_n(\mathbb{R})$. The structure is controlled by $\det$:
+The abelianization: $GL_n(\mathbb{R})^{\text{ab}} = GL_n/SL_n \cong \mathbb{R}^*$ via $\det$.
+
+</v-click>
+
+<v-click>
+
+**Summary of $GL_n(\mathbb{R})$:**
+
+| Subgroup | Description | Quotient |
+|----------|-------------|----------|
+| Center $Z(GL_n)$ | $\{\lambda I_n \mid \lambda \in \mathbb{R}^*\}$ | $PGL_n(\mathbb{R})$ |
+| Derived $[GL_n, GL_n]$ | $SL_n(\mathbb{R})$ | $\mathbb{R}^*$ |
+
 $$1 \to SL_n(\mathbb{R}) \to GL_n(\mathbb{R}) \xrightarrow{\det} \mathbb{R}^* \to 1$$
 
 </v-click>
