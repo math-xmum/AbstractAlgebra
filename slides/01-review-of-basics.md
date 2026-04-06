@@ -577,42 +577,6 @@ So $[G:H] = 3$, and indeed $|G| = 6 = 3 \times 2 = [G:H] \cdot |H|$. $\checkmark
 
 ---
 
-# Order of an Element via $\mathbb{Z} \to G$
-
-For any $g \in G$, define $\varphi_g : \mathbb{Z} \to G$ by $\varphi_g(n) = g^n$.
-
-<v-click>
-
-This is a **group homomorphism** $(\mathbb{Z}, +) \to (G, \cdot)$: $\varphi_g(m+n) = g^{m+n} = g^m \cdot g^n$.
-
-</v-click>
-
-<v-click>
-
-By the first isomorphism theorem:
-$$\mathbb{Z} / \ker(\varphi_g) \cong \operatorname{im}(\varphi_g) = \langle g \rangle$$
-
-</v-click>
-
-<v-click>
-
-Since every subgroup of $\mathbb{Z}$ is $k\mathbb{Z}$, we have $\ker(\varphi_g) = d\mathbb{Z}$ for some $d \in \mathbb{N}$.
-
-- If $d = 0$: $\langle g \rangle \cong \mathbb{Z}$ — infinite order
-- If $d > 0$: $\langle g \rangle \cong \mathbb{Z}/d\mathbb{Z}$ — finite order $d$
-
-</v-click>
-
-<v-click>
-
-**Definition.** The **order** of $g$ is $\operatorname{ord}(g) = d = |\langle g \rangle|$.
-
-So $\operatorname{ord}(g) = d \iff g^d = e$ and $g^k \neq e$ for $0 < k < d$, i.e., $d$ is the smallest positive integer with $g^d = e$.
-
-</v-click>
-
----
-
 # Group Homomorphisms
 
 <div style="display: flex; gap: 1.5rem;">
@@ -677,6 +641,42 @@ $$f(ab) = f(a)f(b) \quad \text{for all } a, b \in G$$
 3. $\ker(f)$ is a **normal** subgroup of $G$
 
 **Exercise.** Prove fact 3: if $g \in G$ and $n \in \ker(f)$, show $gng^{-1} \in \ker(f)$.
+
+</v-click>
+
+---
+
+# Order of an Element via $\mathbb{Z} \to G$
+
+For any $g \in G$, define $\varphi_g : \mathbb{Z} \to G$ by $\varphi_g(n) = g^n$.
+
+<v-click>
+
+This is a **group homomorphism** $(\mathbb{Z}, +) \to (G, \cdot)$: $\varphi_g(m+n) = g^{m+n} = g^m \cdot g^n$.
+
+</v-click>
+
+<v-click>
+
+By the first isomorphism theorem:
+$$\mathbb{Z} / \ker(\varphi_g) \cong \operatorname{im}(\varphi_g) = \langle g \rangle$$
+
+</v-click>
+
+<v-click>
+
+Since every subgroup of $\mathbb{Z}$ is $k\mathbb{Z}$, we have $\ker(\varphi_g) = d\mathbb{Z}$ for some $d \in \mathbb{N}$.
+
+- If $d = 0$: $\langle g \rangle \cong \mathbb{Z}$ — infinite order
+- If $d > 0$: $\langle g \rangle \cong \mathbb{Z}/d\mathbb{Z}$ — finite order $d$
+
+</v-click>
+
+<v-click>
+
+**Definition.** The **order** of $g$ is $\operatorname{ord}(g) = d = |\langle g \rangle|$.
+
+So $\operatorname{ord}(g) = d \iff g^d = e$ and $g^k \neq e$ for $0 < k < d$, i.e., $d$ is the smallest positive integer with $g^d = e$.
 
 </v-click>
 
