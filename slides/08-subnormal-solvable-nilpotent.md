@@ -443,6 +443,51 @@ $$
 
 ---
 
+# Non-Example: $(\mathbb Q,+)$
+
+<div style="font-size: 0.8rem; line-height: 1.16;">
+
+The additive group $(\mathbb Q,+)$ is **divisible**:
+
+$$
+\forall q\in\mathbb Q,\ \forall n\ge 1,\quad
+\exists x\in\mathbb Q\text{ such that }nx=q.
+$$
+
+<v-click>
+
+Every quotient of a divisible abelian group is divisible.
+
+$$
+\mathbb Q/H\text{ is divisible for every subgroup }H\le \mathbb Q.
+$$
+
+</v-click>
+
+<v-click>
+
+If $\mathbb Q$ had a composition series, the first factor
+
+$$
+\mathbb Q/G_1
+$$
+
+would be simple and abelian.
+
+</v-click>
+
+<v-click>
+
+But every simple abelian group is $\mathbb Z_p$, and $\mathbb Z_p$ is not divisible.
+
+Hence $(\mathbb Q,+)$ has no finite composition series.
+
+</v-click>
+
+</div>
+
+---
+
 # Direct Product Calculation
 
 <div style="font-size: 0.76rem; line-height: 1.16;">
@@ -1073,7 +1118,7 @@ layout: center
 
 # Part IV
 
-## Nilpotent Tools and Examples
+## Central Series and Nilpotent Groups
 
 ---
 

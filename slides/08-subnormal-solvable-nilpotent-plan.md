@@ -32,6 +32,7 @@ The lecture contains three definitions and their standard criteria:
    - Simple groups.
    - Composition series and composition length.
    - Explicit calculations for `S_3`, `Z_12`, and direct products.
+   - `(Q,+)` as a non-example: no finite composition series.
    - Jordan-Holder theorem.
    - Composition factors are not enough to reconstruct the group.
 
