@@ -518,6 +518,50 @@ Whenever $I$ is an ideal, we can form the quotient ring $R/I$.
 
 ---
 
+# Definition: Principal Ideal Domains
+
+Let $D$ be an integral domain.
+
+<v-click>
+
+A **principal ideal domain**, or **PID**, is an integral domain in which every ideal is principal.
+
+</v-click>
+
+<v-click>
+
+That is, for every ideal $I\subseteq D$, there exists $a\in D$ such that
+
+$$
+I=(a).
+$$
+
+</v-click>
+
+<v-click>
+
+Examples:
+
+$$
+\mathbb Z,\qquad F[x].
+$$
+
+</v-click>
+
+<v-click>
+
+A typical non-example is
+
+$$
+F[x,y],
+$$
+
+where the ideal $(x,y)$ is not principal.
+
+</v-click>
+
+---
+
 # Definition: Quotient Rings
 
 Let $I\subseteq R$ be an ideal.
@@ -1013,7 +1057,7 @@ $$
 
 ---
 
-# Definition: Operations in $R[x]$
+# Definition: Addition in $R[x]$
 
 Add coefficients:
 
@@ -1032,6 +1076,42 @@ Example in $\mathbb Z_5[x]$:
 $$
 (3x^2+4x+1)+(4x^2+2)
 =2x^2+4x+3.
+$$
+
+</v-click>
+
+---
+
+# Definition: Multiplication in $R[x]$
+
+Let
+
+$$
+f=\sum_{i=0}^m a_ix^i,\qquad g=\sum_{j=0}^n b_jx^j.
+$$
+
+<v-click>
+
+The product is
+
+$$
+fg=\sum_{k=0}^{m+n} c_kx^k,
+$$
+
+where
+
+$$
+c_k=\sum_{i+j=k}a_ib_j.
+$$
+
+</v-click>
+
+<v-click>
+
+This is the usual distributive multiplication:
+
+$$
+(a_ix^i)(b_jx^j)=a_ib_jx^{i+j}.
 $$
 
 </v-click>
