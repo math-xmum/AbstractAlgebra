@@ -1338,8 +1338,14 @@ Let $R$ be a commutative ring with unity.
 A **commutative $R$-algebra** is a commutative ring $A$ with unity together with a unital ring homomorphism
 
 $$
-\eta:R\to A.
+R\to A.
 $$
+
+</v-click>
+
+<v-click>
+
+Convention: after choosing this map, we write elements of $R$ as scalars in $A$.
 
 </v-click>
 
@@ -1348,7 +1354,7 @@ $$
 Then $A$ is an $R$-module by
 
 $$
-r\cdot a=\eta(r)a.
+r\cdot a=ra.
 $$
 
 </v-click>
@@ -1367,19 +1373,17 @@ $$
 
 # Definition: $R$-Algebra Homomorphisms
 
-Let $A$ and $B$ be commutative $R$-algebras with structure maps
-
-$$
-\eta_A:R\to A,\qquad \eta_B:R\to B.
-$$
+Let $A$ and $B$ be commutative $R$-algebras.
 
 <v-click>
 
 An **$R$-algebra homomorphism** is a unital ring homomorphism $\varphi:A\to B$ such that
 
 $$
-\varphi(\eta_A(r))=\eta_B(r)\qquad(r\in R).
+\varphi(r)=r\qquad(r\in R),
 $$
+
+using the scalar convention in both $A$ and $B$.
 
 </v-click>
 
@@ -1391,89 +1395,135 @@ Equivalently, $\varphi$ fixes the scalars from $R$.
 
 ---
 
-# Theorem: Universal Property of $R[x]$
+# Theorem: Universal Property of Polynomial Algebras
 
-Let $A$ be a commutative $R$-algebra and let $a\in A$.
-
-<v-click>
-
-There exists a unique $R$-algebra homomorphism
-
-$$
-\operatorname{ev}_a:R[x]\to A
-$$
-
-such that $\operatorname{ev}_a(x)=a$.
-
-</v-click>
+Let $R[x_s\mid s\in S]$ be the polynomial ring whose variables are indexed by $S$.
 
 <v-click>
 
-Equivalently,
+Its elements are finite $R$-linear combinations of finite monomials
 
 $$
-\operatorname{Hom}_{R\text{-alg}}(R[x],A)\cong A.
+r\,x_{s_1}^{e_1}\cdots x_{s_m}^{e_m}.
 $$
 
 </v-click>
 
 <v-click>
 
-Thus $R[x]$ is the **free commutative $R$-algebra on one generator**.
-
-</v-click>
-
----
-
-# Proof: Universal Property of $R[x]$
-
-Given $a\in A$, define
+Let
 
 $$
-\Phi_a\!\left(\sum_i r_ix^i\right)=\sum_i \eta(r_i)a^i.
-$$
-
-<v-click>
-
-This map preserves addition and multiplication by distributivity in $A$.
-
-</v-click>
-
-<v-click>
-
-Any $R$-algebra homomorphism $\Phi:R[x]\to A$ with $\Phi(x)=a$ must satisfy
-
-$$
-\Phi\!\left(\sum_i r_ix^i\right)=\sum_i \eta(r_i)a^i.
+i:S\to R[x_s\mid s\in S],\qquad s\mapsto x_s.
 $$
 
 </v-click>
 
 <v-click>
 
-So $\Phi=\Phi_a$, proving uniqueness.
+For every commutative $R$-algebra $A$, precomposition with $i$ gives a bijection
+
+$$
+i^\ast:\operatorname{Hom}_{R\text{-alg}}\!\left(R[x_s\mid s\in S],A\right)
+\longrightarrow \operatorname{Map}(S,A).
+$$
 
 </v-click>
 
 ---
 
-# Theorem: Multivariable Universal Property
+# Corollary: Polynomial Algebras Are Free
 
-$R[x_1,\dots,x_n]$ is the free commutative $R$-algebra on $n$ generators.
+The universal property says:
 
 <v-click>
 
-For every commutative $R$-algebra $A$,
+every set map $a:S\to A$ extends uniquely to an $R$-algebra homomorphism
 
 $$
-\operatorname{Hom}_{R\text{-alg}}(R[x_1,\dots,x_n],A)\cong A^n.
+\Phi_a:R[x_s\mid s\in S]\to A.
 $$
 
 </v-click>
 
 <v-click>
 
-A tuple $a=(a_1,\dots,a_n)\in A^n$ gives
+This is what it means to say:
+
+$$
+R[x_s\mid s\in S]
+$$
+
+is the **free commutative $R$-algebra on the set $S$**.
+
+</v-click>
+
+<v-click>
+
+In particular, $R[x]$ is free on one generator, and $R[x_1,\dots,x_n]$ is free on $n$ generators.
+
+</v-click>
+
+---
+
+# Proof: Polynomial Rings Are Free
+
+Given a set map $a:S\to A$, define $\Phi_a$ by
+
+$$
+\Phi_a(x_s)=a(s),\qquad \Phi_a(r)=r.
+$$
+
+<v-click>
+
+On a monomial,
+
+$$
+\Phi_a\!\left(r\,x_{s_1}^{e_1}\cdots x_{s_m}^{e_m}\right)
+=r\,a(s_1)^{e_1}\cdots a(s_m)^{e_m}.
+$$
+
+</v-click>
+
+<v-click>
+
+Extend by finite sums. This gives an $R$-algebra homomorphism because multiplication of monomials corresponds to adding exponents.
+
+</v-click>
+
+<v-click>
+
+Uniqueness: every polynomial is built from scalars, addition, multiplication, and the generators $x_s$.
+
+</v-click>
+
+---
+
+# Definition: Evaluation Homomorphism
+
+Let $A$ be a commutative $R$-algebra and let $a:S\to A$ be a set map.
+
+<v-click>
+
+The unique homomorphism
+
+$$
+\operatorname{ev}_a:R[x_s\mid s\in S]\to A,\qquad x_s\mapsto a(s)
+$$
+
+is called the **evaluation homomorphism** at $a$.
+
+</v-click>
+
+<v-click>
+
+If $S=\{1,\dots,n\}$, then $a:S\to A$ is the same data as a tuple
+
+$$
+(a_1,\dots,a_n)\in A^n,
+$$
+
+and
 
 $$
 \operatorname{ev}_a:R[x_1,\dots,x_n]\to A,\qquad x_i\mapsto a_i.
@@ -1485,36 +1535,25 @@ $$
 
 # Definition: Polynomial Functions from Evaluation
 
-Let $R$ be a commutative ring with unity, let $A$ be a commutative $R$-algebra, and let $a\in A$.
+Let $A$ be a commutative $R$-algebra.
 
 <v-click>
 
-By the universal property, $a\in A$ gives an evaluation homomorphism
+For $f\in R[x_1,\dots,x_n]$, the **polynomial function defined by $f$ on $A$** is
 
 $$
-\operatorname{ev}_a:R[x]\to A
-$$
-
-with $\operatorname{ev}_a(x)=a$.
-
-</v-click>
-
-<v-click>
-
-For fixed $f\in R[x]$, the **polynomial function defined by $f$ on $A$** is
-
-$$
-f_A:A\to A,\qquad a\mapsto \operatorname{ev}_a(f).
+f_A:A^n\to A,\qquad
+(a_1,\dots,a_n)\mapsto \operatorname{ev}_{(a_1,\dots,a_n)}(f).
 $$
 
 </v-click>
 
 <v-click>
 
-If $f=a_0+a_1x+\cdots+a_nx^n$, then
+In one variable, if $f=r_0+r_1x+\cdots+r_dx^d$, then
 
 $$
-\operatorname{ev}_a(f)=\eta(a_0)+\eta(a_1)a+\cdots+\eta(a_n)a^n.
+\operatorname{ev}_a(f)=r_0+r_1a+\cdots+r_da^d.
 $$
 
 </v-click>
@@ -1523,11 +1562,17 @@ $$
 
 # Proposition: Evaluation Preserves Operations
 
-For $f,g\in R[x]$ and $a\in A$,
+Let $A$ be a commutative $R$-algebra and let $a:S\to A$.
+
+<v-click>
+
+For $f,g\in R[x_s\mid s\in S]$,
 
 $$
 \operatorname{ev}_a(f+g)=\operatorname{ev}_a(f)+\operatorname{ev}_a(g),
 $$
+
+</v-click>
 
 <v-click>
 
@@ -1539,7 +1584,7 @@ $$
 
 <v-click>
 
-This is not an extra calculation: it is part of saying that $\operatorname{ev}_a$ is a ring homomorphism.
+This is not an extra calculation: it is exactly the statement that $\operatorname{ev}_a$ is an $R$-algebra homomorphism.
 
 </v-click>
 
