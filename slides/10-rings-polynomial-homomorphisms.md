@@ -12,7 +12,6 @@ math: katex
 **Ma, Jia-Jun** - Xiamen University Malaysia
 
 ---
-
 layout: center
 ---
 
